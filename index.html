@@ -295,11 +295,13 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                   if (typeof t_menusub_init === 'function') {
-                       console.log(1);
-                   } else {
-                       console.log(2);
-                   }
+                    var timerId = setInterval(function () {
+                        if (typeof t_menusub_init === 'function') {
+                            console.log(1);
+                        } else {
+                            console.log(2);
+                        }
+                    }, 300);
                     setTimeout(function () {
                         t_menusub_init('244041331');
                     }, 500);
