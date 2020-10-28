@@ -298,6 +298,7 @@
                     var timerId = setInterval(function () {
                         if (typeof t_menusub_init === 'function') {
                             console.log(1);
+                            clearInterval(timerId);
                         } else {
                             console.log(2);
                         }
