@@ -56,7 +56,7 @@
         window.dataLayer = window.dataLayer || [];
     </script>
     <script>
-        function checkScriptLoad(ok_func, recid) {
+        function checkScriptLoad(ok_func) {
             var timerId = setTimeout(function checkLoad() {
                 if (typeof ok_func == 'function') {
                     ok_func(recid);
@@ -280,7 +280,9 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    checkScriptLoad(t_menusub_init, '243535149');
+                    checkScriptLoad(function () {
+                        t_menusub_init('243535149');
+                    });
 
                     // var timerId = setTimeout(function checkLoad() {
                     //     if (typeof t_menusub_init == 'function') {
