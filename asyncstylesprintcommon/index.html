@@ -268,9 +268,17 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    setTimeout(function () {
-                        t_menusub_init('243535149');
-                    }, 500);
+                    var timerId = setTimeout(function checkLoad() {
+                        console.log(1);
+                        timerId = setTimeout(checkLoad, 300);
+                        if (typeof t_menusub_init == 'function') {
+                            clearTimeout(timerId);
+                            t_menusub_init('243535149');
+                        }
+                    });
+                    // setTimeout(function () {
+                    //     t_menusub_init('243535149');
+                    // }, 500);
                 });
             </script>
             <style>
@@ -1011,7 +1019,19 @@
                         relevants_quantity: '4',
                         sliderthumbsside: '',
                     };
-                    t_store_init('243535157', options);
+                    $(document).ready(function () {
+                        var timerId = setTimeout(function checkLoad() {
+                            console.log(1);
+                            timerId = setTimeout(checkLoad, 300);
+                            if (typeof t_store_init == 'function') {
+                                clearTimeout(timerId);
+                                t_store_init('243535157', options);
+                            }
+                        });
+                        // setTimeout(function () {
+                        //     t_menusub_init('243535149');
+                        // }, 500);
+                    });
                 });
             </script><!-- catalog setup end -->
         </div>
