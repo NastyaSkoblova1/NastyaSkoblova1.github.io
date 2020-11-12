@@ -55,6 +55,18 @@
     <script type="text/javascript">
         window.dataLayer = window.dataLayer || [];
     </script>
+    <script>
+        function checkScriptLoad(ok_func, recid) {
+            var timerId = setTimeout(function checkLoad() {
+                if (typeof ok_func == 'function') {
+                    ok_func(recid);
+                    console.log('Hello!');
+                    return;
+                }
+                timerId = setTimeout(checkLoad, 300);
+            });
+        }
+    </script>
     <script type="text/javascript">
         if ((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(
                 navigator.userAgent)) === false && typeof (sessionStorage) != 'undefined' && sessionStorage.getItem(
@@ -268,14 +280,16 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    var timerId = setTimeout(function checkLoad() {
-                        if (typeof t_menusub_init == 'function') {
-                            t_menusub_init('243535149');
-                            console.log(1);
-                            return;
-                        }
-                        timerId = setTimeout(checkLoad, 300);
-                    });
+                    checkScriptLoad(t_menusub_init, '243535149');
+
+                    // var timerId = setTimeout(function checkLoad() {
+                    //     if (typeof t_menusub_init == 'function') {
+                    //         t_menusub_init('243535149');
+                    //         console.log(1);
+                    //         return;
+                    //     }
+                    //     timerId = setTimeout(checkLoad, 300);
+                    // });
                 });
             </script>
             <style>
