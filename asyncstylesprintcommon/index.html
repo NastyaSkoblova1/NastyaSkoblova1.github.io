@@ -56,7 +56,7 @@
         window.dataLayer = window.dataLayer || [];
     </script>
     <script>
-        function checkScriptLoad(ok_func) {
+        function checkScriptLoad(ok_func, recid) {
             var timerId = setTimeout(function checkLoad() {
                 if (typeof ok_func == 'function') {
                     ok_func(recid);
@@ -280,9 +280,7 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    checkScriptLoad(function () {
-                        t_menusub_init('243535149');
-                    });
+                    checkScriptLoad(t_menusub_init, '243535149');
 
                     // var timerId = setTimeout(function checkLoad() {
                     //     if (typeof t_menusub_init == 'function') {
@@ -684,14 +682,15 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     t670_init('243535154');
-                    var timerId = setTimeout(function checkLoad() {
-                        if (typeof t_sldsInit == 'function') {
-                            t_sldsInit('243535154');
-                            console.log(1);
-                            return;
-                        }
-                        timerId = setTimeout(checkLoad, 300);
-                    });
+                    checkScriptLoad(t_sldsInit, '243535154');
+                    // var timerId = setTimeout(function checkLoad() {
+                    //     if (typeof t_sldsInit == 'function') {
+                    //         t_sldsInit('243535154');
+                    //         console.log(1);
+                    //         return;
+                    //     }
+                    //     timerId = setTimeout(checkLoad, 300);
+                    // });
                 });
                 $('.t670').bind('displayChanged', function () {
                     t_slds_updateSlider('243535154');
@@ -1040,14 +1039,15 @@
                         sliderthumbsside: '',
                     };
                     $(document).ready(function () {
-                        var timerId = setTimeout(function checkLoad() {
-                            if (typeof t_store_init == 'function') {
-                                t_store_init('243535157', options);
-                                console.log(1);
-                                return;
-                            }
-                            timerId = setTimeout(checkLoad, 300);
-                        });
+                        checkScriptLoad(t_store_init, '243535157');
+                        // var timerId = setTimeout(function checkLoad() {
+                        //     if (typeof t_store_init == 'function') {
+                        //         t_store_init('243535157', options);
+                        //         console.log(1);
+                        //         return;
+                        //     }
+                        //     timerId = setTimeout(checkLoad, 300);
+                        // });
                     });
                 });
             </script><!-- catalog setup end -->
