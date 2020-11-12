@@ -272,7 +272,7 @@
                         if (typeof t_menusub_init == 'function') {
                             console.log(3);
                             t_menusub_init('243535149');
-                            clearTimeout(timerId);
+                            return;
                         }
                         timerId = setTimeout(checkLoad, 300);
                     });
