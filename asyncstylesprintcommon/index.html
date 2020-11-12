@@ -1020,11 +1020,10 @@
                         sliderthumbsside: '',
                     };
                     $(document).ready(function () {
-                        var timerId = setTimeout(function checkLoad() {
+                        var timerId = setInterval(function () {
                             console.log(1);
-                            timerId = setTimeout(checkLoad, 300);
                             if (typeof t_store_init == 'function') {
-                                clearTimeout(timerId);
+                                clearInterval(timerId);
                                 t_store_init('243535157', options);
                             }
                         });
