@@ -270,15 +270,12 @@
                 $(document).ready(function () {
                     var timerId = setTimeout(function checkLoad() {
                         if (typeof t_menusub_init == 'function') {
-                            console.log(3);
                             t_menusub_init('243535149');
+                            console.log(1);
                             return;
                         }
                         timerId = setTimeout(checkLoad, 300);
                     });
-                    // setTimeout(function () {
-                    //     t_menusub_init('243535149');
-                    // }, 500);
                 });
             </script>
             <style>
@@ -1020,16 +1017,14 @@
                         sliderthumbsside: '',
                     };
                     $(document).ready(function () {
-                        var timerId = setInterval(function () {
-                            console.log(1);
+                        var timerId = setTimeout(function checkLoad() {
                             if (typeof t_store_init == 'function') {
-                                clearInterval(timerId);
                                 t_store_init('243535157', options);
+                                console.log(1);
+                                return;
                             }
+                            timerId = setTimeout(checkLoad, 300);
                         });
-                        // setTimeout(function () {
-                        //     t_menusub_init('243535149');
-                        // }, 500);
                     });
                 });
             </script><!-- catalog setup end -->
