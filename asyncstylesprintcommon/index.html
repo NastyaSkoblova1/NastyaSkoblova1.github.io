@@ -270,7 +270,7 @@
                 $(document).ready(function () {
                     var timerId = setTimeout(function checkLoad() {
                         if (typeof t_menusub_init == 'function') {
-                            // clearTimeout(timerId);
+                            clearTimeout(timerId);
                             console.log(2);
                             t_menusub_init('243535149');
                         }
