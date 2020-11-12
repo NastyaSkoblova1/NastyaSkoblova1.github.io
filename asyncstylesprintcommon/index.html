@@ -269,12 +269,12 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     var timerId = setTimeout(function checkLoad() {
-                        timerId = setTimeout(checkLoad, 300);
                         if (typeof t_menusub_init == 'function') {
                             // clearTimeout(timerId);
                             console.log(2);
                             t_menusub_init('243535149');
                         }
+                        timerId = setTimeout(checkLoad, 300);
                     });
                     // setTimeout(function () {
                     //     t_menusub_init('243535149');
