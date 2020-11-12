@@ -1039,15 +1039,15 @@
                         sliderthumbsside: '',
                     };
                     $(document).ready(function () {
-                        checkScriptLoad(t_store_init, '243535157');
-                        // var timerId = setTimeout(function checkLoad() {
-                        //     if (typeof t_store_init == 'function') {
-                        //         t_store_init('243535157', options);
-                        //         console.log(1);
-                        //         return;
-                        //     }
-                        //     timerId = setTimeout(checkLoad, 300);
-                        // });
+                        // checkScriptLoad(t_store_init, '243535157');
+                        var timerId = setTimeout(function checkLoad() {
+                            if (typeof t_store_init == 'function') {
+                                t_store_init('243535157', options);
+                                console.log(1);
+                                return;
+                            }
+                            timerId = setTimeout(checkLoad, 300);
+                        });
                     });
                 });
             </script><!-- catalog setup end -->
