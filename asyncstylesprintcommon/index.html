@@ -58,19 +58,35 @@
     </script>
     <script>
         window.onload = function () {
-                console.log('Страница загружена');
+            console.log('Страница загружена');
             console.log(Date.now());
-            };
-        function t_checkFuncLoaded(ok_func) {
-            var timerId = setTimeout(function checkLoaded() {
-                if (typeof ok_func == 'function') {
-                    ok_func();
-                    // console.log(ok_func);
-                    // console.log('Hello!');
-                    return;
-                }
-                timerId = setTimeout(checkLoad, 300);
-            });
+        };
+
+
+
+
+        function t_checkFuncLoaded(func_name, ok_func) {
+            // var timerId = setTimeout(function checkLoaded() {
+            //     if (typeof ok_func == 'function') {
+            //         ok_func;
+            //         return;
+            //     }
+            //     timerId = setTimeout(checkLoad, 300);
+            // });
+
+            if (typeof func_name == 'function') {
+                ok_func;
+                console.log(1);
+            } else {
+                var timerId = setTimeout(function checkLoaded() {
+                    if (typeof func_name == 'function') {
+                        ok_func;
+                        console.log(2);
+                        return;
+                    }
+                    timerId = setTimeout(checkLoaded, 300);
+                });
+            }
         }
     </script>
     <script type="text/javascript">
@@ -286,23 +302,23 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    // checkScriptLoad(function() {
-                    //     t_menusub_init, '243535149')
-                    // });
-
-                    if (typeof t_menusub_init == 'function') {
+                    t_checkFuncLoaded(t_menusub_init, function() {
                         t_menusub_init('243535149');
-                        console.log(1);
-                    } else {
-                        var timerId = setTimeout(function checkLoad() {
-                            if (typeof t_menusub_init == 'function') {
-                                t_menusub_init('243535149');
-                                console.log(2);
-                                return;
-                            }
-                            timerId = setTimeout(checkLoad, 300);
-                        });
-                    }
+                    });
+
+                    // if (typeof t_menusub_init == 'function') {
+                    //     t_menusub_init('243535149');
+                    //     console.log(1);
+                    // } else {
+                    //     var timerId = setTimeout(function checkLoad() {
+                    //         if (typeof t_menusub_init == 'function') {
+                    //             t_menusub_init('243535149');
+                    //             console.log(2);
+                    //             return;
+                    //         }
+                    //         timerId = setTimeout(checkLoad, 300);
+                    //     });
+                    // }
                 });
             </script>
             <style>
@@ -695,21 +711,26 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     t670_init('243535154');
-                    // checkScriptLoad(t_sldsInit, '243535154');
-                    if (typeof t_sldsInit == 'function') {
+
+
+                    t_checkFuncLoaded(t_sldsInit, function() {
                         t_sldsInit('243535154');
-                        console.log(1);
-                        return;
-                    } else {
-                        var timerId = setTimeout(function checkLoad() {
-                            if (typeof t_sldsInit == 'function') {
-                                t_sldsInit('243535154');
-                                console.log(2);
-                                return;
-                            }
-                            timerId = setTimeout(checkLoad, 300);
-                        });
-                    }
+                    });
+
+                    // if (typeof t_sldsInit == 'function') {
+                    //     t_sldsInit('243535154');
+                    //     console.log(1);
+                    //     return;
+                    // } else {
+                    //     var timerId = setTimeout(function checkLoad() {
+                    //         if (typeof t_sldsInit == 'function') {
+                    //             t_sldsInit('243535154');
+                    //             console.log(2);
+                    //             return;
+                    //         }
+                    //         timerId = setTimeout(checkLoad, 300);
+                    //     });
+                    // }
                 });
                 $('.t670').bind('displayChanged', function () {
                     t_slds_updateSlider('243535154');
@@ -1058,20 +1079,26 @@
                         sliderthumbsside: '',
                     };
                     $(document).ready(function () {
-                        // checkScriptLoad(t_store_init, '243535157');
-                        if (typeof t_store_init == 'function') {
+
+
+                        t_checkFuncLoaded(t_store_init, function() {
                             t_store_init('243535157', options);
-                            console.log(1);
-                        } else {
-                            var timerId = setTimeout(function checkLoad() {
-                                if (typeof t_store_init == 'function') {
-                                    t_store_init('243535157', options);
-                                    console.log(2);
-                                    return;
-                                }
-                                timerId = setTimeout(checkLoad, 300);
-                            });
-                        }
+                        });
+
+
+                        // if (typeof t_store_init == 'function') {
+                        //     t_store_init('243535157', options);
+                        //     console.log(1);
+                        // } else {
+                        //     var timerId = setTimeout(function checkLoad() {
+                        //         if (typeof t_store_init == 'function') {
+                        //             t_store_init('243535157', options);
+                        //             console.log(2);
+                        //             return;
+                        //         }
+                        //         timerId = setTimeout(checkLoad, 300);
+                        //     });
+                        // }
                     });
                 });
             </script><!-- catalog setup end -->
