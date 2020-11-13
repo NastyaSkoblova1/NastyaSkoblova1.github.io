@@ -80,15 +80,23 @@
             ok_func();
             console.log(1);
         } else {
-            var timerId = setTimeout(function checkLoad() {
-                console.log(name == 'function');
+            var timerId = setInterval(function() {
+                console.log(name);
                 if (name == 'function') {
                     ok_func();
                     console.log(2);
-                    return;
+                    clearInterval(timerId);
                 }
-                timerId = setTimeout(checkLoad, 300);
-            });
+            }, 300);
+            // var timerId = setTimeout(function checkLoad() {
+            //     console.log(name == 'function');
+            //     if (name == 'function') {
+            //         ok_func();
+            //         console.log(2);
+            //         return;
+            //     }
+            //     timerId = setTimeout(checkLoad, 300);
+            // });
         }
     }
     </script>
