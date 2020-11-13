@@ -68,7 +68,7 @@ function t_checkFuncLoaded(name, ok_func) {
                 ok_func;
                 clearInterval(timerId);
             }
-        });
+        }, 300);
 
     // }
 }
