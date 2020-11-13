@@ -75,22 +75,21 @@
         }
     </script>
     <script>
-    
-    // function t_checkFuncLoaded(name, ok_func, i) {
-    //     if (typeof t_menusub_init == 'function') {
-    //         t_menusub_init('243535149');
-    //         console.log(1);
-    //     } else {
-    //         var timerId = setTimeout(function checkLoad() {
-    //             if (typeof t_menusub_init == 'function') {
-    //                 t_menusub_init('243535149');
-    //                 console.log(2);
-    //                 return;
-    //             }
-    //             timerId = setTimeout(checkLoad, 300);
-    //         });
-    //     }
-    // }
+    function t_checkFuncLoaded(name, ok_func) {
+        if (typeof name == 'function') {
+            ok_func();
+            console.log(1);
+        } else {
+            var timerId = setTimeout(function checkLoad() {
+                if (typeof name == 'function') {
+                    ok_func();
+                    console.log(2);
+                    return;
+                }
+                timerId = setTimeout(checkLoad, 300);
+            });
+        }
+    }
     </script>
 </head>
 
@@ -1113,19 +1112,11 @@
                         // }
                         // t_checkFuncLoaded(t_store_init, t_func);
 
-                        if (typeof t_store_init == 'function') {
+                        function t_func() {
+                            console.log('Hello!');
                             t_store_init('243535157', options);
-                            console.log(1);
-                        } else {
-                            var timerId = setTimeout(function checkLoad() {
-                                if (typeof t_store_init == 'function') {
-                                    t_store_init('243535157', options);
-                                    console.log(2);
-                                    return;
-                                }
-                                timerId = setTimeout(checkLoad, 300);
-                            });
                         }
+                        t_checkFuncLoaded(t_store_init, t_func)
                     });
                 });
             </script><!-- catalog setup end -->
