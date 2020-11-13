@@ -1041,21 +1041,22 @@
                         function t_func() {
                             t_store_init('243535157', options);
                         }
+
                         function t_checkFuncLoaded(name, ok_func) {
+                            var foo = 'sasasasa';
                             if (name == 'function') {
                                 ok_func();
                             } else {
-                                var timer = setTimeout((function checkStore(n) {
+                                var timer = setTimeout(function checkStore() {
+                                    console.log(foo);
                                     if (n == 'function') {
                                         ok_func();
                                         console.log(2);
                                         return;
                                     }
                                     console.log(typeof n);
-                                    timer = setTimeout((function(n2) {
-                                        checkStore(n2);
-                                    })(n), 300);
-                                })(name));
+                                    timer = setTimeout(checkStore, 300);
+                                });
                             }
                         }
                         t_checkFuncLoaded(typeof t_store_init, t_func);
