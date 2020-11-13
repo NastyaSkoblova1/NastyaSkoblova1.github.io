@@ -1053,7 +1053,9 @@
                                         return;
                                     }
                                     console.log(typeof n);
-                                    timer = setTimeout(checkStore, 300);
+                                    timer = setTimeout((function(n2) {
+                                        checkStore(n2);
+                                    })(n), 300);
                                 })(name));
                             }
                         }
