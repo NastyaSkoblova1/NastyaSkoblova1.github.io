@@ -24,7 +24,7 @@
     <!-- <link rel="stylesheet" href="css/tilda-grid-3.0.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="css/tilda-blocks-2.12.css?t=1604055596" type="text/css" media="all" />
     <link rel="stylesheet" href="css/tilda-animation-1.0.min.css" type="text/css" media="all" /> -->
-    
+
     <link rel="stylesheet" href="css/tilda-menusub-1.0.min.css" type="text/css" media="print" onload="this.media='all';console.log('Menusub');console.log(Date.now());" />
     <noscript><link rel="stylesheet" href="css/tilda-menusub-1.0.min.css"></noscript>
     <link rel="stylesheet" href="css/tilda-slds-1.4.min.css" type="text/css" media="print" onload="this.media='all';console.log('Slds');console.log(Date.now());" />
@@ -61,12 +61,12 @@
                 console.log('Страница загружена');
             console.log(Date.now());
             };
-        function checkScriptLoad(ok_func) {
-            var timerId = setTimeout(function checkLoad() {
+        function t_checkFuncLoaded(ok_func) {
+            var timerId = setTimeout(function checkLoaded() {
                 if (typeof ok_func == 'function') {
                     ok_func();
-                    console.log(ok_func);
-                    console.log('Hello!');
+                    // console.log(ok_func);
+                    // console.log('Hello!');
                     return;
                 }
                 timerId = setTimeout(checkLoad, 300);
@@ -290,14 +290,19 @@
                     //     t_menusub_init, '243535149')
                     // });
 
-                    var timerId = setTimeout(function checkLoad() {
-                        if (typeof t_menusub_init == 'function') {
-                            t_menusub_init('243535149');
-                            console.log(1);
-                            return;
-                        }
-                        timerId = setTimeout(checkLoad, 300);
-                    });
+                    if (typeof t_menusub_init == 'function') {
+                        t_menusub_init('243535149');
+                        console.log(1);
+                    } else {
+                        var timerId = setTimeout(function checkLoad() {
+                            if (typeof t_menusub_init == 'function') {
+                                t_menusub_init('243535149');
+                                console.log(2);
+                                return;
+                            }
+                            timerId = setTimeout(checkLoad, 300);
+                        });
+                    }
                 });
             </script>
             <style>
@@ -691,14 +696,20 @@
                 $(document).ready(function () {
                     t670_init('243535154');
                     // checkScriptLoad(t_sldsInit, '243535154');
-                    var timerId = setTimeout(function checkLoad() {
-                        if (typeof t_sldsInit == 'function') {
-                            t_sldsInit('243535154');
-                            console.log(1);
-                            return;
-                        }
-                        timerId = setTimeout(checkLoad, 300);
-                    });
+                    if (typeof t_sldsInit == 'function') {
+                        t_sldsInit('243535154');
+                        console.log(1);
+                        return;
+                    } else {
+                        var timerId = setTimeout(function checkLoad() {
+                            if (typeof t_sldsInit == 'function') {
+                                t_sldsInit('243535154');
+                                console.log(2);
+                                return;
+                            }
+                            timerId = setTimeout(checkLoad, 300);
+                        });
+                    }
                 });
                 $('.t670').bind('displayChanged', function () {
                     t_slds_updateSlider('243535154');
@@ -1048,14 +1059,19 @@
                     };
                     $(document).ready(function () {
                         // checkScriptLoad(t_store_init, '243535157');
-                        var timerId = setTimeout(function checkLoad() {
-                            if (typeof t_store_init == 'function') {
-                                t_store_init('243535157', options);
-                                console.log(1);
-                                return;
-                            }
-                            timerId = setTimeout(checkLoad, 300);
-                        });
+                        if (typeof t_store_init == 'function') {
+                            t_store_init('243535157', options);
+                            console.log(1);
+                        } else {
+                            var timerId = setTimeout(function checkLoad() {
+                                if (typeof t_store_init == 'function') {
+                                    t_store_init('243535157', options);
+                                    console.log(2);
+                                    return;
+                                }
+                                timerId = setTimeout(checkLoad, 300);
+                            });
+                        }
                     });
                 });
             </script><!-- catalog setup end -->
