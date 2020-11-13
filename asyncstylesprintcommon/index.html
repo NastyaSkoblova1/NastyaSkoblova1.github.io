@@ -76,14 +76,13 @@
     </script>
     <script>
     function t_checkFuncLoaded(type, ok_func) {
-        console.log(type);
-
         if (type == 'function') {
             ok_func();
             console.log(1);
         } else {
             var timerId = setTimeout(function checkLoad() {
-                if (typeof type == 'function') {
+                console.log(type == 'function');
+                if (type == 'function') {
                     ok_func();
                     console.log(2);
                     return;
