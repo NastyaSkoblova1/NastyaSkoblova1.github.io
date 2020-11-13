@@ -62,7 +62,7 @@
             console.log(Date.now());
         };
 
-        function t_checkFuncLoaded(ok_func) {
+        function t_checkFuncLoaded(ok_func, recid) {
             // var timerId = setTimeout(function checkLoaded() {
             //     if (typeof ok_func == 'function') {
             //         ok_func;
@@ -72,12 +72,12 @@
             // });
 
             if (typeof ok_func == 'function') {
-                ok_func;
+                ok_func(recid);
                 console.log(1);
             } else {
                 var timerId = setTimeout(function checkLoaded() {
                     if (typeof ok_func == 'function') {
-                        ok_func;
+                        ok_func(recid);
                         console.log(2);
                         return;
                     }
@@ -299,7 +299,7 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    t_checkFuncLoaded(t_menusub_init('243535149'));
+                    t_checkFuncLoaded('t_menusub_init', '243535149');
 
                     // if (typeof t_menusub_init == 'function') {
                     //     t_menusub_init('243535149');
@@ -708,7 +708,7 @@
                     t670_init('243535154');
 
 
-                    t_checkFuncLoaded(t_sldsInit('243535154'));
+                    t_checkFuncLoaded('t_sldsInit', '243535154');
 
                     // if (typeof t_sldsInit == 'function') {
                     //     t_sldsInit('243535154');
@@ -1074,7 +1074,7 @@
                     $(document).ready(function () {
 
 
-                        t_checkFuncLoaded(t_store_init('243535157'));
+                        t_checkFuncLoaded('t_store_init', '243535157');
 
                         // if (typeof t_store_init == 'function') {
                         //     t_store_init('243535157', options);
