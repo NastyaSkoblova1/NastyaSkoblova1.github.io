@@ -34,7 +34,7 @@ function t_checkFuncLoaded(name, ok_func) {
         console.log(1);
     } else {
         window.setTimeout(function checkLoad() {
-            console.log(name == 'function');
+            (name);
             if (name == 'function') {
                 ok_func();
                 console.log(2);
