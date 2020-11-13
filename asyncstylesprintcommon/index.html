@@ -285,18 +285,18 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    checkScriptLoad(function() {
-                        t_menusub_init, '243535149')
-                    });
-
-                    // var timerId = setTimeout(function checkLoad() {
-                    //     if (typeof t_menusub_init == 'function') {
-                    //         t_menusub_init('243535149');
-                    //         console.log(1);
-                    //         return;
-                    //     }
-                    //     timerId = setTimeout(checkLoad, 300);
+                    // checkScriptLoad(function() {
+                    //     t_menusub_init, '243535149')
                     // });
+
+                    var timerId = setTimeout(function checkLoad() {
+                        if (typeof t_menusub_init == 'function') {
+                            t_menusub_init('243535149');
+                            console.log(1);
+                            return;
+                        }
+                        timerId = setTimeout(checkLoad, 300);
+                    });
                 });
             </script>
             <style>
@@ -689,15 +689,15 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     t670_init('243535154');
-                    checkScriptLoad(t_sldsInit, '243535154');
-                    // var timerId = setTimeout(function checkLoad() {
-                    //     if (typeof t_sldsInit == 'function') {
-                    //         t_sldsInit('243535154');
-                    //         console.log(1);
-                    //         return;
-                    //     }
-                    //     timerId = setTimeout(checkLoad, 300);
-                    // });
+                    // checkScriptLoad(t_sldsInit, '243535154');
+                    var timerId = setTimeout(function checkLoad() {
+                        if (typeof t_sldsInit == 'function') {
+                            t_sldsInit('243535154');
+                            console.log(1);
+                            return;
+                        }
+                        timerId = setTimeout(checkLoad, 300);
+                    });
                 });
                 $('.t670').bind('displayChanged', function () {
                     t_slds_updateSlider('243535154');
