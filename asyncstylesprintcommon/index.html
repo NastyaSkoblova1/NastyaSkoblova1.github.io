@@ -1041,7 +1041,7 @@
                         function t_func() {
                             t_store_init('243535157', options);
                         }
-                        
+
                         function t_checkFuncLoaded(name, ok_func) {
                             if (typeof name == 'function') {
                                 ok_func();
@@ -1057,7 +1057,7 @@
                                 });
                             }
                         }
-                        t_checkFuncLoaded(t_store_init, t_func);
+                        t_checkFuncLoaded(window.t_store_init, t_func);
                     });
                 });
             </script><!-- catalog setup end -->
