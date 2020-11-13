@@ -1047,12 +1047,12 @@
                                 ok_func();
                             } else {
                                 var timer = setTimeout((function checkStore(n) {
-                                    if (name == 'function') {
+                                    if (n == 'function') {
                                         ok_func();
                                         console.log(2);
                                         return;
                                     }
-                                    console.log(typeof name);
+                                    console.log(typeof n);
                                     timer = setTimeout(checkStore, 300);
                                 })(name));
                             }
