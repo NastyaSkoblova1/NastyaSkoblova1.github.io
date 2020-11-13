@@ -1043,12 +1043,12 @@
                         }
                         function t_checkFuncLoaded(name, ok_func) {
                             var foo = 'sasasasa';
-                            if (name == 'function') {
+                            if (name() == 'function') {
                                 ok_func();
                             } else {
                                 var timer = setTimeout(function checkStore() {
                                     console.log(foo);
-                                    if (name == 'function') {
+                                    if (name() == 'function') {
                                         ok_func();
                                         console.log(2);
                                         return;
