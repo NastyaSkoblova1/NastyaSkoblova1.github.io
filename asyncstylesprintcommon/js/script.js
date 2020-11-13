@@ -38,12 +38,12 @@ function t_checkFuncLoaded(name, ok_func) {
     // });
 
     if (typeof name == 'function') {
-        ok_func();
+        ok_func;
         console.log(1);
     } else {
         var timerId = setTimeout(function checkLoaded() {
             if (typeof name == 'function') {
-                ok_func();
+                ok_func;
                 console.log(2);
                 return;
             }
