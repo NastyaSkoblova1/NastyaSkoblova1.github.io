@@ -61,30 +61,6 @@
             console.log('Страница загружена');
             console.log(Date.now());
         };
-
-        function t_checkFuncLoaded(ok_func, recid) {
-            // var timerId = setTimeout(function checkLoaded() {
-            //     if (typeof ok_func == 'function') {
-            //         ok_func;
-            //         return;
-            //     }
-            //     timerId = setTimeout(checkLoad, 300);
-            // });
-
-            if (typeof ok_func == 'function') {
-                ok_func(recid);
-                console.log(1);
-            } else {
-                var timerId = setTimeout(function checkLoaded() {
-                    if (typeof ok_func == 'function') {
-                        ok_func(recid);
-                        console.log(2);
-                        return;
-                    }
-                    timerId = setTimeout(checkLoaded, 300);
-                });
-            }
-        }
     </script>
     <script type="text/javascript">
         if ((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(
