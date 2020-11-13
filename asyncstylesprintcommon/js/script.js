@@ -43,7 +43,7 @@ function t_checkFuncLoaded(name, ok_func) {
     } else {
         var timerId = setTimeout(function checkLoaded() {
             console.log(name);
-            console.log()
+            console.log(typeof name == 'function');
             if (typeof name == 'function') {
                 ok_func;
                 console.log(2);
