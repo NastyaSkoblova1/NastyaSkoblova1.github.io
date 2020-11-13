@@ -24,7 +24,7 @@
     <!-- <link rel="stylesheet" href="css/tilda-grid-3.0.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="css/tilda-blocks-2.12.css?t=1604055596" type="text/css" media="all" />
     <link rel="stylesheet" href="css/tilda-animation-1.0.min.css" type="text/css" media="all" /> -->
-    <link rel="stylesheet" href="css/tilda-menusub-1.0.min.css" type="text/css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/tilda-menusub-1.0.min.css" type="text/css" media="print" onload="this.media='all';console.log('Menusub');console.log(Date.now());" />
     <noscript><link rel="stylesheet" href="css/tilda-menusub-1.0.min.css"></noscript>
     <link rel="stylesheet" href="css/tilda-slds-1.4.min.css" type="text/css" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="css/tilda-slds-1.4.min.css"></noscript>
@@ -56,6 +56,10 @@
         window.dataLayer = window.dataLayer || [];
     </script>
     <script>
+        window.onload = function () {
+                console.log('Страница загружена');
+            console.log(Date.now());
+            };
         function checkScriptLoad(ok_func) {
             var timerId = setTimeout(function checkLoad() {
                 if (typeof ok_func == 'function') {
