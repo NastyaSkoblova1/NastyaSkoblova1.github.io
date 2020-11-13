@@ -1046,18 +1046,18 @@
                             if (typeof name == 'function') {
                                 ok_func();
                             } else {
-                                setTimeout(function checkStore() {
-                                    if (typeof name == 'function') {
+                                var timer = setTimeout((function checkStore(n) {
+                                    if (typeof n == 'function') {
                                         ok_func();
                                         console.log(2);
                                         return;
                                     }
-                                    console.log(typeof name);
-                                    setTimeout(checkStore, 300);
-                                });
+                                    console.log(typeof n);
+                                    timer = setTimeout(checkStore, 300);
+                                })(name));
                             }
                         }
-                        t_checkFuncLoaded(window.t_store_init, t_func);
+                        t_checkFuncLoaded(t_store_init, t_func);
                     });
                 });
             </script><!-- catalog setup end -->
