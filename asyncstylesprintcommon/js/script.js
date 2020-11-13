@@ -64,8 +64,8 @@ function t_checkFuncLoaded(name, ok_func) {
             console.log(name);
             console.log(typeof name == 'function');
             if (typeof name == 'function') {
-                ok_func;
                 console.log(2);
+                ok_func;
                 clearInterval(timerId);
             }
         });
