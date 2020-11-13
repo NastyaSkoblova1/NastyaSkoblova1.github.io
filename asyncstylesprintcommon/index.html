@@ -75,15 +75,14 @@
         }
     </script>
     <script>
-    function t_checkFuncLoaded(name, ok_func) {
+    function t_checkFuncLoaded(name, ok_func, i) {
 
-
-        var timerId = setInterval(function() {
+        i = setInterval(function() {
             console.log(ok_func);
             if (typeof name == 'function') {
                 ok_func();
                 console.log('Ok ' + 1);
-                clearInterval(timerId)
+                clearInterval(i)
             }
         }, 300);
 
@@ -322,7 +321,7 @@
                     function t_func() {
                         t_menusub_init('243535149');
                     }
-                    t_checkFuncLoaded(t_menusub_init, t_func);
+                    t_checkFuncLoaded(t_menusub_init, t_func, timerid243535149);
 
                     // var timerId = setInterval(function() {
                     //     if (typeof t_menusub_init == 'function') {
@@ -747,7 +746,7 @@
                         function t_func() {
                             t_sldsInit('243535154');
                         }
-                        t_checkFuncLoaded(t_sldsInit, t_func);
+                        t_checkFuncLoaded(t_sldsInit, t_func, timerid243535154);
                    
                         // var timerId = setInterval(function() {
                         //     if (typeof t_sldsInit == 'function') {
@@ -1129,7 +1128,7 @@
                         function t_func() {
                             t_store_init('243535157', options);
                         }
-                        t_checkFuncLoaded(t_store_init, t_func);
+                        t_checkFuncLoaded(t_store_init, t_func, timerid243535157);
 
                         // var timerId = setInterval(function() {
                         //     if (typeof t_store_init == 'function') {
