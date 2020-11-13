@@ -1038,7 +1038,7 @@
                         sliderthumbsside: '',
                     };
                     $(document).ready(function () {
-                        
+
                         function t_func() {
                             t_store_init('243535157', options);
                         }
@@ -1059,7 +1059,7 @@
                                 });
                             }
                         }
-                        t_checkFuncLoaded(() => typeof t_store_init, t_func);
+                        t_checkFuncLoaded(function() { return typeof t_store_init}, t_func);
                     });
                 });
             </script><!-- catalog setup end -->
