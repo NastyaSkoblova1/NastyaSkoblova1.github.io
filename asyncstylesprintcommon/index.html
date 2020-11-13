@@ -286,25 +286,6 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-
-                    // function t_func() {
-                    //     t_menusub_init('243535149');
-                    // }
-                    // t_checkFuncLoaded(t_menusub_init, t_func, 'timerid243535149');
-
-                    // // var timerId = setInterval(function() {
-                    // //     if (typeof t_menusub_init == 'function') {
-                    // //         t_menusub_init('243535149');
-                    // //         console.log('Menusub ' + 1);
-                    // //         clearInterval(timerId)
-                    // //     }
-                    // // }, 300);
-
-                    // // function t_func() {
-                    // //     t_menusub_init('243535149');
-                    // // }
-                    // // t_checkFuncLoaded(t_menusub_init, t_func);
-
                     if (typeof t_menusub_init == 'function') {
                         t_menusub_init('243535149');
                         console.log(1);
@@ -1093,30 +1074,13 @@
                         sliderthumbsside: '',
                     };
                     $(document).ready(function () {
-
-                        // function t_func() {
-                        //     t_store_init('243535157', options);
-                        // }
-                        // t_checkFuncLoaded(t_store_init, t_func, 'timerid243535157');
-
-                        // var timerId = setInterval(function() {
-                        //     if (typeof t_store_init == 'function') {
-                        //         t_store_init('243535157', options);
-                        //         console.log('Store ' + 1);
-                        //         clearInterval(timerId)
-                        //     }
-                        // }, 300);
-
-                        // function t_func() {
-                        //     t_store_init('243535157', options);
-                        // }
-                        // t_checkFuncLoaded(t_store_init, t_func);
-
                         function t_func() {
                             console.log('Hello!');
                             t_store_init('243535157', options);
                         }
-                        t_checkFuncLoaded(t_store_init, t_func)
+                        console.log(t_store_init);
+                        console.log(window.t_store_init);
+                        t_checkFuncLoaded(window.t_store_init, t_func)
                     });
                 });
             </script><!-- catalog setup end -->
