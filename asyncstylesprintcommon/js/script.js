@@ -44,22 +44,33 @@ function t_checkFuncLoaded(name, ok_func) {
             console.log(typeof name == 'function');
 
 
+    // if (typeof name == 'function') {
+    //     ok_func;
+    //     console.log(1);
+    // } else {
+        // var timerId = setTimeout(function checkLoaded() {
+        //     console.log(name);
+        //     console.log(typeof name == 'function');
+        //     if (typeof name == 'function') {
+        //         ok_func;
+        //         console.log(2);
+        //         return;
+        //     }
+        //     timerId = setTimeout(checkLoaded, 300);
+        // });
 
-    if (typeof name == 'function') {
-        ok_func;
-        console.log(1);
-    } else {
-        var timerId = setTimeout(function checkLoaded() {
+
+        var timerId = clearInterval(function() {
             console.log(name);
             console.log(typeof name == 'function');
             if (typeof name == 'function') {
                 ok_func;
                 console.log(2);
-                return;
+                clearInterval(timerId);
             }
-            timerId = setTimeout(checkLoaded, 300);
         });
-    }
+
+    // }
 }
 function t552_init(recid,ratio){var t552__el=$("#rec"+recid),t552__image=t552__el.find(".t552__blockimg:first");t552__setHeight(recid,t552__image,ratio);var t552__doResize;$(window).resize(function(){clearTimeout(t552__doResize);t552__doResize=setTimeout(function(){t552__setHeight(recid,t552__image,ratio)},200)})}
 function t552__setHeight(recid,image,ratio){$("#rec"+recid+" .t552__blockimg").css("height",Math.round(image.innerWidth()*ratio))}
