@@ -75,13 +75,15 @@
         }
     </script>
     <script>
-    function t_checkFuncLoaded(name, ok_func) {
-        if (typeof name == 'function') {
+    function t_checkFuncLoaded(type, ok_func) {
+        console.log(type);
+
+        if (type == 'function') {
             ok_func();
             console.log(1);
         } else {
             var timerId = setTimeout(function checkLoad() {
-                if (typeof name == 'function') {
+                if (typeof type == 'function') {
                     ok_func();
                     console.log(2);
                     return;
@@ -692,26 +694,6 @@
                 $(document).ready(function () {
                     t670_init('243535154');
 
-
-                    //     function t_func() {
-                    //         t_sldsInit('243535154');
-                    //     }
-                    //     t_checkFuncLoaded(t_sldsInit, t_func, 'timerid243535154');
-                   
-                    //     // var timerId = setInterval(function() {
-                    //     //     if (typeof t_sldsInit == 'function') {
-                    //     //         t_sldsInit('243535154');
-                    //     //         console.log('Slds ' + 2);
-                    //     //         clearInterval(timerId)
-                    //     //     }
-                    //     // }, 300);
-                    
-
-                    // // function t_func() {
-                    // //     t_sldsInit('243535154');
-                    // // }
-                    // // t_checkFuncLoaded(t_sldsInit, t_func);
-
                     if (typeof t_sldsInit == 'function') {
                         t_sldsInit('243535154');
                         console.log(1);
@@ -727,6 +709,7 @@
                         });
                     }
                 });
+
                 $('.t670').bind('displayChanged', function () {
                     t_slds_updateSlider('243535154');
                     t_slds_positionArrows('243535154');
@@ -1078,9 +1061,7 @@
                             console.log('Hello!');
                             t_store_init('243535157', options);
                         }
-                        console.log(t_store_init);
-                        console.log(window.t_store_init);
-                        t_checkFuncLoaded(window.t_store_init, t_func)
+                        t_checkFuncLoaded(typeof t_store_init, t_func)
                     });
                 });
             </script><!-- catalog setup end -->
