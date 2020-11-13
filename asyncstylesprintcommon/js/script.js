@@ -31,7 +31,6 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 function t_checkFuncLoaded(name, ok_func) {
     if (name == 'function') {
         ok_func();
-        console.log(1);
     } else {
         var timerId = setTimeout(function checkLoad() {
             console.log(name);
