@@ -82,11 +82,11 @@
         } else {
             var timerId = setInterval(function() {
                 console.log(name);
-                if (name == 'function') {
-                    ok_func();
-                    console.log(2);
-                    clearInterval(timerId);
-                }
+                // if (name == 'function') {
+                //     ok_func();
+                //     console.log(2);
+                //     clearInterval(timerId);
+                // }
             }, 300);
             // var timerId = setTimeout(function checkLoad() {
             //     console.log(name == 'function');
@@ -1068,7 +1068,7 @@
                             console.log('Hello!');
                             t_store_init('243535157', options);
                         }
-                        t_checkFuncLoaded(t_store_init, t_func)
+                        t_checkFuncLoaded(typeof t_store_init, t_func)
                     });
                 });
             </script><!-- catalog setup end -->
