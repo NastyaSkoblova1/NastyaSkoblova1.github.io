@@ -1063,11 +1063,13 @@
                         // t_checkFuncLoaded(t_sldsInit, t_func);
 
                         if (typeof t_store_init == 'function') {
+                            debugger;
                             t_store_init('243535157', options);
                             console.log(1);
                         } else {
                             var timerId = setTimeout(function checkLoad() {
                                 if (typeof t_store_init == 'function') {
+                                    debugger;
                                     t_store_init('243535157', options);
                                     console.log(2);
                                     return;
