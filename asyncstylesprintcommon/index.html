@@ -1049,12 +1049,12 @@
                             } else {
                                 var timer = setTimeout(function checkStore() {
                                     console.log(foo);
-                                    if (n == 'function') {
+                                    if (name == 'function') {
                                         ok_func();
                                         console.log(2);
                                         return;
                                     }
-                                    console.log(typeof n);
+                                    console.log(typeof name);
                                     timer = setTimeout(checkStore, 300);
                                 });
                             }
