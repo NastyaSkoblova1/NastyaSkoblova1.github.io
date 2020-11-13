@@ -33,14 +33,14 @@ function t_checkFuncLoaded(name, ok_func) {
         ok_func();
         console.log(1);
     } else {
-        window.setTimeout(function checkLoad() {
+        var timerId = setTimeout(function checkLoad() {
             console.log(name);
             if (name == 'function') {
                 ok_func();
                 console.log(2);
                 return;
             }
-            timerId = window.setTimeout(checkLoad, 300);
+            timerId = setTimeout(checkLoad, 300);
         });
     }
 }
