@@ -273,13 +273,13 @@
                         t_menusub_init('243535149');
                         console.log(1);
                     } else {
-                        var timerId = setTimeout(function checkLoad() {
+                        var timerId243535149 = setTimeout(function checkLoad() {
                             if (typeof t_menusub_init == 'function') {
                                 t_menusub_init('243535149');
                                 console.log(2);
                                 return;
                             }
-                            timerId = setTimeout(checkLoad, 300);
+                            timerId243535149 = setTimeout(checkLoad, 300);
                         });
                     }
                 });
@@ -1045,14 +1045,14 @@
                             if (typeof name == 'function') {
                                 ok_func();
                             } else {
-                                var timerId = setTimeout(function checkLoad() {
+                                var timerId243535157 = setTimeout(function checkLoad() {
                                     if (typeof name == 'function') {
                                         ok_func();
                                         console.log(2);
                                         return;
                                     }
                                     console.log(typeof name);
-                                    timerId = setTimeout(checkLoad, 300);
+                                    timerId243535157 = setTimeout(checkLoad, 300);
                                 });
                             }
                         }
