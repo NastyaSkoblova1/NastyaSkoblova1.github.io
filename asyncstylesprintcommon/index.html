@@ -75,14 +75,14 @@
         }
     </script>
     <script>
-    function t_checkFuncLoaded(type, ok_func) {
-        if (type == 'function') {
+    function t_checkFuncLoaded(name, ok_func) {
+        if (name == 'function') {
             ok_func();
             console.log(1);
         } else {
             var timerId = setTimeout(function checkLoad() {
-                console.log(type == 'function');
-                if (type == 'function') {
+                console.log(name == 'function');
+                if (name == 'function') {
                     ok_func();
                     console.log(2);
                     return;
@@ -1060,7 +1060,7 @@
                             console.log('Hello!');
                             t_store_init('243535157', options);
                         }
-                        t_checkFuncLoaded(typeof t_store_init, t_func)
+                        t_checkFuncLoaded(t_store_init, t_func)
                     });
                 });
             </script><!-- catalog setup end -->
