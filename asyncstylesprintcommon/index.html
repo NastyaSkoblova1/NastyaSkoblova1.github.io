@@ -1046,18 +1046,18 @@
                             if (typeof name == 'function') {
                                 ok_func();
                             } else {
-                                var timerId243535157 = setTimeout(function checkLoad() {
+                                setTimeout(function checkStore() {
                                     if (typeof name == 'function') {
                                         ok_func();
                                         console.log(2);
                                         return;
                                     }
                                     console.log(typeof name);
-                                    timerId243535157 = setTimeout(checkLoad, 300);
+                                    setTimeout(checkStore, 300);
                                 });
                             }
                         }
-                        t_checkFuncLoaded(window.t_store_init, t_func);
+                        t_checkFuncLoaded(t_store_init, t_func);
                     });
                 });
             </script><!-- catalog setup end -->
