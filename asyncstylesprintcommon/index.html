@@ -1057,24 +1057,24 @@
                     $(document).ready(function () {
 
 
-                        function t_func() {
-                            t_store_init('243535157', options);
-                        }
-                        t_checkFuncLoaded(t_sldsInit, t_func);
-
-                        // if (typeof t_store_init == 'function') {
+                        // function t_func() {
                         //     t_store_init('243535157', options);
-                        //     console.log(1);
-                        // } else {
-                        //     var timerId = setTimeout(function checkLoad() {
-                        //         if (typeof t_store_init == 'function') {
-                        //             t_store_init('243535157', options);
-                        //             console.log(2);
-                        //             return;
-                        //         }
-                        //         timerId = setTimeout(checkLoad, 300);
-                        //     });
                         // }
+                        // t_checkFuncLoaded(t_sldsInit, t_func);
+
+                        if (typeof t_store_init == 'function') {
+                            t_store_init('243535157', options);
+                            console.log(1);
+                        } else {
+                            var timerId = setTimeout(function checkLoad() {
+                                if (typeof t_store_init == 'function') {
+                                    t_store_init('243535157', options);
+                                    console.log(2);
+                                    return;
+                                }
+                                timerId = setTimeout(checkLoad, 300);
+                            });
+                        }
                     });
                 });
             </script><!-- catalog setup end -->
