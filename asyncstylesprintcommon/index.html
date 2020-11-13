@@ -275,7 +275,11 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    t_checkFuncLoaded(t_menusub_init, '243535149');
+
+                    function t_func() {
+                        t_menusub_init('243535149');
+                    }
+                    t_checkFuncLoaded(t_menusub_init, t_func);
 
                     // if (typeof t_menusub_init == 'function') {
                     //     t_menusub_init('243535149');
@@ -684,7 +688,10 @@
                     t670_init('243535154');
 
 
-                    t_checkFuncLoaded(t_sldsInit, '243535154');
+                    function t_func() {
+                        t_sldsInit('243535154');
+                    }
+                    t_checkFuncLoaded(t_sldsInit, t_func);
 
                     // if (typeof t_sldsInit == 'function') {
                     //     t_sldsInit('243535154');
@@ -1050,7 +1057,10 @@
                     $(document).ready(function () {
 
 
-                        t_checkFuncLoaded(t_store_init, '243535157');
+                        function t_func() {
+                            t_store_init('243535157', options);
+                        }
+                        t_checkFuncLoaded(t_sldsInit, t_func);
 
                         // if (typeof t_store_init == 'function') {
                         //     t_store_init('243535157', options);
