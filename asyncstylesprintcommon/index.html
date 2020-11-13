@@ -79,9 +79,9 @@
 
 
         var timerId = setInterval(function() {
-            console.log(ok_fu)
+            console.log(ok_func);
             if (typeof name == 'function') {
-                ok_func;
+                ok_func();
                 console.log('Ok ' + 1);
                 clearInterval(timerId)
             }
@@ -319,7 +319,10 @@
             <script type="text/javascript">
                 $(document).ready(function () {
 
-                    t_checkFuncLoaded(t_menusub_init, t_menusub_init('243535149'));
+                    function t_func() {
+                        t_menusub_init('243535149');
+                    }
+                    t_checkFuncLoaded(t_menusub_init, t_func);
 
                     // var timerId = setInterval(function() {
                     //     if (typeof t_menusub_init == 'function') {
@@ -741,8 +744,10 @@
                     t670_init('243535154');
 
 
-
-                        t_checkFuncLoaded(t_sldsInit, t_sldsInit('243535154'));
+                        function t_func() {
+                            t_sldsInit('243535154');
+                        }
+                        t_checkFuncLoaded(t_sldsInit, t_func);
                    
                         // var timerId = setInterval(function() {
                         //     if (typeof t_sldsInit == 'function') {
@@ -1121,6 +1126,9 @@
                     };
                     $(document).ready(function () {
 
+                        function t_func() {
+                            t_store_init('243535157', options);
+                        }
                         t_checkFuncLoaded(t_store_init, t_store_init('243535157', options));
 
                         // var timerId = setInterval(function() {
