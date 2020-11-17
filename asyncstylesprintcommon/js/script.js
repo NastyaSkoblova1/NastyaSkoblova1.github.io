@@ -35,6 +35,7 @@ function t_checkFuncLoaded(name, ok_func, check) {
     } else {
         var timerId = setTimeout(function checkStore() {
             if (name() == 'function') {
+                console.log(check);
                 ok_func();
                 return;
             }
