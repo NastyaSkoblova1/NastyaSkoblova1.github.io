@@ -828,7 +828,10 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     t670_init('243535156');
-                    t_sldsInit('243535156');
+                    function t_func() {
+                        t_sldsInit('243535156');
+                    }
+                    t_checkFuncLoaded(function () { return typeof t_sldsInit }, t_func);
                 });
                 $('.t670').bind('displayChanged', function () {
                     t_slds_updateSlider('243535156');
