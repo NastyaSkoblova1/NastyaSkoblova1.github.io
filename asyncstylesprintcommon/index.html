@@ -269,10 +269,9 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function () {
-                    function t_func() {
+                    t_onFuncLoad('t_menusub_init', function (obj) {
                         t_menusub_init('243535149');
-                    }
-                    t_onFuncLoad(function() { return typeof t_menusub_init}, t_func);
+                    });
                 });
             </script>
             <style>
@@ -666,10 +665,9 @@
                 $(document).ready(function () {
                     t670_init('243535154');
 
-                    function t_func() {
-                        t_sldsInit('243535154');
-                    }
-                    t_onFuncLoad(function() { return typeof t_sldsInit}, t_func, 500);
+                    t_onFuncLoad('t_sldsInit', function() {
+                        t_sldsInit('243535154')
+                    }, 500);
                 });
 
                 $('.t670').bind('displayChanged', function () {
@@ -828,10 +826,10 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     t670_init('243535156');
-                    function t_func() {
+ 
+                    t_onFuncLoad('t_sldsInit', function() {
                         t_sldsInit('243535156');
-                    }
-                    t_onFuncLoad(function () { return typeof t_sldsInit }, t_func, 100);
+                    }, 100);
                 });
                 $('.t670').bind('displayChanged', function () {
                     t_slds_updateSlider('243535156');
@@ -1022,10 +1020,9 @@
                         sliderthumbsside: '',
                     };
                     $(document).ready(function () {
-                        function t_func() {
+                        t_onFuncLoad('t_store_init', function() {
                             t_store_init('243535157', options);
-                        }
-                        t_onFuncLoad(function() { return typeof t_store_init}, t_func, 200);
+                        }, 200);
                     });
                 });
             </script><!-- catalog setup end -->
