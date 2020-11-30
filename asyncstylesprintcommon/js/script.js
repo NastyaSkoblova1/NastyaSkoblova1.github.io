@@ -37,14 +37,13 @@ function t_onFuncLoad(name, ok_func, time) {
     } else {
         var timerId = setTimeout(function checkFunc() {
             time = time || 300;
-            console.log(time);
+            console.log('Timer');
             funcName = typeof window[name];
             if (funcName === 'function') {
                 ok_func();
                 console.log(2);
                 return;
             }
-            console.log('Timer');
             timerId = setTimeout(checkFunc, time);
         });
     }
