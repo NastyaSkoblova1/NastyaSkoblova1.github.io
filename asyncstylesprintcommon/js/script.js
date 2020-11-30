@@ -32,7 +32,7 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 function t_onFuncLoad(name, ok_func, time) {
     // name = name.replace('\'', '');
     console.log(name);
-    name = window[name];
+    name = returnName(name);
     console.log(name);
     if (name === 'function') {
         console.log(1);
