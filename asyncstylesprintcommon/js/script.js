@@ -31,7 +31,7 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 
 function t_onFuncLoad(name, ok_func, time) {
     // name = name.replace('\'', '');
-    name = window[name];
+    // name = window[name];
     console.log(name);
     console.log(typeof name);
     if (name == 'function') {
@@ -43,6 +43,7 @@ function t_onFuncLoad(name, ok_func, time) {
             console.log(name);
             if (name == 'function') {
                 ok_func();
+                console.log(1);
                 return;
             }
             timerId = setTimeout(checkStore, time);
