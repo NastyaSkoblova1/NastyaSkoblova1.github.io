@@ -34,7 +34,7 @@ function t_onFuncLoad(name, ok_func, time) {
     name = window[name];
     console.log(name);
     console.log(typeof name);
-    if (name() == 'function') {
+    if (name == 'function') {
         ok_func();
     } else {
         var timerId = setTimeout(function checkStore() {
