@@ -32,10 +32,12 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 function t_checkFuncLoaded(name, ok_func, check) {
     if (name() == 'function') {
         ok_func();
+        console.log('Ok');
     } else {
         var timerId = setTimeout(function checkStore() {
             if (name() == 'function') {
                 console.log(check);
+                console.log('Hello!');
                 ok_func();
                 return;
             }
