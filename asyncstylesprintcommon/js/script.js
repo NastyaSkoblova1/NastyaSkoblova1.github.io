@@ -52,6 +52,7 @@ function t_onFuncLoad(name, ok_func, time) {
 }
 
 function returnName(name) {
+    console.log(name);
     return typeof name;
 }
 
