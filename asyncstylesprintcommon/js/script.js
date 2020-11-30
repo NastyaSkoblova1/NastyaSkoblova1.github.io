@@ -31,14 +31,14 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 
 function t_onFuncLoad(name, ok_func, time) {
     // name = name.replace('\'', '');
-    // name = window[name];
+    name = window[name];
     console.log(name);
     console.log(typeof name);
     if (name == 'function') {
         ok_func();
     } else {
         var timerId = setTimeout(function checkStore() {
-            var time = time || 300;
+            time = time || 300;
             name = returnName(name)
             console.log(name);
             if (name == 'function') {
