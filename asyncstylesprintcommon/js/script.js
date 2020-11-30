@@ -33,15 +33,13 @@ function t_onFuncLoad(name, ok_func, time) {
     var funcName = typeof window[name];
     if (funcName === 'function') {
         ok_func();
-        console.log(1);
     } else {
         var timerId = setTimeout(function checkFunc() {
+            console.log(time);
             time = time || 300;
-            console.log('Timer');
             funcName = typeof window[name];
             if (funcName === 'function') {
                 ok_func();
-                console.log(2);
                 return;
             }
             timerId = setTimeout(checkFunc, time);
