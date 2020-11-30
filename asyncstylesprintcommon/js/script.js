@@ -33,6 +33,7 @@ function t_onFuncLoad(name, ok_func, time) {
     var funcName = typeof window[name];
     if (funcName === 'function') {
         ok_func();
+        console.log(1);
     } else {
         var timerId = setTimeout(function checkFunc() {
             time = time || 300;
@@ -43,6 +44,7 @@ function t_onFuncLoad(name, ok_func, time) {
                 console.log(2);
                 return;
             }
+            console.log('Timer');
             timerId = setTimeout(checkFunc, time);
         });
     }
