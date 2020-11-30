@@ -41,7 +41,7 @@ function t_onFuncLoad(name, ok_func, time) {
             var time = time || 300;
             name = returnName(name)
             console.log(name);
-            if (name() == 'function') {
+            if (name == 'function') {
                 ok_func();
                 return;
             }
