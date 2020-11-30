@@ -31,7 +31,7 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 
 function t_onFuncLoad(name, ok_func, time) {
     console.log(name);
-    name = function() { return typeof name};
+    name = function returnName() { return typeof name};
     console.log(name);
     if (name() == 'function') {
         ok_func();
