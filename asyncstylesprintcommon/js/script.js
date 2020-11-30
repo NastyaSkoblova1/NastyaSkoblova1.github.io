@@ -40,7 +40,7 @@ function t_onFuncLoad(name, ok_func, time) {
     } else {
         var timerId = setTimeout(function checkStore() {
             time = time || 300;
-            name = returnName(name)
+            name = returnName(window[name])
             if (name === 'function') {
                 ok_func();
                 console.log(2);
