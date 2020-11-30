@@ -31,17 +31,17 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 
 function t_onFuncLoad(name, ok_func, time) {
     // name = name.replace('\'', '');
-    console.log(typeof name);
+    console.log(name);
     name = window[name];
-    console.log(typeof name);
-    if (name == 'function') {
+    console.log(name);
+    if (name === 'function') {
         console.log(1);
         ok_func();
     } else {
         var timerId = setTimeout(function checkStore() {
             time = time || 300;
             name = returnName(name)
-            if (name == 'function') {
+            if (name === 'function') {
                 ok_func();
                 console.log(2);
                 return;
