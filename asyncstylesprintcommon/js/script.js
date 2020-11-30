@@ -31,15 +31,13 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 
 function t_onFuncLoad(name, ok_func, time) {
     var funcName = typeof window[name];
-    console.log(funcName);
     if (funcName === 'function') {
-        console.log(1);
         ok_func();
     } else {
         var timerId = setTimeout(function checkFunc() {
             time = time || 300;
+            console.log(time);
             funcName = typeof window[name];
-            console.log(funcName);
             if (funcName === 'function') {
                 ok_func();
                 console.log(2);
