@@ -272,7 +272,7 @@
                     function t_func() {
                         t_menusub_init('243535149');
                     }
-                    t_checkFuncLoaded(function() { return typeof t_menusub_init}, t_menusub_init('243535149'));
+                    t_onFuncLoad(function() { return typeof t_menusub_init}, t_menusub_init('243535149'));
                 });
             </script>
             <style>
@@ -669,7 +669,7 @@
                     function t_func() {
                         t_sldsInit('243535154');
                     }
-                    t_checkFuncLoaded(function() { return typeof t_sldsInit}, t_func, 500);
+                    t_onFuncLoad(function() { return typeof t_sldsInit}, t_func, 500);
                 });
 
                 $('.t670').bind('displayChanged', function () {
@@ -831,7 +831,7 @@
                     function t_func() {
                         t_sldsInit('243535156');
                     }
-                    t_checkFuncLoaded(function () { return typeof t_sldsInit }, t_func, 100);
+                    t_onFuncLoad(function () { return typeof t_sldsInit }, t_func, 100);
                 });
                 $('.t670').bind('displayChanged', function () {
                     t_slds_updateSlider('243535156');
@@ -1025,7 +1025,7 @@
                         function t_func() {
                             t_store_init('243535157', options);
                         }
-                        t_checkFuncLoaded(function() { return typeof t_store_init}, t_func, 200);
+                        t_onFuncLoad(function() { return typeof t_store_init}, t_func, 200);
                     });
                 });
             </script><!-- catalog setup end -->
