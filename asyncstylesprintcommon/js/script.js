@@ -33,7 +33,7 @@ function t_onFuncLoad(name, ok_func, time) {
     // name = name.replace('\'', '');
     console.log(typeof name);
     name = window[name];
-    console.log(name);
+    console.log(typeof name);
     if (name == 'function') {
         console.log(1);
         ok_func();
