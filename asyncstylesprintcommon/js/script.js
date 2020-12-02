@@ -31,11 +31,14 @@ function t396_init(recid){var data='';var res=t396_detectResolution();t396_initT
 
 function t_onFuncLoad(funcName, okFunc, time) {
     if (typeof window[funcName] === 'function') {
+        console.log(1);
         okFunc();
     } else {
         var timerId = setTimeout(function checkFuncExist() {
             if (typeof window[funcName] === 'function') {
                 okFunc();
+                console.log(2);
+                console.log(funcName);
                 return;
             }
             timerId = setTimeout(checkFuncExist, time || 100);
