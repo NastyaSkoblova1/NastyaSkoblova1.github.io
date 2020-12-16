@@ -3754,7 +3754,9 @@ function t750_init(recid) {
     });
     
     setTimeout(function () {
-        t_prod__init(recid);
+        t_onFuncLoad('t_prod__init', function () {
+            t_prod__init(recid);
+        });
         t750_initPopup(recid)
     }, 500)
 }
@@ -3863,7 +3865,9 @@ function t750_sendPopupEventToStatistics(popupname) {
 
 function t754__init(recid) {
     setTimeout(function () {
-        t_prod__init(recid);
+        t_onFuncLoad('t_prod__init', function () {
+            t_prod__init(recid);
+        });
         t754__hoverZoom_init(recid);
         t754_initPopup(recid);
         t754__updateLazyLoad(recid);
