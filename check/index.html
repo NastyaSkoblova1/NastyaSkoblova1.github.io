@@ -55,7 +55,6 @@
   <script async src="https://static.tildacdn.com/js/tilda-forms-1.0.min.js" charset="utf-8"></script>
   <script async src="https://static.tildacdn.com/js/tilda-cart-1.0.min.js" charset="utf-8"></script>
   <script async src="https://static.tildacdn.com/js/tilda-feed-1.0.min.js" charset="utf-8"></script>
-  <script src="tilda-zero-gallery-1.0.js"></script>
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
   </script>
@@ -8340,8 +8339,8 @@
                   };
                   return jQuery.ajax(options);
                 };
-                // $.cachedScript("https://static.tildacdn.com/js/tilda-zero-gallery-1.0.min.js").done(function (
-                //   script, textStatus) {
+                $.cachedScript("tilda-zero-gallery-1.0.js").done(function (
+                  script, textStatus) {
                   if (textStatus == 'success') {
                     $.cachedScript("https://static.tildacdn.com/js/tilda-slds-1.4.min.js").done(function (
                       script, textStatus) {
@@ -8358,7 +8357,7 @@
                   } else {
                     console.log('Error load Zero Gallery js in zeroblock. Err:' + textStatus);
                   }
-                // });
+                });
               });
             </script>
           </div>
