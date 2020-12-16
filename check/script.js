@@ -3749,14 +3749,14 @@ function t734_init(recid) {
 }
 
 function t750_init(recid) {
-    t_onFuncLoad('t_sldsInit', function () {
+    // t_onFuncLoad('t_sldsInit', function () {
         t_sldsInit(recid);
-    });
+    // });
     
     setTimeout(function () {
-        t_onFuncLoad('t_prod__init', function () {
+        // t_onFuncLoad('t_prod__init', function () {
             t_prod__init(recid);
-        });
+        // });
         t750_initPopup(recid)
     }, 500)
 }
@@ -3865,9 +3865,9 @@ function t750_sendPopupEventToStatistics(popupname) {
 
 function t754__init(recid) {
     setTimeout(function () {
-        t_onFuncLoad('t_prod__init', function () {
+        // t_onFuncLoad('t_prod__init', function () {
             t_prod__init(recid);
-        });
+        // });
         t754__hoverZoom_init(recid);
         t754_initPopup(recid);
         t754__updateLazyLoad(recid);
