@@ -3754,9 +3754,9 @@ function t750_init(recid) {
     });
     
     setTimeout(function () {
-        // t_onFuncLoad('t_prod__init', function () {
+        t_onFuncLoad('t_prod__init', function () {
             t_prod__init(recid);
-        // });
+        });
         t750_initPopup(recid)
     }, 500)
 }
