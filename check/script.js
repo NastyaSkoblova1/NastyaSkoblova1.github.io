@@ -3749,9 +3749,9 @@ function t734_init(recid) {
 }
 
 function t750_init(recid) {
-    // t_onFuncLoad('t_sldsInit', function () {
+    t_onFuncLoad('t_sldsInit', function () {
         t_sldsInit(recid);
-    // });
+    });
     
     setTimeout(function () {
         // t_onFuncLoad('t_prod__init', function () {
