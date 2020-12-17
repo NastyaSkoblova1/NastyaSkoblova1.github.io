@@ -5,8 +5,12 @@ function t_zeroGallery__init(recid, elemid) {
 	t_zeroGallery__render(el);
 	t396_elem__renderView(el);
 
-	t_sldsInit(el);
-	t_slds_updateSlider(el);
+	t_zeroGallery__onSldsLoad('t_sldsInit', function() {
+		t_sldsInit(el);
+	});
+	t_zeroGallery__onSldsLoad('t_slds_updateSlider', function() {
+		t_slds_updateSlider(el);
+	});
 
 	t_zeroGallery__render_next(el, recid);
 	if (el.attr('data-field-zoomable-value') == 'y' && $('.t-zoomer__wrapper').length == 0) {
@@ -667,6 +671,21 @@ function t_zeroGallery__renderViewOneField(el, recid, field) {
 			t_zeroGallery__renderViewOneField(el, 'slds_arrowcontrols');
 		}
 	}
+}
+
+
+function t_zeroGallery__onSldsLoad(funcName, okFunc, time) {
+    if (typeof window[funcName] === 'function') {
+        okFunc();
+    } else {
+        var timerId = setTimeout(function checkFuncExist() {
+            if (typeof window[funcName] === 'function') {
+                okFunc();
+                return;
+            }
+            timerId = setTimeout(checkFuncExist, time || 100);
+        });
+    }
 }
 
 window.tilda_zero_gallery_js_ver = 1;

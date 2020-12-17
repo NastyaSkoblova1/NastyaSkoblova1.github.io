@@ -595,7 +595,9 @@ function t_store_loadProducts(method, recid, opts, slice, relevantsOpts) {
                 rec.find('.t-store__relevants-grid-cont').css({ opacity: 1 });
                 var blocksInRowForRelevant = 4;
                 if (opts.relevants_slider && (productsArr.length > blocksInRowForRelevant || $(window).width() <= 960)) {
-                    t_sldsInit(recid + ' .js-store-relevants-grid-cont');
+                    t_store_onSldsLoad('t_sldsInit', function() {
+                        t_sldsInit(recid + ' .js-store-relevants-grid-cont');
+                    });
                 }
             }
 
@@ -6150,4 +6152,18 @@ function t_store_filters_priceRange_checkIfAllowed() {
     var isIE = /*@cc_on!@*/false || !!document.documentMode;
 
     return !isIE;
+}
+
+function t_store_onSldsLoad(funcName, okFunc, time) {
+    if (typeof window[funcName] === 'function') {
+        okFunc();
+    } else {
+        var timerId = setTimeout(function checkFuncExist() {
+            if (typeof window[funcName] === 'function') {
+                okFunc();
+                return;
+            }
+            timerId = setTimeout(checkFuncExist, time || 100);
+        });
+    }
 }
