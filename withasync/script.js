@@ -1539,49 +1539,47 @@ function t410_init(recid) {
     var secondimgurl = el.find(".t410__wrapper").attr("data-juxtapose-imgurl-second");
     var secondimgdescr = el.find(".t410__wrapper").attr("data-juxtapose-imgdescr-second");
     var secondimgalt = el.find(".t410__wrapper").attr("data-juxtapose-imgalt-second");
-
-    // t_onFuncLoad('juxtapose', function () {
-    t410_onObjLoad('juxtapose', function() {
-    new juxtapose.JXSlider('#t410-juxtapose__' + recid, [{
-        src: firstimgurl,
-        label: firstimgdescr
-    }, {
-        src: secondimgurl,
-        label: secondimgdescr
-    }], {
-        animate: !1,
-        showLabels: !0,
-        showCredits: !1,
-        startingPosition: '50%',
-        makeResponsive: !0,
-        callback: function () {
-            if (firstimgalt.length > 0) {
-                el.find('.t410__wrapper .jx-image.jx-left img').attr('alt', firstimgalt)
-            }
-            if (secondimgalt.length > 0) {
-                el.find('.t410__wrapper .jx-image.jx-right img').attr('alt', secondimgalt)
-            }
-            if (window.$isMobile) {
-                el.find('.t410__wrapper').append('<div class="t410__mobile_left"></div><div class="t410__mobile_right"></div>');
-                var hanlerWidth = el.find('.jx-handle').width(),
-                    leftSide = el.find('.jx-image.jx-left'),
-                    rightSide = el.find('.jx-image.jx-right'),
-                    leftWidth = leftSide.width() - hanlerWidth / 2,
-                    rightWidth = rightSide.width() - hanlerWidth / 2,
-                    wrapper = el.find('.t410__wrapper'),
-                    mobileLeft = el.find('.t410__mobile_left'),
-                    mobileRight = el.find('.t410__mobile_right');
-                mobileLeft.css('width', leftWidth);
-                mobileRight.css('width', rightWidth);
-                wrapper.on('touchend', function () {
-                    leftWidth = leftSide.width() - hanlerWidth / 2;
-                    rightWidth = rightSide.width() - hanlerWidth / 2;
+    t410_onObjLoad('juxtapose', function () {
+        new juxtapose.JXSlider('#t410-juxtapose__' + recid, [{
+            src: firstimgurl,
+            label: firstimgdescr
+        }, {
+            src: secondimgurl,
+            label: secondimgdescr
+        }], {
+            animate: !1,
+            showLabels: !0,
+            showCredits: !1,
+            startingPosition: '50%',
+            makeResponsive: !0,
+            callback: function () {
+                if (firstimgalt.length > 0) {
+                    el.find('.t410__wrapper .jx-image.jx-left img').attr('alt', firstimgalt)
+                }
+                if (secondimgalt.length > 0) {
+                    el.find('.t410__wrapper .jx-image.jx-right img').attr('alt', secondimgalt)
+                }
+                if (window.$isMobile) {
+                    el.find('.t410__wrapper').append('<div class="t410__mobile_left"></div><div class="t410__mobile_right"></div>');
+                    var hanlerWidth = el.find('.jx-handle').width(),
+                        leftSide = el.find('.jx-image.jx-left'),
+                        rightSide = el.find('.jx-image.jx-right'),
+                        leftWidth = leftSide.width() - hanlerWidth / 2,
+                        rightWidth = rightSide.width() - hanlerWidth / 2,
+                        wrapper = el.find('.t410__wrapper'),
+                        mobileLeft = el.find('.t410__mobile_left'),
+                        mobileRight = el.find('.t410__mobile_right');
                     mobileLeft.css('width', leftWidth);
-                    mobileRight.css('width', rightWidth)
-                })
+                    mobileRight.css('width', rightWidth);
+                    wrapper.on('touchend', function () {
+                        leftWidth = leftSide.width() - hanlerWidth / 2;
+                        rightWidth = rightSide.width() - hanlerWidth / 2;
+                        mobileLeft.css('width', leftWidth);
+                        mobileRight.css('width', rightWidth)
+                    })
+                }
             }
-        }
-    });
+        })
     });
     el.find('.t410').bind('displayChanged', function () {
         window.juxtapose.sliders.forEach(function (obj) {
@@ -1596,20 +1594,17 @@ function t410_init(recid) {
 
 function t410_onObjLoad(objName, okFunc, time) {
     if (typeof window[objName] === 'object') {
-        console.log(1);
-        okFunc();
+        okFunc()
     } else {
         var timerId = setTimeout(function checkFuncExist() {
             if (typeof window[objName] === 'object') {
-                console.log(2);
                 okFunc();
-                return;
+                return
             }
-            timerId = setTimeout(checkFuncExist, time || 100);
-        });
+            timerId = setTimeout(checkFuncExist, time || 100)
+        })
     }
 }
-
 t422_setHeight = function (recid) {
     if ($(window).width() > 960) {
         t422_checkEqualHeight(recid)
@@ -5075,6 +5070,7 @@ function t778__showMore(recid) {
         showmore.click(function () {
             x = (x + y <= cards_size) ? x + y : cards_size;
             el.find('.t778__col:lt(' + x + ')').show();
+            el.trigger('displayChanged');
             if (x == cards_size) {
                 showmore.hide()
             }
@@ -5096,7 +5092,7 @@ function t778__dict(msg) {
         JA: 'г‚‚гЃЈгЃЁиЄ­гЃїиѕјг‚Ђ',
         ZH: 'иЈќиј‰ж›ґе¤љ',
     };
-    var lang = window.tildaBrowserLang;
+    var lang = window.browserLang;
     if (typeof dict[msg] !== 'undefined') {
         if (typeof dict[msg][lang] !== 'undefined' && dict[msg][lang] != '') {
             return dict[msg][lang]
@@ -6684,39 +6680,39 @@ function t822_setHeight(recid) {
     })
 };
 
-function t827_init(recid) {
-    var rec = $('#rec' + recid);
-    var grid = rec.find('.t827__grid');
-    var sizer = rec.find('.t827__grid-sizer');
-    var item = rec.find('.t827__grid-item');
-    var images = rec.find('.t827__grid img');
-    var overlay = rec.find('.t827__overlay');
-    var startContainerWidth = rec.find('.t827__grid-sizer').width();
-    t827_reverse(grid, item);
-    images.load(function () {
-        t827_initMasonry(rec, recid, grid);
-        setTimeout(function () {
-            t827_showOverlay(overlay, item)
-        }, 500)
-    });
-    if (overlay.hasClass('t827__overlay_preview')) {
-        setTimeout(function () {
-            t827_showOverlay(overlay, item)
-        }, 1000)
-    }
-    t827_initMasonry(rec, recid, grid);
-    $(window).bind('resize', function () {
-        if (typeof window.noAdaptive != "undefined" && window.noAdaptive == !0 && $isMobile) {
-            return
-        }
-        t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
-    });
-    $('.t827').bind('displayChanged', function () {
-        t827_initMasonry(rec, recid, grid);
-        t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
-    });
-    t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
-}
+// function t827_init(recid) {
+//     var rec = $('#rec' + recid);
+//     var grid = rec.find('.t827__grid');
+//     var sizer = rec.find('.t827__grid-sizer');
+//     var item = rec.find('.t827__grid-item');
+//     var images = rec.find('.t827__grid img');
+//     var overlay = rec.find('.t827__overlay');
+//     var startContainerWidth = rec.find('.t827__grid-sizer').width();
+//     t827_reverse(grid, item);
+//     images.load(function () {
+//         t827_initMasonry(rec, recid, grid);
+//         setTimeout(function () {
+//             t827_showOverlay(overlay, item)
+//         }, 500)
+//     });
+//     if (overlay.hasClass('t827__overlay_preview')) {
+//         setTimeout(function () {
+//             t827_showOverlay(overlay, item)
+//         }, 1000)
+//     }
+//     t827_initMasonry(rec, recid, grid);
+//     $(window).bind('resize', function () {
+//         if (typeof window.noAdaptive != "undefined" && window.noAdaptive == !0 && $isMobile) {
+//             return
+//         }
+//         t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
+//     });
+//     $('.t827').bind('displayChanged', function () {
+//         t827_initMasonry(rec, recid, grid);
+//         t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
+//     });
+//     t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
+// }
 
 function t827_reverse(grid, item) {
     if (grid.hasClass('t827__grid_reverse')) {
@@ -6739,8 +6735,8 @@ function t827_initMasonry(rec, recid, grid) {
                 isFitWidth: !0,
                 transitionDuration: 0
             })
-        });
-    });
+        })
+    })
 }
 
 function t827_showOverlay(overlay, item) {
@@ -6825,16 +6821,16 @@ function t829_initMasonry(rec, recid, grid) {
     var gutterSizerWidth = rec.find('.t829__gutter-sizer').width();
     var gutterElement = rec.find('.t829__gutter-sizer').width() == 40 ? 39 : '#rec' + recid + ' .t829__gutter-sizer';
     t_onFuncLoad('imagesLoaded', function () {
-    $grid.imagesLoaded(function () {
-        $grid.masonry({
-            itemSelector: '#rec' + recid + ' .t829__grid-item',
-            columnWidth: '#rec' + recid + ' .t829__grid-sizer',
-            gutter: gutterElement,
-            isFitWidth: !0,
-            transitionDuration: 0
+        $grid.imagesLoaded(function () {
+            $grid.masonry({
+                itemSelector: '#rec' + recid + ' .t829__grid-item',
+                columnWidth: '#rec' + recid + ' .t829__grid-sizer',
+                gutter: gutterElement,
+                isFitWidth: !0,
+                transitionDuration: 0
+            })
         })
-    });
-    });
+    })
 }
 
 function t829_calcColumnWidth(rec, startcontainerwidth, grid, sizer, item) {
