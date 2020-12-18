@@ -1541,6 +1541,7 @@ function t410_init(recid) {
     var secondimgalt = el.find(".t410__wrapper").attr("data-juxtapose-imgalt-second");
 
     // t_onFuncLoad('juxtapose', function () {
+    t410_onObjLoad('juxtapose', function() {
     new juxtapose.JXSlider('#t410-juxtapose__' + recid, [{
         src: firstimgurl,
         label: firstimgdescr
@@ -1581,7 +1582,7 @@ function t410_init(recid) {
             }
         }
     });
-    // });
+    });
     el.find('.t410').bind('displayChanged', function () {
         window.juxtapose.sliders.forEach(function (obj) {
             if (obj.selector === '#t410-juxtapose__' + recid) {
@@ -1592,6 +1593,23 @@ function t410_init(recid) {
         })
     })
 }
+
+function t410_onObjLoad(objName, okFunc, time) {
+    if (typeof window[objName] === 'object') {
+        console.log(1);
+        okFunc();
+    } else {
+        var timerId = setTimeout(function checkFuncExist() {
+            if (typeof window[objName] === 'object') {
+                console.log(2);
+                okFunc();
+                return;
+            }
+            timerId = setTimeout(checkFuncExist, time || 100);
+        });
+    }
+}
+
 t422_setHeight = function (recid) {
     if ($(window).width() > 960) {
         t422_checkEqualHeight(recid)
