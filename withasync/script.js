@@ -1539,9 +1539,8 @@ function t410_init(recid) {
     var secondimgurl = el.find(".t410__wrapper").attr("data-juxtapose-imgurl-second");
     var secondimgdescr = el.find(".t410__wrapper").attr("data-juxtapose-imgdescr-second");
     var secondimgalt = el.find(".t410__wrapper").attr("data-juxtapose-imgalt-second");
-    console.log(typeof juxtapose);
-    console.log('Hello!');
-    t_onFuncLoad('juxtapose', function () {
+
+    // t_onFuncLoad('juxtapose', function () {
     new juxtapose.JXSlider('#t410-juxtapose__' + recid, [{
         src: firstimgurl,
         label: firstimgdescr
@@ -1582,7 +1581,7 @@ function t410_init(recid) {
             }
         }
     });
-    });
+    // });
     el.find('.t410').bind('displayChanged', function () {
         window.juxtapose.sliders.forEach(function (obj) {
             if (obj.selector === '#t410-juxtapose__' + recid) {
@@ -6713,8 +6712,8 @@ function t827_initMasonry(rec, recid, grid) {
     var $grid = grid;
     var gutterSizerWidth = rec.find('.t827__gutter-sizer').width();
     var gutterElement = rec.find('.t827__gutter-sizer').width() == 40 ? 39 : '#rec' + recid + ' .t827__gutter-sizer';
-    console.log(typeof $grid.imagesLoaded);
-    // t_onFuncLoad('$grid.imagesLoaded', function () {
+    console.log(typeof imagesLoaded);
+    t_onFuncLoad('imagesLoaded', function () {
         $grid.imagesLoaded(function () {
             $grid.masonry({
                 itemSelector: '#rec' + recid + ' .t827__grid-item',
@@ -6724,7 +6723,7 @@ function t827_initMasonry(rec, recid, grid) {
                 transitionDuration: 0
             })
         });
-    // });
+    });
 }
 
 function t827_showOverlay(overlay, item) {
@@ -6808,8 +6807,8 @@ function t829_initMasonry(rec, recid, grid) {
     var $grid = grid;
     var gutterSizerWidth = rec.find('.t829__gutter-sizer').width();
     var gutterElement = rec.find('.t829__gutter-sizer').width() == 40 ? 39 : '#rec' + recid + ' .t829__gutter-sizer';
-    console.log(typeof $grid.imagesLoaded);
-    // t_onFuncLoad('$grid.imagesLoaded', function () {
+    console.log(typeof imagesLoaded);
+    t_onFuncLoad('imagesLoaded', function () {
     $grid.imagesLoaded(function () {
         $grid.masonry({
             itemSelector: '#rec' + recid + ' .t829__grid-item',
@@ -6819,7 +6818,7 @@ function t829_initMasonry(rec, recid, grid) {
             transitionDuration: 0
         })
     });
-    // });
+    });
 }
 
 function t829_calcColumnWidth(rec, startcontainerwidth, grid, sizer, item) {
