@@ -1541,6 +1541,7 @@ function t410_init(recid) {
     var secondimgalt = el.find(".t410__wrapper").attr("data-juxtapose-imgalt-second");
     console.log(typeof juxtapose.JXSlider);
     console.log('Hello!');
+    t_onFuncLoad('juxtapose.JXSlider', function () {
     new juxtapose.JXSlider('#t410-juxtapose__' + recid, [{
         src: firstimgurl,
         label: firstimgdescr
@@ -1580,6 +1581,7 @@ function t410_init(recid) {
                 })
             }
         }
+    });
     });
     el.find('.t410').bind('displayChanged', function () {
         window.juxtapose.sliders.forEach(function (obj) {
