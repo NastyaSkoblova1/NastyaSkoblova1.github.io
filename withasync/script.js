@@ -6710,15 +6710,17 @@ function t827_initMasonry(rec, recid, grid) {
     var gutterSizerWidth = rec.find('.t827__gutter-sizer').width();
     var gutterElement = rec.find('.t827__gutter-sizer').width() == 40 ? 39 : '#rec' + recid + ' .t827__gutter-sizer';
     console.log(typeof $grid.imagesLoaded);
-    $grid.imagesLoaded(function () {
-        $grid.masonry({
-            itemSelector: '#rec' + recid + ' .t827__grid-item',
-            columnWidth: '#rec' + recid + ' .t827__grid-sizer',
-            gutter: gutterElement,
-            isFitWidth: !0,
-            transitionDuration: 0
-        })
-    })
+    t_onFuncLoad('$grid.imagesLoaded', function () {
+        $grid.imagesLoaded(function () {
+            $grid.masonry({
+                itemSelector: '#rec' + recid + ' .t827__grid-item',
+                columnWidth: '#rec' + recid + ' .t827__grid-sizer',
+                gutter: gutterElement,
+                isFitWidth: !0,
+                transitionDuration: 0
+            })
+        });
+    });
 }
 
 function t827_showOverlay(overlay, item) {
@@ -6803,6 +6805,7 @@ function t829_initMasonry(rec, recid, grid) {
     var gutterSizerWidth = rec.find('.t829__gutter-sizer').width();
     var gutterElement = rec.find('.t829__gutter-sizer').width() == 40 ? 39 : '#rec' + recid + ' .t829__gutter-sizer';
     console.log(typeof $grid.imagesLoaded);
+    t_onFuncLoad('$grid.imagesLoaded', function () {
     $grid.imagesLoaded(function () {
         $grid.masonry({
             itemSelector: '#rec' + recid + ' .t829__grid-item',
@@ -6811,7 +6814,8 @@ function t829_initMasonry(rec, recid, grid) {
             isFitWidth: !0,
             transitionDuration: 0
         })
-    })
+    });
+    });
 }
 
 function t829_calcColumnWidth(rec, startcontainerwidth, grid, sizer, item) {
