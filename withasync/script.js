@@ -6680,39 +6680,39 @@ function t822_setHeight(recid) {
     })
 };
 
-// function t827_init(recid) {
-//     var rec = $('#rec' + recid);
-//     var grid = rec.find('.t827__grid');
-//     var sizer = rec.find('.t827__grid-sizer');
-//     var item = rec.find('.t827__grid-item');
-//     var images = rec.find('.t827__grid img');
-//     var overlay = rec.find('.t827__overlay');
-//     var startContainerWidth = rec.find('.t827__grid-sizer').width();
-//     t827_reverse(grid, item);
-//     images.load(function () {
-//         t827_initMasonry(rec, recid, grid);
-//         setTimeout(function () {
-//             t827_showOverlay(overlay, item)
-//         }, 500)
-//     });
-//     if (overlay.hasClass('t827__overlay_preview')) {
-//         setTimeout(function () {
-//             t827_showOverlay(overlay, item)
-//         }, 1000)
-//     }
-//     t827_initMasonry(rec, recid, grid);
-//     $(window).bind('resize', function () {
-//         if (typeof window.noAdaptive != "undefined" && window.noAdaptive == !0 && $isMobile) {
-//             return
-//         }
-//         t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
-//     });
-//     $('.t827').bind('displayChanged', function () {
-//         t827_initMasonry(rec, recid, grid);
-//         t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
-//     });
-//     t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
-// }
+function t827_init(recid) {
+    var rec = $('#rec' + recid);
+    var grid = rec.find('.t827__grid');
+    var sizer = rec.find('.t827__grid-sizer');
+    var item = rec.find('.t827__grid-item');
+    var images = rec.find('.t827__grid img');
+    var overlay = rec.find('.t827__overlay');
+    var startContainerWidth = rec.find('.t827__grid-sizer').width();
+    t827_reverse(grid, item);
+    images.load(function () {
+        t827_initMasonry(rec, recid, grid);
+        setTimeout(function () {
+            t827_showOverlay(overlay, item)
+        }, 500)
+    });
+    if (overlay.hasClass('t827__overlay_preview')) {
+        setTimeout(function () {
+            t827_showOverlay(overlay, item)
+        }, 1000)
+    }
+    t827_initMasonry(rec, recid, grid);
+    $(window).bind('resize', function () {
+        if (typeof window.noAdaptive != "undefined" && window.noAdaptive == !0 && $isMobile) {
+            return
+        }
+        t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
+    });
+    $('.t827').bind('displayChanged', function () {
+        t827_initMasonry(rec, recid, grid);
+        t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
+    });
+    t827_calcColumnWidth(rec, startContainerWidth, grid, sizer, item)
+}
 
 function t827_reverse(grid, item) {
     if (grid.hasClass('t827__grid_reverse')) {
