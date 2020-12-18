@@ -1539,6 +1539,7 @@ function t410_init(recid) {
     var secondimgurl = el.find(".t410__wrapper").attr("data-juxtapose-imgurl-second");
     var secondimgdescr = el.find(".t410__wrapper").attr("data-juxtapose-imgdescr-second");
     var secondimgalt = el.find(".t410__wrapper").attr("data-juxtapose-imgalt-second");
+    console.log(typoef juxtapose.JXSlider, 'Hello!');
     new juxtapose.JXSlider('#t410-juxtapose__' + recid, [{
         src: firstimgurl,
         label: firstimgdescr
