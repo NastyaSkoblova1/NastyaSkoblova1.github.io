@@ -6712,7 +6712,6 @@ function t827_initMasonry(rec, recid, grid) {
     var $grid = grid;
     var gutterSizerWidth = rec.find('.t827__gutter-sizer').width();
     var gutterElement = rec.find('.t827__gutter-sizer').width() == 40 ? 39 : '#rec' + recid + ' .t827__gutter-sizer';
-    console.log(typeof imagesLoaded);
     t_onFuncLoad('imagesLoaded', function () {
         $grid.imagesLoaded(function () {
             $grid.masonry({
@@ -6807,7 +6806,6 @@ function t829_initMasonry(rec, recid, grid) {
     var $grid = grid;
     var gutterSizerWidth = rec.find('.t829__gutter-sizer').width();
     var gutterElement = rec.find('.t829__gutter-sizer').width() == 40 ? 39 : '#rec' + recid + ' .t829__gutter-sizer';
-    console.log(typeof imagesLoaded);
     t_onFuncLoad('imagesLoaded', function () {
     $grid.imagesLoaded(function () {
         $grid.masonry({
