@@ -609,7 +609,10 @@
           });
           $(document).ready(function () {
             if ($isMobile == false) {
-              window.sequenceController.registerNewBlock(document.body.querySelector('#rec265860573'));
+              t_onFuncLoad(window.sequenceController.registerNewBlock, function() {
+                console.log('Hello!');
+                window.sequenceController.registerNewBlock(document.body.querySelector('#rec265860573'));
+              });
             }
           });
           $(document).ready(function () {
