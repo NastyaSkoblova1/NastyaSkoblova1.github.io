@@ -609,10 +609,26 @@
           });
           $(document).ready(function () {
             if ($isMobile == false) {
-              t_onFuncLoad(window.sequenceController.registerNewBlock, function() {
+
+              if (typeof window.sequenceController === 'object') {
                 console.log('Hello!');
                 window.sequenceController.registerNewBlock(document.body.querySelector('#rec265860573'));
-              });
+              } else {
+                var timerId = setTimeout(function checkFuncExist() {
+                  if (typeof window.sequenceController === 'object') {
+                    console.log('Hello!');
+                    window.sequenceController.registerNewBlock(document.body.querySelector('#rec265860573'));
+                    return;
+                  }
+                  timerId = setTimeout(checkFuncExist, time || 100);
+                });
+              }
+
+
+              // t_onFuncLoad(window.sequenceController.registerNewBlock, function() {
+              //   console.log('Hello!');
+              //   window.sequenceController.registerNewBlock(document.body.querySelector('#rec265860573'));
+              // });
             }
           });
           $(document).ready(function () {
