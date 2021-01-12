@@ -359,7 +359,7 @@
  * Parallax function created by alex on 7/4/14.
  */
 
-// (function ($) {
+(function ($) {
     var $window = $(window);
     var windowHeight = $window.height();
 
@@ -434,7 +434,7 @@
             });
         }
     };
-// })(jQuery);
+})(jQuery);
 
 
 function cover_fixcontentheight(id) {
