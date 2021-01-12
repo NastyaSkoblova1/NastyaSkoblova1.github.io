@@ -638,7 +638,10 @@
               if (mp4AndWebmVids.length)
                 for (var i = 0, l = mp4AndWebmVids.length, v, vid, mp4Src, webmSrc; i < l; i++) {
                   v = mp4AndWebmVids[i];
-                  processVideo(v);
+                  t_onFuncLoad('processVideo', function () {
+                    processVideo(v);
+                  });
+                  
                 }
               var youtubeVideos = document.body.querySelectorAll(
                 '#rec265860573 div[data-content-video-url-youtube]');
