@@ -19,13 +19,13 @@
         };
         /* Initializing the videos*/
 
-        t_onFuncLoad('$(v).videoBG', function() {
-            console.log(typeof $(v).videoBG);
+        // t_onFuncLoad('$(v).videoBG', function() {
+            console.log(typeof '$(v).videoBG');
             vid = $(v).videoBG(options);
             videoLoadProcessor.registerNewVideo(vid, {
                 isNeedStop: false,
             });
-        });
+        // });
     };
     
     function SequenceController() {
