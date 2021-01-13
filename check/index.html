@@ -631,7 +631,27 @@
           });
           $(document).ready(function () {
             if ($isMobile == false) {
-              window.sequenceController.registerNewBlock(document.body.querySelector('#rec265860573'));
+
+                if (typeof window.sequenceController === 'object') {
+                    window.sequenceController.registerNewBlock(document.body.querySelector('#rec265860573'));
+                } else {
+                    // console.log(funcName, 2);
+                    // var start = Date.now();
+                    var timerId = setTimeout(function checkFuncExist() {
+                        var end = Date.now();
+                        if (typeof window.sequenceController === 'object') {
+                            window.sequenceController.registerNewBlock(document.body.querySelector('#rec265860573'));
+                            return;
+                        }
+                        // console.log(end - start);
+                        // if (end - start > 5000) {
+                        //     console.log('Hello!');
+                        //     // throw new Error(funcName + ' is undefined');
+                        //     // return;
+                        // }
+                        timerId = setTimeout(checkFuncExist, 100);
+                    });
+                }
             }
           });
           $(document).ready(function () {
