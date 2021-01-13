@@ -19,7 +19,6 @@
         };
         /* Initializing the videos*/
 
-        console.log(typeof $(v).videoBG);
         t_onFuncLoadVideo($(v).videoBG, function() {
             vid = $(v).videoBG(options);
             videoLoadProcessor.registerNewVideo(vid, {

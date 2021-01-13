@@ -247,77 +247,77 @@ function t_onFuncLoad(funcName, okFunc, time) {
 
 /* ??? */
 
-(function ($) {
-    /**
-     * Global object that implements the event model.
-     * The essence of it is that he is one and is global, it all podpisyvayutsya
-     * Amity and ask him the same way
-     * (Instead of each object was emitterom = /)
-     *constructor
-     *version 0.0.1
-     */
-    function Observer() {
-        this.callbacks = {};
-    }
+// (function ($) {
+//     /**
+//      * Global object that implements the event model.
+//      * The essence of it is that he is one and is global, it all podpisyvayutsya
+//      * Amity and ask him the same way
+//      * (Instead of each object was emitterom = /)
+//      *constructor
+//      *version 0.0.1
+//      */
+//     function Observer() {
+//         this.callbacks = {};
+//     }
 
-    Observer.prototype.defaultConfig = {
-        single: false,
-        context: null,
-    };
+//     Observer.prototype.defaultConfig = {
+//         single: false,
+//         context: null,
+//     };
 
-    Observer.prototype.addEventListener = function (name, callback, config) {
-        evtCallbacks = this._getEventCallbacks(name);
-        if (!evtCallbacks) {
-            evtCallbacks = this.callbacks[name] = [];
-        }
+//     Observer.prototype.addEventListener = function (name, callback, config) {
+//         evtCallbacks = this._getEventCallbacks(name);
+//         if (!evtCallbacks) {
+//             evtCallbacks = this.callbacks[name] = [];
+//         }
 
-        evtCallbacks.push({
-            callback: callback,
-            config: typeof config == 'object' ? config : this.defaultConfig,
-        });
-    };
+//         evtCallbacks.push({
+//             callback: callback,
+//             config: typeof config == 'object' ? config : this.defaultConfig,
+//         });
+//     };
 
-    Observer.prototype._getEventCallbacks = function (name) {
-        return this.callbacks[name];
-    };
+//     Observer.prototype._getEventCallbacks = function (name) {
+//         return this.callbacks[name];
+//     };
 
-    Observer.prototype.removeEventListener = function (name, callback) {
-        var cbs = this._getEventCallbacks(name);
-        if (!cbs) {
-            return false;
-        }
+//     Observer.prototype.removeEventListener = function (name, callback) {
+//         var cbs = this._getEventCallbacks(name);
+//         if (!cbs) {
+//             return false;
+//         }
 
-        for (var i = 0, l = cbs.length, cbObj; i < l; i++) {
-            cbObj = cbs[i];
-            if (callback === cbObj.callback) {
-                cbs.splice(i, 1);
-                return true;
-            }
-        }
-        return false;
-    };
+//         for (var i = 0, l = cbs.length, cbObj; i < l; i++) {
+//             cbObj = cbs[i];
+//             if (callback === cbObj.callback) {
+//                 cbs.splice(i, 1);
+//                 return true;
+//             }
+//         }
+//         return false;
+//     };
 
-    Observer.prototype.emitEvent = function (name, data) {
-        var cbs = [];
-        extend(cbs, this._getEventCallbacks(name));
-        for (var i = 0, l = cbs.length, cbObj, cb, config; i < l; i++) {
-            cbObj = cbs[i];
-            cb = cbObj.callback;
-            config = cbObj.config;
-            if (config.context) {
-                cb.call(config.context, data);
-            } else {
-                cb(data);
-            }
+//     Observer.prototype.emitEvent = function (name, data) {
+//         var cbs = [];
+//         extend(cbs, this._getEventCallbacks(name));
+//         for (var i = 0, l = cbs.length, cbObj, cb, config; i < l; i++) {
+//             cbObj = cbs[i];
+//             cb = cbObj.callback;
+//             config = cbObj.config;
+//             if (config.context) {
+//                 cb.call(config.context, data);
+//             } else {
+//                 cb(data);
+//             }
 
-            if (config.single) {
-                this.removeEventListener(name, cb);
-            }
-        }
-    };
+//             if (config.single) {
+//                 this.removeEventListener(name, cb);
+//             }
+//         }
+//     };
 
-    window.observer = new Observer();
-})(jQuery);
+//     window.observer = new Observer();
+// })(jQuery);
 
 
 /* Определение высоты для обложек и остальных блоков в мобильной версии, 
