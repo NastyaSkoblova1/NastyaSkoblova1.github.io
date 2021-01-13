@@ -26,7 +26,7 @@
   <link rel="alternate" type="application/rss+xml" title="Blocks from users"
     href="http://project1719301.tilda.ws/rss.xml" /><!-- Assets -->
   <link rel="stylesheet" href="https://static.tildacdn.com/css/tilda-grid-3.0.min.css" type="text/css" media="all" />
-  <link rel="stylesheet" href="https://tilda.ws/project1719301/tilda-blocks-2.12.css?t=1610534338" type="text/css"
+  <link rel="stylesheet" href="https://tilda.ws/project1719301/tilda-blocks-2.12.css?t=1610544030" type="text/css"
     media="all" />
   <link rel="stylesheet" href="https://static.tildacdn.com/css/tilda-animation-1.0.min.css" type="text/css"
     media="all" />
@@ -69,12 +69,12 @@
   <script src="https://static.tildacdn.com/js/jquery-1.10.2.min.js"></script>
 
   <script src="js/tilda-scripts-3.0.js"></script>
-  <script src="js/tilda-cover-1.0.js"></script>
-  <script src="js/tilda-cover-video-1.0.js"></script>
-  <script src="js/tilda-events-1.0.js"></script>
-  <script src="js/tilda-sequence-1.0.js"></script>
+  <script src="js/tilda-cover-1.0.js" async></script>
+  <script src="js/tilda-video-processor-1.0.js" async></script>
+  <script src="js/tilda-events-1.0.js" async></script>
+  <script src="js/tilda-sequence-1.0.js" async></script>
 
-  <script src="https://tilda.ws/project1719301/tilda-blocks-2.7.js?t=1610534338"></script>
+  <script src="https://tilda.ws/project1719301/tilda-blocks-2.7.js?t=1610544030"></script>
   <script src="https://static.tildacdn.com/js/lazyload-1.3.min.js" charset="utf-8"></script>
   <script src="https://static.tildacdn.com/js/tilda-animation-1.0.min.js" charset="utf-8"></script>
   <script src="https://static.tildacdn.com/js/tilda-menusub-1.0.min.js" charset="utf-8" async></script>
@@ -138,8 +138,28 @@
                     style="color:#ffffff;font-weight:600;" data-menu-item-number="1">About</a> </li>
                 <li class="t228__list_item"><a class="t-menu__link-item" href="#rec260114980" data-menu-submenu-hook=""
                     style="color:#ffffff;font-weight:600;" data-menu-item-number="2">Works</a> </li>
-                <li class="t228__list_item"><a class="t-menu__link-item" href="#rec260115017" data-menu-submenu-hook=""
-                    style="color:#ffffff;font-weight:600;" data-menu-item-number="3">Services</a> </li>
+                <li class="t228__list_item"><a class="t-menu__link-item" href=""
+                    data-menu-submenu-hook="link_sub3_260114491" style="color:#ffffff;font-weight:600;"
+                    data-menu-item-number="3">Services</a>
+                  <div class="t-menusub" data-submenu-hook="link_sub3_260114491" data-submenu-margin="15px"
+                    data-add-submenu-arrow="on">
+                    <div class="t-menusub__menu">
+                      <div class="t-menusub__content">
+                        <ul class="t-menusub__list">
+                          <li class="t-menusub__list-item t-name t-name_xs"><a
+                              class="t-menusub__link-item t-name t-name_xs" style="" href=""
+                              data-menu-item-number="3">About</a></li>
+                          <li class="t-menusub__list-item t-name t-name_xs"><a
+                              class="t-menusub__link-item t-name t-name_xs" style="" href=""
+                              data-menu-item-number="3">Works</a></li>
+                          <li class="t-menusub__list-item t-name t-name_xs"><a
+                              class="t-menusub__link-item t-name t-name_xs" style="" href=""
+                              data-menu-item-number="3">Contacts</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -7173,6 +7193,10 @@
                             name="paymentsystem" value="yamoneymc" class="t-radio t-radio_payment"
                             data-payment-variant-system="yamoneymc">
                           <div class="t-radio__indicator"></div> Телефоном через Яндекс.Деньги
+                        </label> <label class="t-radio__control t-text t-text_xs" style=""><input type="radio"
+                            name="paymentsystem" value="robokassa" class="t-radio t-radio_payment"
+                            data-payment-variant-system="robokassa">
+                          <div class="t-radio__indicator"></div> Кредитной картой (Visa, Mastercard) через Робокассу
                         </label> </div>
                     </div>
                   </div>
