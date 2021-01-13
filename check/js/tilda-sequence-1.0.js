@@ -18,6 +18,7 @@
             width: '100%',
         };
         /* Initializing the videos*/
+        console.log(typeof $(v).videoBG);
         vid = $(v).videoBG(options);
         videoLoadProcessor.registerNewVideo(vid, {
             isNeedStop: false,
