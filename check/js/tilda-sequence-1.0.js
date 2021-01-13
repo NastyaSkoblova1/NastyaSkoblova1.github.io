@@ -19,7 +19,7 @@
         };
         /* Initializing the videos*/
 
-        t_onFuncLoad($(v).videoBG, function() {
+        t_onFuncLoad('$(v).videoBG', function() {
             console.log(typeof $(v).videoBG);
             vid = $(v).videoBG(options);
             videoLoadProcessor.registerNewVideo(vid, {
