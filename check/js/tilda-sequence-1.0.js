@@ -1,3 +1,5 @@
+/* Блок GL06 */
+
 (function ($) {
     window.processVideo = function (v) {
         mp4Src = $(v).attr('data-content-video-url-mp4');
