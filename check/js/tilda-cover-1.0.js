@@ -408,6 +408,7 @@ function cover_fixcontentheight(id) {
     }
 }
 
+
 function cover_checkIsFixForBackgroundNeeded(id) {
     var rec = document.body.querySelector('#rec' + id);
     if (!rec) {
@@ -439,6 +440,7 @@ function cover_checkIsFixForBackgroundNeeded(id) {
         return false;
     }
 }
+
 
 function cover_fixBackgroundFixedNode(id) {
     if (cover_checkIsFixForBackgroundNeeded(id)) {
@@ -489,6 +491,7 @@ function cover_fixBackgroundFixedNode(id) {
         window['cover' + id + 'fixbackgroundnodes'] = true;
     }
 }
+
 
 function cover_fixBackgroundFixedStyles(id) {
     var rec = document.body.querySelector('#rec' + id);
