@@ -68,8 +68,8 @@ function t_onFuncLoad(funcName, okFunc, time) {
             console.log(end - start);
             if (end - start > 5000) {
                 console.log('Hello!');
-                // throw new Error(funcName + ' is undefined');
-                // return;
+                throw Error(funcName + ' is undefined');
+                console.log('Bye');
             }
             timerId = setTimeout(checkFuncExist, time || 100);
         });
