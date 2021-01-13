@@ -19,14 +19,28 @@
         };
         /* Initializing the videos*/
 
-        // t_onFuncLoad('$(v).videoBG', function() {
-            console.log(typeof '$(v).videoBG');
+        console.log(typeof $(v).videoBG);
+        t_onFuncLoadVideo($(v).videoBG, function() {
             vid = $(v).videoBG(options);
             videoLoadProcessor.registerNewVideo(vid, {
                 isNeedStop: false,
             });
-        // });
+        });
     };
+
+    function t_onFuncLoadVideo(func, okFunc, time) {
+        if (typeof func === 'function') {
+            okFunc();
+        } else {
+            var timerId = setTimeout(function checkFuncExist() {
+                if (typeof func === 'function') {
+                    okFunc();
+                    return;
+                }
+                timerId = setTimeout(checkFuncExist, 100);
+            });
+        }
+    }
     
     function SequenceController() {
         this.setScrollCb();
