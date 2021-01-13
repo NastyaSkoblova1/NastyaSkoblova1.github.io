@@ -18,10 +18,13 @@
             width: '100%',
         };
         /* Initializing the videos*/
-        console.log(typeof $(v).videoBG);
-        vid = $(v).videoBG(options);
-        videoLoadProcessor.registerNewVideo(vid, {
-            isNeedStop: false,
+
+        t_onFuncLoad($(v).videoBG, function() {
+            console.log(typeof $(v).videoBG);
+            vid = $(v).videoBG(options);
+            videoLoadProcessor.registerNewVideo(vid, {
+                isNeedStop: false,
+            });
         });
     };
     
@@ -259,3 +262,5 @@
 
     window.sequenceController = new SequenceController();
 })(jQuery);
+
+
