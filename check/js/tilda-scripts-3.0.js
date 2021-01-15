@@ -57,23 +57,18 @@ function t_onFuncLoad(funcName, okFunc, time) {
     if (typeof window[funcName] === 'function') {
         okFunc();
     } else {
-        console.log(funcName, 2);
-        var start = Date.now();
+        var startTime = Date.now();
         var timerId = setTimeout(function checkFuncExist() {
-            var end = Date.now();
+            var currentTime = Date.now();
             if (typeof window[funcName] === 'function') {
                 okFunc();
                 return;
             }
-            console.log(end - start);
-            if (end - start > 5000) {
-                console.log('Hello!');
-                throw Error(funcName + ' is undefined');
-                console.log('Bye');
+            if (currentTime - startTime > 7000) {
+                throw new Error(funcName + ' is undefined');
             }
             timerId = setTimeout(checkFuncExist, time || 100);
         });
-        console.log(start);
     }
 }
 
