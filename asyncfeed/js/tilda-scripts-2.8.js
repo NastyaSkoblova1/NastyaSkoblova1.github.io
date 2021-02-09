@@ -1985,18 +1985,15 @@ function t_throttle(fn, threshhold, scope) {
 function t_onFuncLoad(funcName, okFunc, time) {
     if (typeof window[funcName] === 'function') {
         okFunc();
-        console.log(funcName + ' ready');
     } else {
         var startTime = Date.now();
         var timerId = setTimeout(function checkFuncExist() {
             var currentTime = Date.now();
             if (typeof window[funcName] === 'function') {
-                console.log(funcName + ' complete');
                 okFunc();
                 return;
             }
             if (document.readyState === 'complete' && typeof window[funcName] !== 'function') {
-                console.log(funcName + ' fail');
                 throw new Error(funcName + ' is undefined');
             }
             
