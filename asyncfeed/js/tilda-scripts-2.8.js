@@ -1996,6 +1996,8 @@ function t_onFuncLoad(funcName, okFunc, time) {
             if (document.readyState === 'complete' && typeof window[funcName] !== 'function') {
                 throw new Error(funcName + ' is undefined');
             }
+
+            console.log(1);
             
             timerId = setTimeout(checkFuncExist, time || 100);
         });
