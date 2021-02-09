@@ -1995,7 +1995,6 @@ function t_onFuncLoad(funcName, okFunc, time) {
                 okFunc();
                 return;
             }
-            console.log(document.readyState);
             if (document.readyState === 'complete' && typeof window[funcName] !== 'function') {
                 console.log(funcName + ' fail');
                 throw new Error(funcName + ' is undefined');
