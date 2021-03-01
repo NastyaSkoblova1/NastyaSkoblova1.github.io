@@ -689,6 +689,7 @@ function throttle(fn, interval) {
     };
 }
 
+
 function debounce(fn, interval) {
     var timer;
 
