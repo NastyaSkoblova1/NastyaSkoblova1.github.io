@@ -1986,9 +1986,8 @@ function t_onFuncLoad(funcName, okFunc, time) {
     if (typeof window[funcName] === 'function') {
         okFunc();
     } else {
-        var startTime = Date.now();
-        var timerId = setTimeout(function checkFuncExist() {
-            var currentTime = Date.now();
+        setTimeout(function checkFuncExist() {
+            console.log(funcName);
             if (typeof window[funcName] === 'function') {
                 okFunc();
                 return;
@@ -1996,10 +1995,7 @@ function t_onFuncLoad(funcName, okFunc, time) {
             if (document.readyState === 'complete' && typeof window[funcName] !== 'function') {
                 throw new Error(funcName + ' is undefined');
             }
-
-            console.log(1);
-            
-            timerId = setTimeout(checkFuncExist, time || 100);
+            setTimeout(checkFuncExist, time || 200);
         });
     }
 }
