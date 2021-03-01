@@ -254,6 +254,7 @@ function t_zoomHandler() {
     window.tzoomopenonce = true;
 }
 
+
 function t_zoom_initSwipe() {
     var $slideItems = $('.t-carousel__zoomer__item'),
         $sliderTrack = $('.t-carousel__zoomer__track');
@@ -284,7 +285,10 @@ function t_zoom_initSwipe() {
         });
 
         hammer.on('panmove', function (event) {
-            if (sliderTrackPosition) {
+            var daltaX = Math.abs(event.deltaX),
+                deltaY = Math.abs(event.deltaY);
+
+            if (sliderTrackPosition && daltaX > deltaY) {
                 var newTrackPosition = sliderTrackPosition + event.deltaX;
 
                 $sliderTrack.css(
@@ -302,6 +306,7 @@ function t_zoom_initSwipe() {
     }
 }
 
+
 var t_zoom_trottledShowSlide = throttle(t_zoom_showSlide, 270);
 
 function t_zoom_panendHandler(event) {
@@ -309,24 +314,34 @@ function t_zoom_panendHandler(event) {
 
     $sliderTrack.css('transition', '');
 
-    if (event.velocityX < -0.4 || event.deltaX < -40) {
-        t_zoom_unscale();
+    var daltaX = Math.abs(event.deltaX),
+        deltaY = Math.abs(event.deltaY);
 
-        t_zoom_trottledShowSlide('next');
-
-        t_zoom_checkForScale();
-    } else if (event.velocityX > 0.4 || event.deltaX > 40) {
-        t_zoom_unscale();
-
-        t_zoom_trottledShowSlide('prev');
-
-        t_zoom_checkForScale();
+    if (daltaX > deltaY) {
+        if (event.velocityX < -0.4 || event.deltaX < -40) {
+            t_zoom_unscale();
+    
+            t_zoom_trottledShowSlide('next');
+    
+            t_zoom_checkForScale();
+        } else if (event.velocityX > 0.4 || event.deltaX > 40) {
+            t_zoom_unscale();
+    
+            t_zoom_trottledShowSlide('prev');
+    
+            t_zoom_checkForScale();
+        } else {
+            t_zoom_showSlide();
+        }
     } else {
         t_zoom_showSlide();
     }
+
+    
 }
 
-/* go back to current slide if direction is '' */
+
+// @param {string} [direction] - slider transition direction (return to current slide, if direction is not defined)
 function t_zoom_showSlide(direction) {
     var $sliderTrack = $('.t-carousel__zoomer__track'),
         $slideItems = $('.t-carousel__zoomer__item', $sliderTrack),
@@ -351,7 +366,8 @@ function t_zoom_showSlide(direction) {
         .attr('data-on-transition', 'y');
 }
 
-/* pos must be 'start' or 'end' */
+
+// @param {string} side - side of slider before loop ('start' or 'end')
 function t_zoom_transitForLoop(side) {
     var $sliderTrack = $('.t-carousel__zoomer__track'),
         $slideItems = $('.t-carousel__zoomer__item'),
@@ -426,32 +442,32 @@ function t_zoom_initCloseSwipe() {
         ],
     });
 
-    var $slider = $('.t-carousel__zoomer__slides');
+    hammer.on('swipeup', t_zoom_closeSwipeHandler);
+    hammer.on('swipedown', t_zoom_closeSwipeHandler);
+}
 
-    hammer.on('swipedown', function () {
-        var closeAnimationTime = 250;
+function t_zoom_closeSwipeHandler(event) {
+    var $modal = $('.t-zoomer__wrapper'),
+        closeAnimationTime = 250,
+        deltaX = Math.abs(event.deltaX),
+        deltaY = Math.abs(event.deltaY);
 
-        $slider.css({
-            transition: 'transform ' + closeAnimationTime + 'ms ease-out',
-            transform: 'translateY(100vh)',
-        });
+    if (deltaY > deltaX) {
+        $modal.css('transition', 'transform ' + closeAnimationTime + 'ms ease-out');
 
+        if (event.direction === 16) {
+            $modal.css('transform', 'translateY(100vh)');
+        }
+    
+        if (event.direction === 8) {
+            $modal.css('transform', 'translateY(-100vh)');
+        }
+    
         setTimeout(function () {
             t_zoom_close();
-
-            var isPopupShown = $(document).find('.t-popup_show').length != 0;
-
-            if (isPopupShown) {
-                $(document).keydown(function (e) {
-                    if (e.keyCode == 27) {
-                        if (window.t_store_closePopup !== undefined) {
-                            t_store_closePopup(false);
-                        }
-                    }
-                });
-            }
+            $modal.css('transform', '');
         }, closeAnimationTime);
-    });
+    }
 }
 
 function t_zoom_checkForScale() {
@@ -621,9 +637,11 @@ function t_zoom_unscale() {
 }
 
 function t_zoom_lockScroll() {
-    if (window.isiOS && !window.MSStream) {
-        if (window.isiOSVersion !== '' && window.isiOSVersion !== undefined) {
-            if (window.isiOSVersion[0] === 11) {
+    var isAndroid = /(android)/i.test(navigator.userAgent);
+
+    if ((window.isiOS && !window.MSStream) || isAndroid) {
+        if ((window.isiOSVersion !== '' && window.isiOSVersion !== undefined) || isAndroid) {
+            if (window.isiOSVersion[0] === 11 || isAndroid) {
                 var body = $('body');
                 if (!body.hasClass('t-body_scroll-locked')) {
                     var bodyScrollTop =
@@ -644,9 +662,11 @@ function t_zoom_lockScroll() {
 }
 
 function t_zoom_unlockScroll() {
-    if (window.isiOS && !window.MSStream) {
-        if (window.isiOSVersion !== '' && window.isiOSVersion !== undefined) {
-            if (window.isiOSVersion[0] === 11) {
+    var isAndroid = /(android)/i.test(navigator.userAgent);
+
+    if ((window.isiOS && !window.MSStream) || isAndroid) {
+        if ((window.isiOSVersion !== '' && window.isiOSVersion !== undefined) || isAndroid) {
+            if (window.isiOSVersion[0] === 11 || isAndroid) {
                 var body = $('body');
                 if (body.hasClass('t-body_scroll-locked')) {
                     var bodyScrollTop = $('body').attr('data-popup-scrolltop');
@@ -688,7 +708,6 @@ function throttle(fn, interval) {
         }
     };
 }
-
 
 function debounce(fn, interval) {
     var timer;
