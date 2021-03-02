@@ -1,5 +1,6 @@
 $(document).ready(function () {
     t_initZoom();
+    console.log('Hello!');
 });
 
 function t_initZoom() {
