@@ -178,6 +178,8 @@ function t_zoomHandler() {
         $sliderTrack.css('transition', '');
     });
 
+    var t_zoom_trottledShowSlide = t_zoom_throttle(t_zoom_showSlide, 270);
+
     $('.t-carousel__zoomer__control_right').click(function () {
         t_zoom_unscale();
 
@@ -254,7 +256,6 @@ function t_zoomHandler() {
     window.tzoomopenonce = true;
 }
 
-
 function t_zoom_initSwipe() {
     var $slideItems = $('.t-carousel__zoomer__item'),
         $sliderTrack = $('.t-carousel__zoomer__track');
@@ -285,10 +286,10 @@ function t_zoom_initSwipe() {
         });
 
         hammer.on('panmove', function (event) {
-            var daltaX = Math.abs(event.deltaX),
+            var deltaX = Math.abs(event.deltaX),
                 deltaY = Math.abs(event.deltaY);
 
-            if (sliderTrackPosition && daltaX > deltaY) {
+            if (sliderTrackPosition && deltaX > deltaY) {
                 var newTrackPosition = sliderTrackPosition + event.deltaX;
 
                 $sliderTrack.css(
@@ -298,48 +299,44 @@ function t_zoom_initSwipe() {
             }
         });
 
+        var t_zoom_trottledShowSlide = t_zoom_throttle(t_zoom_showSlide, 270);
+
         if (!window.tzoomopenonce) {
             if (sliderTrackPosition) {
-                hammer.on('panend', t_zoom_panendHandler);
+                hammer.on('panend', function(event) {
+                    var $sliderTrack = $('.t-carousel__zoomer__track');
+
+                    $sliderTrack.css('transition', '');
+                
+                    var deltaX = Math.abs(event.deltaX),
+                        deltaY = Math.abs(event.deltaY);
+                
+                    if (deltaX > deltaY) {
+                
+                        if (event.velocityX < -0.4 || event.deltaX < -40) {
+                            t_zoom_unscale();
+                    
+                            t_zoom_trottledShowSlide('next');
+                    
+                            t_zoom_checkForScale();
+                        } else if (event.velocityX > 0.4 || event.deltaX > 40) {
+                            t_zoom_unscale();
+                    
+                            t_zoom_trottledShowSlide('prev');
+                    
+                            t_zoom_checkForScale();
+                        } else {
+                            t_zoom_showSlide();
+                        }
+                
+                    } else {
+                        t_zoom_showSlide();
+                    }
+                });
             }
         }
     }
 }
-
-
-var t_zoom_trottledShowSlide = throttle(t_zoom_showSlide, 270);
-
-function t_zoom_panendHandler(event) {
-    var $sliderTrack = $('.t-carousel__zoomer__track');
-
-    $sliderTrack.css('transition', '');
-
-    var daltaX = Math.abs(event.deltaX),
-        deltaY = Math.abs(event.deltaY);
-
-    if (daltaX > deltaY) {
-        if (event.velocityX < -0.4 || event.deltaX < -40) {
-            t_zoom_unscale();
-    
-            t_zoom_trottledShowSlide('next');
-    
-            t_zoom_checkForScale();
-        } else if (event.velocityX > 0.4 || event.deltaX > 40) {
-            t_zoom_unscale();
-    
-            t_zoom_trottledShowSlide('prev');
-    
-            t_zoom_checkForScale();
-        } else {
-            t_zoom_showSlide();
-        }
-    } else {
-        t_zoom_showSlide();
-    }
-
-    
-}
-
 
 // @param {string} [direction] - slider transition direction (return to current slide, if direction is not defined)
 function t_zoom_showSlide(direction) {
@@ -365,7 +362,6 @@ function t_zoom_showSlide(direction) {
         .css('transform', 'translateX(' + -trackPosition + 'px)')
         .attr('data-on-transition', 'y');
 }
-
 
 // @param {string} side - side of slider before loop ('start' or 'end')
 function t_zoom_transitForLoop(side) {
@@ -681,7 +677,7 @@ function t_zoom_unlockScroll() {
 }
 
 function t_zoom_initResizeListener() {
-    var debouncedResizeHandler = debounce(t_zoom_resizeHandler, 300);
+    var debouncedResizeHandler = t_throttle(t_zoom_resizeHandler, 300);
 
     $(window).on('resize', debouncedResizeHandler);
 }
@@ -696,7 +692,7 @@ function t_zoom_resizeHandler() {
     $sliderTrack.css('transform', 'translateX(' + -activeSlidePosition + 'px)');
 }
 
-function throttle(fn, interval) {
+function t_zoom_throttle(fn, interval) {
     var lastTime;
 
     return function throttled() {
@@ -706,19 +702,5 @@ function throttle(fn, interval) {
             fn.apply(this, arguments);
             lastTime = Date.now();
         }
-    };
-}
-
-function debounce(fn, interval) {
-    var timer;
-
-    return function debounced() {
-        clearTimeout(timer);
-        var args = arguments,
-            that = this;
-
-        timer = setTimeout(function callOriginalFn() {
-            fn.apply(that, args);
-        }, interval);
     };
 }
