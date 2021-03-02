@@ -94,6 +94,8 @@ function t_zoomHandler() {
         }
     }
 
+    /* N: название переменной со знаком $, норм?
+        Мы так где-то писали, но в основном без $ */
     var $sliderTrack = $('.t-carousel__zoomer__track');
 
     images.each(function (i, image) {
@@ -178,6 +180,9 @@ function t_zoomHandler() {
         $sliderTrack.css('transition', '');
     });
 
+    /* N: не уверена, что нужен его троттл именно здесь
+        Я разницы не увидела с ним и без него, опираясь на консоль даже */
+    /* Даже если оставлять надо назвать переменную t_zoom_throttledShowSlide */
     var t_zoom_trottledShowSlide = t_zoom_throttle(t_zoom_showSlide, 270);
 
     $('.t-carousel__zoomer__control_right').click(function () {
@@ -341,6 +346,11 @@ function t_zoom_initSwipe() {
 // @param {string} [direction] - slider transition direction (return to current slide, if direction is not defined)
 function t_zoom_showSlide(direction) {
     var $sliderTrack = $('.t-carousel__zoomer__track'),
+    /* Он определяет переменную так $('.t-carousel__zoomer__item', $sliderTrack), 
+    мы обычно пишем что-то такое 
+    $sliderTrack.find('.t-carousel__zoomer__item')
+    Как считаешь это критично? 
+    Я бы переписала как у нас */
         $slideItems = $('.t-carousel__zoomer__item', $sliderTrack),
         $targetItem = $('.t-carousel__zoomer__item.active', $sliderTrack),
         currentSlideIndex = $targetItem.index();
@@ -361,8 +371,6 @@ function t_zoom_showSlide(direction) {
     $sliderTrack
         .css('transform', 'translateX(' + -trackPosition + 'px)')
         .attr('data-on-transition', 'y');
-
-    console.log('1', direction);
 }
 
 // @param {string} side - side of slider before loop ('start' or 'end')
@@ -693,6 +701,7 @@ function t_zoom_resizeHandler() {
 
     $sliderTrack.css('transform', 'translateX(' + -activeSlidePosition + 'px)');
 }
+
 
 function t_zoom_throttle(fn, interval) {
     var lastTime;
