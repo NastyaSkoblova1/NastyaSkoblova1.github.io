@@ -1,4 +1,309 @@
-function t_lazyload_update(){"undefined"!=typeof lazyload_cover&&lazyload_cover.update(),"undefined"!=typeof lazyload_img&&lazyload_img.update(),"undefined"!=typeof lazyload_bgimg&&lazyload_bgimg.update()}!function(t,e){"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?module.exports=e():t.LazyLoad=e()}(this,function(){function t(t,e,o){var l;d?t.addEventListener(e,o):u&&(t.attachEvent("on"+e,(l=t,function(){o.call(l,window.event)})),t=null)}function e(t,e,o){d?t.removeEventListener(e,o):u&&t.detachEvent("on"+e,o)}function o(t,e,o){var l,n,i;function s(){return window.innerWidth||l.documentElement.clientWidth||document.body.clientWidth}function a(t){return t.getBoundingClientRect().top+n-l.documentElement.clientTop}function r(t){return t.getBoundingClientRect().left+i-l.documentElement.clientLeft}return l=t.ownerDocument,n=window.pageYOffset||l.body.scrollTop,i=window.pageXOffset||l.body.scrollLeft,"fixed"===t.getAttribute("data-content-cover-parallax")&&t.closest&&t.closest(".t-cover__container")&&(t=t.closest(".t-cover__container")),!((e===window?(window.innerHeight||l.documentElement.clientHeight||document.body.clientHeight)+n:a(e)+e.offsetHeight)<=a(t)-o||(e===window?n:a(e))>=a(t)+1200+t.offsetHeight||(e===window?s()+window.pageXOffset:r(e)+s())<=r(t)-o||(e===window?i:r(e))>=r(t)+o+t.offsetWidth)}function l(){return(new Date).getTime()}function n(t,e){_?t.classList.add(e):t.className+=(t.className?" ":"")+e}function i(t,e){_?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")}function s(t,e,o,l){var n=e.getAttribute("data-"+l),i=e.getAttribute("data-"+o),s=t.tagName;return"IMG"===s?(i&&t.setAttribute("srcset",i),void(n&&t.setAttribute("src",n))):"IFRAME"===s?void(n&&t.setAttribute("src",n)):void(t.style.backgroundImage="url("+n+")")}function a(t,e){return function(){return t.apply(e,arguments)}}function r(e){h||(c={elements_selector:"img",container:window,threshold:300,throttle:50,data_src:"original",data_srcset:"original-set",class_loading:"loading",class_loaded:"loaded",skip_invisible:!0,show_while_loading:!0,callback_load:null,callback_error:null,callback_set:null,callback_processed:null,placeholder:"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"},d=!!window.addEventListener,u=!!window.attachEvent,_=!!document.body.classList,h=!0),this._settings=function(t,e){var o,l={};for(o in t)t.hasOwnProperty(o)&&(l[o]=t[o]);for(o in e)e.hasOwnProperty(o)&&(l[o]=e[o]);return l}(c,e),this._queryOriginNode=this._settings.container===window?document:this._settings.container,this._previousLoopTime=0,this._loopTimeout=null,this._handleScrollFn=a(this.handleScroll,this),t(window,"resize",this._handleScrollFn),this.update()}var c,d,u,_,h=!1;return r.prototype._showOnLoad=function(o){var l,a=this._settings;o.getAttribute("src")||o.setAttribute("src",a.placeholder),t(l=document.createElement("img"),"load",function t(){null!==a&&(a.callback_load&&a.callback_load(o),s(o,o,a.data_srcset,a.data_src),a.callback_set&&a.callback_set(o),i(o,a.class_loading),n(o,a.class_loaded),e(l,"load",t))}),t(l,"error",function(){i(o,a.class_loading),a.callback_error&&a.callback_error(o)}),n(o,a.class_loading),s(l,o,a.data_srcset,a.data_src)},r.prototype._showOnAppear=function(o){function l(){null!==a&&(a.callback_load&&a.callback_load(o),i(o,a.class_loading),n(o,a.class_loaded),e(o,"load",l))}var a=this._settings;("IMG"===o.tagName||"IFRAME"===o.tagName)&&(t(o,"load",l),t(o,"error",function(){e(o,"load",l),i(o,a.class_loading),a.callback_error&&a.callback_error(o)}),n(o,a.class_loading)),s(o,o,a.data_srcset,a.data_src),a.callback_set&&a.callback_set(o)},r.prototype._loopThroughElements=function(){var t,e,l=this._settings,n=this._elements,i=n?n.length:0,s=[];for(t=0;i>t;t++)e=n[t],l.skip_invisible&&e.isSkipByPosition||o(e,l.container,l.threshold)&&(l.show_while_loading?this._showOnAppear(e):this._showOnLoad(e),s.push(t),e.wasProcessed=!0);for(;s.length>0;)n.splice(s.pop(),1),l.callback_processed&&l.callback_processed(n.length);0===i&&this._stopScrollHandler()},r.prototype._purgeElements=function(){var t,e=this._elements,o=e.length,l=[];for(t=0;o>t;t++)e[t].wasProcessed&&l.push(t);for(;l.length>0;)e.splice(l.pop(),1)},r.prototype._startScrollHandler=function(){this._isHandlingScroll||(this._isHandlingScroll=!0,t(this._settings.container,"scroll",this._handleScrollFn))},r.prototype._stopScrollHandler=function(){this._isHandlingScroll&&(this._isHandlingScroll=!1,e(this._settings.container,"scroll",this._handleScrollFn))},r.prototype.handleScroll=function(){var t,e,o;this._settings&&(e=l(),0!==(o=this._settings.throttle)?0>=(t=o-(e-this._previousLoopTime))||t>o?(this._loopTimeout&&(clearTimeout(this._loopTimeout),this._loopTimeout=null),this._previousLoopTime=e,this._loopThroughElements()):this._loopTimeout||(this._loopTimeout=setTimeout(a(function(){this._previousLoopTime=l(),this._loopTimeout=null,this._loopThroughElements()},this),t)):this._loopThroughElements())},r.prototype.update=function(){this._elements=function(t){var e;try{e=Array.prototype.slice.call(t)}catch(i){var o,l=[],n=t.length;for(o=0;o<n;o++)l.push(t[o]);e=l}return e.forEach(function(t){t.isSkipByPosition=null===t.offsetParent&&0===$(t).parents(".t396__carrier-wrapper").length&&"fixed"!==t.getAttribute("data-content-cover-parallax")}),e}(this._queryOriginNode.querySelectorAll(this._settings.elements_selector)),this._purgeElements(),this._loopThroughElements(),this._startScrollHandler()},r.prototype.destroy=function(){e(window,"resize",this._handleScrollFn),this._loopTimeout&&(clearTimeout(this._loopTimeout),this._loopTimeout=null),this._stopScrollHandler(),this._elements=null,this._queryOriginNode=null,this._settings=null},r}),window.lazy="y",$(document).ready(function(){setTimeout(function(){lazyload_cover=new LazyLoad({elements_selector:".t-cover__carrier",show_while_loading:!1,data_src:"content-cover-bg",placeholder:"",threshold:700})},100),setTimeout(function(){lazyload_img=new LazyLoad({elements_selector:".t-img",threshold:800}),lazyload_bgimg=new LazyLoad({elements_selector:".t-bgimg",show_while_loading:!1,placeholder:"",threshold:800}),lazyload_iframe=new LazyLoad({elements_selector:".t-iframe"}),$(document).bind("slide.bs.carousel",function(t){setTimeout(function(){lazyload_cover.update(),lazyload_img.update(),lazyload_bgimg.update()},500)}),window.isMobile&&($("body").append("<div class='t-mbfix'></div>"),setTimeout(function(){$(".t-mbfix").addClass("t-mbfix_hide")},50),setTimeout(function(){$(".t-mbfix").remove()},1e3))},500)});
+! function (a, b) {
+	"function" == typeof define && define.amd ? define([], b) : "object" == typeof exports ? module.exports = b() : a.LazyLoad = b()
+}(this, function () {
+	function _init() {
+		_isInitialized || (_defaultSettings = {
+			elements_selector: "img",
+			container: window,
+			threshold: 300,
+			throttle: 50,
+			data_src: "original",
+			data_srcset: "original-set",
+			class_loading: "loading",
+			class_loaded: "loaded",
+			skip_invisible: !0,
+			show_while_loading: !0,
+			callback_load: null,
+			callback_error: null,
+			callback_set: null,
+			callback_processed: null,
+			placeholder: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+		}, _supportsAddEventListener = !!window.addEventListener, _supportsAttachEvent = !!window.attachEvent, _supportsClassList = !!document.body.classList, _isInitialized = !0)
+	}
+
+	function _addEventListener(element, eventName, callback) {
+		// Use addEventListener if available
+		if (_supportsAddEventListener) {
+			element.addEventListener(eventName, callback);
+			return;
+		}
+		// Otherwise use attachEvent, set this and event
+		if (_supportsAttachEvent) {
+			element.attachEvent('on' + eventName, (function (el) {
+				return function () {
+					callback.call(el, window.event);
+				};
+			}(element)));
+			// Break closure and primary circular reference to element
+			element = null;
+		}
+	}
+
+	function _removeEventListener(element, eventName, callback) {
+		// Use removeEventListener if available
+		if (_supportsAddEventListener) {
+			element.removeEventListener(eventName, callback);
+			return;
+		}
+		// Otherwise use detachEvent
+		if (_supportsAttachEvent) {
+			element.detachEvent('on' + eventName, callback);
+		}
+	}
+
+	function _isInsideViewport(element, container, threshold) {
+
+		var ownerDocument, documentTop, documentLeft;
+
+		function _getDocumentWidth() {
+			return window.innerWidth || (ownerDocument.documentElement.clientWidth || document.body.clientWidth);
+		}
+
+		function _getDocumentHeight() {
+			return window.innerHeight || (ownerDocument.documentElement.clientHeight || document.body.clientHeight);
+		}
+
+		function _getTopOffset(element) {
+			return element.getBoundingClientRect().top + documentTop - ownerDocument.documentElement.clientTop;
+		}
+
+		function _getLeftOffset(element) {
+			return element.getBoundingClientRect().left + documentLeft - ownerDocument.documentElement.clientLeft;
+		}
+
+		function _isBelowViewport() {
+			var fold;
+			if (container === window) {
+				fold = _getDocumentHeight() + documentTop;
+			} else {
+				fold = _getTopOffset(container) + container.offsetHeight;
+			}
+			return fold <= _getTopOffset(element) - threshold;
+		}
+
+		function _isAtRightOfViewport() {
+			var fold;
+			if (container === window) {
+				fold = _getDocumentWidth() + window.pageXOffset;
+			} else {
+				fold = _getLeftOffset(container) + _getDocumentWidth();
+			}
+			return fold <= _getLeftOffset(element) - threshold;
+		}
+
+		function _isAboveViewport() {
+			var fold;
+			var localThreshold = 1200;
+			if (container === window) {
+				fold = documentTop;
+			} else {
+				fold = _getTopOffset(container);
+			}
+			return fold >= _getTopOffset(element) + localThreshold + element.offsetHeight;
+		}
+
+		function _isAtLeftOfViewport() {
+			var fold;
+			if (container === window) {
+				fold = documentLeft;
+			} else {
+				fold = _getLeftOffset(container);
+			}
+			return fold >= _getLeftOffset(element) + threshold + element.offsetWidth;
+		}
+
+		ownerDocument = element.ownerDocument;
+		documentTop = window.pageYOffset || ownerDocument.body.scrollTop;
+		documentLeft = window.pageXOffset || ownerDocument.body.scrollLeft;
+
+		if (element.getAttribute('data-content-cover-parallax') === 'fixed' && element.closest && element.closest('.t-cover__container')) {
+			element = element.closest('.t-cover__container');
+		}
+		return !_isBelowViewport() && !_isAboveViewport() && !_isAtRightOfViewport() && !_isAtLeftOfViewport();
+	}
+
+	function _now() {
+		var d = new Date();
+		return d.getTime();
+	}
+
+	function _merge_objects(obj1, obj2) {
+		var obj3 = {},
+			propertyName;
+		for (propertyName in obj1) {
+			if (obj1.hasOwnProperty(propertyName)) {
+				obj3[propertyName] = obj1[propertyName];
+			}
+		}
+		for (propertyName in obj2) {
+			if (obj2.hasOwnProperty(propertyName)) {
+				obj3[propertyName] = obj2[propertyName];
+			}
+		}
+		return obj3;
+	}
+
+	function _convertToArray(nodeSet) {
+		var elsArray;
+		try {
+			elsArray = Array.prototype.slice.call(nodeSet);
+		} catch (e) {
+			var array = [],
+				i, l = nodeSet.length;
+
+			for (i = 0; i < l; i++) {
+				array.push(nodeSet[i]);
+			}
+			elsArray = array;
+		}
+		elsArray.forEach(function(element) {
+				element.isSkipByPosition = element.offsetParent === null && $(element).parents('.t396__carrier-wrapper').length === 0 && element.getAttribute('data-content-cover-parallax') !== 'fixed';
+		});
+		return elsArray;
+	}
+
+	function _addClass(element, className) {
+		/* HTML 5 compliant browsers. */
+		if (_supportsClassList) {
+			element.classList.add(className);
+			return;
+		}
+		/* Legacy browsers (IE<10) support. */
+		element.className += (element.className ? ' ' : '') + className;
+	}
+
+	function _removeClass(element, className) {
+		/* HTML 5 compliant browsers. */
+		if (_supportsClassList) {
+			element.classList.remove(className);
+			return;
+		}
+		/* Legacy browsers (IE<10) support. */
+		element.className = element.className.replace(new RegExp("(^|\\s+)" + className + "(\\s+|$)"), ' ').replace(/^\s+/, '').replace(/\s+$/, '');
+	}
+
+	function _setSources(target, source, srcsetDataAttribute, srcDataAttribute) {
+		var e = source.getAttribute("data-" + srcDataAttribute),
+			f = source.getAttribute("data-" + srcsetDataAttribute),
+			g = target.tagName;
+		return "IMG" === g ? (f && target.setAttribute("srcset", f), void(e && target.setAttribute("src", e))) : "IFRAME" === g ? void(e && target.setAttribute("src", e)) : void(target.style.backgroundImage = "url(" + e + ")")
+	}
+
+	function _bind(a, b) {
+		return function () {
+			return a.apply(b, arguments)
+		}
+	}
+
+	function LazyLoad(c) {
+		_init(), this._settings = _merge_objects(_defaultSettings, c), this._queryOriginNode = this._settings.container === window ? document : this._settings.container, this._previousLoopTime = 0, this._loopTimeout = null, this._handleScrollFn = _bind(this.handleScroll, this), _addEventListener(window, "resize", this._handleScrollFn), this.update()
+	}
+	var _defaultSettings, _supportsAddEventListener, _supportsAttachEvent, _supportsClassList, _isInitialized = !1;
+	return LazyLoad.prototype._showOnLoad = function (a) {
+		function d() {
+			null !== f && (f.callback_load && f.callback_load(a), _setSources(a, a, f.data_srcset, f.data_src), f.callback_set && f.callback_set(a), _removeClass(a, f.class_loading), _addClass(a, f.class_loaded), _removeEventListener(e, "load", d))
+		}
+		var e, f = this._settings;
+		a.getAttribute("src") || a.setAttribute("src", f.placeholder), e = document.createElement("img"), _addEventListener(e, "load", d), _addEventListener(e, "error", function () {
+			_removeClass(a, f.class_loading), f.callback_error && f.callback_error(a)
+		}), _addClass(a, f.class_loading), _setSources(e, a, f.data_srcset, f.data_src)
+	}, LazyLoad.prototype._showOnAppear = function (a) {
+		function d() {
+			null !== e && (e.callback_load && e.callback_load(a), _removeClass(a, e.class_loading), _addClass(a, e.class_loaded), _removeEventListener(a, "load", d))
+		}
+		var e = this._settings;
+		("IMG" === a.tagName || "IFRAME" === a.tagName) && (_addEventListener(a, "load", d), _addEventListener(a, "error", function () {
+			_removeEventListener(a, "load", d), _removeClass(a, e.class_loading), e.callback_error && e.callback_error(a)
+		}), _addClass(a, e.class_loading)), _setSources(a, a, e.data_srcset, e.data_src), e.callback_set && e.callback_set(a)
+	}, LazyLoad.prototype._loopThroughElements = function () {
+		var i, element, settings = this._settings,
+			elements = this._elements,
+			elementsLength = elements ? elements.length : 0,
+			processedIndexes = [];
+		for (i = 0; elementsLength > i; i++) element = elements[i], settings.skip_invisible && element.isSkipByPosition || _isInsideViewport(element, settings.container, settings.threshold) && (settings.show_while_loading ? this._showOnAppear(element) : this._showOnLoad(element), processedIndexes.push(i), element.wasProcessed = !0);
+		for (; processedIndexes.length > 0;) elements.splice(processedIndexes.pop(), 1), settings.callback_processed && settings.callback_processed(elements.length);
+		0 === elementsLength && this._stopScrollHandler()
+	}, LazyLoad.prototype._purgeElements = function () {
+		var a, b, c = this._elements,
+			d = c.length,
+			e = [];
+		for (a = 0; d > a; a++) b = c[a], b.wasProcessed && e.push(a);
+		for (; e.length > 0;) c.splice(e.pop(), 1)
+	}, LazyLoad.prototype._startScrollHandler = function () {
+		this._isHandlingScroll || (this._isHandlingScroll = !0, _addEventListener(this._settings.container, "scroll", this._handleScrollFn))
+	}, LazyLoad.prototype._stopScrollHandler = function () {
+		this._isHandlingScroll && (this._isHandlingScroll = !1, _removeEventListener(this._settings.container, "scroll", this._handleScrollFn))
+	}, LazyLoad.prototype.handleScroll = function () {
+		var a, b, c;
+		this._settings && (b = _now(), c = this._settings.throttle, 0 !== c ? (a = c - (b - this._previousLoopTime), 0 >= a || a > c ? (this._loopTimeout && (clearTimeout(this._loopTimeout), this._loopTimeout = null), this._previousLoopTime = b, this._loopThroughElements()) : this._loopTimeout || (this._loopTimeout = setTimeout(_bind(function () {
+			this._previousLoopTime = _now(), this._loopTimeout = null, this._loopThroughElements()
+		}, this), a))) : this._loopThroughElements())
+	}, LazyLoad.prototype.update = function () {
+		this._elements = _convertToArray(this._queryOriginNode.querySelectorAll(this._settings.elements_selector)), this._purgeElements(), this._loopThroughElements(), this._startScrollHandler()
+	}, LazyLoad.prototype.destroy = function () {
+		_removeEventListener(window, "resize", this._handleScrollFn), this._loopTimeout && (clearTimeout(this._loopTimeout), this._loopTimeout = null), this._stopScrollHandler(), this._elements = null, this._queryOriginNode = null, this._settings = null
+	}, LazyLoad
+});
+window.lazy = 'y';
+$(document).ready(function () {
+	setTimeout(function () {
+		lazyload_cover = new LazyLoad({
+			elements_selector: ".t-cover__carrier",
+			show_while_loading: false,
+			data_src: "content-cover-bg",
+			placeholder: '',
+			threshold: 700
+		});
+	}, 100);
+
+	setTimeout(function () {
+		lazyload_img = new LazyLoad({
+			elements_selector: ".t-img",
+			threshold: 800,
+		});
+		lazyload_bgimg = new LazyLoad({
+			elements_selector: ".t-bgimg",
+			show_while_loading: false,
+			placeholder: '',
+			threshold: 800,
+		});
+		lazyload_iframe = new LazyLoad({
+			elements_selector: ".t-iframe"
+		});
+
+		$(document).bind('slide.bs.carousel', function (e) {
+			setTimeout(function () {
+				lazyload_cover.update();
+				lazyload_img.update();
+				lazyload_bgimg.update();
+			}, 500);
+		});
+
+		if (window.isMobile) {
+			$('body').append("<div class='t-mbfix'></div>");
+			setTimeout(function () {
+				$('.t-mbfix').addClass('t-mbfix_hide');
+			}, 50);
+			setTimeout(function () {
+				$('.t-mbfix').remove();
+			}, 1000);
+		}
+
+	}, 500);
+});
+
+function t_lazyload_update() {
+	if (typeof lazyload_cover !== "undefined") {
+		lazyload_cover.update();
+	}
+	if (typeof lazyload_img !== "undefined") {
+		lazyload_img.update();
+	}
+	if (typeof lazyload_bgimg !== "undefined") {
+		lazyload_bgimg.update();
+	}
+}
+
 
 var lzld='03022001';
 (function(root, factory) {
@@ -193,7 +498,8 @@ var lzld='03022001';
             elsArray = array;
         }
         elsArray.forEach(function(element) {
-            element.isSkipByPosition = element.offsetParent === null && $(element).parents('.t396__carrier-wrapper').length === 0 && element.getAttribute('data-content-cover-parallax') !== 'fixed' && $(element).parents('.t-rec[data-screen-max]').length === 0 && $(element).parents('.t-rec[data-screen-min]').length === 0;
+            element.isSkipByPosition = element.offsetParent === null && $(element).parents('.t396__carrier-wrapper').length === 0 && element.getAttribute('data-content-cover-parallax') !== 'fixed';
+            element.isNotUnderScreenRange = $(element).parents('.t-rec[data-screen-max]').length === 0 && $(element).parents('.t-rec[data-screen-min]').length === 0;
         });
         return elsArray;
     }
@@ -492,7 +798,7 @@ var lzld='03022001';
         for (i = 0; i < elementsLength; i++) {
             element = elements[i];
             /* If must skip_invisible and element is invisible, skip it */
-            if (settings.skip_invisible && element.isSkipByPosition) {
+            if (settings.skip_invisible && element.isSkipByPosition && element.isNotUnderScreenRange) {
                 continue;
             }
 
