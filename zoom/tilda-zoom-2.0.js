@@ -94,7 +94,7 @@ function t_zoomHandler() {
         }
     }
 
-    var $sliderTrack = $('.t-carousel__zoomer__track');
+    var sliderTrack = $('.t-carousel__zoomer__track');
 
     images.each(function (i, image) {
         var imgtitle = '';
@@ -122,7 +122,7 @@ function t_zoomHandler() {
                 '</div>';
         }
 
-        $sliderTrack.append(
+        sliderTrack.append(
             '\
             <div class="t-carousel__zoomer__item">\
             <div class="t-carousel__zoomer__wrapper">\
@@ -153,9 +153,9 @@ function t_zoomHandler() {
         image_active.css('bottom', height);
     });
 
-    var target_url = $(this).attr('data-img-zoom-url');
-    var target_img = $('.t-carousel__zoomer__img[src="' + target_url + '"]');
-    var $targetItem = target_img.closest('.t-carousel__zoomer__item');
+    var target_url = $(this).attr('data-img-zoom-url'),
+        target_img = $('.t-carousel__zoomer__img[src="' + target_url + '"]'),
+        targetItem = target_img.closest('.t-carousel__zoomer__item');
 
     t_zoom_loopSlider();
 
@@ -165,53 +165,65 @@ function t_zoomHandler() {
         $(item).attr('data-zoomer-slide-number', index);
     });
 
-    var targetPosition = $targetItem.position().left;
+    var targetPosition = targetItem.position().left;
 
-    $targetItem.addClass('active');
+    targetItem.addClass('active');
 
-    $sliderTrack.css({
+    sliderTrack.css({
         transition: 'none',
         transform: 'translateX(' + -targetPosition + 'px)',
     });
 
     setTimeout(function () {
-        $sliderTrack.css('transition', '');
+        sliderTrack.css('transition', '');
     });
 
-    var t_zoom_trottledShowSlide = t_zoom_throttle(t_zoom_showSlide, 270);
+    var modal = $('.t-zoomer__wrapper');
 
     $('.t-carousel__zoomer__control_right').click(function () {
-        t_zoom_unscale();
+        if (sliderTrack.attr('data-on-transition') !== 'y' &&
+            modal.attr('data-on-drag') !== 'y') {
+                t_zoom_unscale();
 
-        t_zoom_trottledShowSlide('next');
+                t_zoom_showSlide('next');
 
-        t_zoom_checkForScale();
+                t_zoom_checkForScale();
+        }
     });
 
     $('.t-carousel__zoomer__control_left').click(function () {
-        t_zoom_unscale();
+        if (sliderTrack.attr('data-on-transition') !== 'y' &&
+            modal.attr('data-on-drag') !== 'y') {
+                t_zoom_unscale();
 
-        t_zoom_trottledShowSlide('prev');
+                t_zoom_showSlide('prev');
 
-        t_zoom_checkForScale();
+                t_zoom_checkForScale();
+        }
     });
 
     $(document).unbind('keydown');
     $(document).keydown(function (e) {
         if (e.keyCode == 37) {
-            t_zoom_unscale();
+            if (sliderTrack.attr('data-on-transition') !== 'y' &&
+            modal.attr('data-on-drag') !== 'y') {
+                t_zoom_unscale();
 
-            t_zoom_trottledShowSlide('prev');
+                t_zoom_showSlide('prev');
 
-            t_zoom_checkForScale();
+                t_zoom_checkForScale();
+            }
         }
 
         if (e.keyCode == 39) {
-            t_zoom_unscale();
+            if (sliderTrack.attr('data-on-transition') !== 'y' &&
+            modal.attr('data-on-drag') !== 'y') {
+                t_zoom_unscale();
 
-            t_zoom_trottledShowSlide('next');
+                t_zoom_showSlide('next');
 
-            t_zoom_checkForScale();
+                t_zoom_checkForScale();
+            }
         }
 
         if (e.keyCode == 27) {
@@ -239,7 +251,9 @@ function t_zoomHandler() {
         if ($(this).hasClass('scale-active')) {
             t_zoom_unscale();
         } else {
-            t_zoom_close();
+            if (!window.isMobile) {
+                t_zoom_close();
+            }
         }
     });
 
@@ -257,10 +271,11 @@ function t_zoomHandler() {
 }
 
 function t_zoom_initSwipe() {
-    var $slideItems = $('.t-carousel__zoomer__item'),
-        $sliderTrack = $('.t-carousel__zoomer__track');
+    var slideItems = $('.t-carousel__zoomer__item'),
+        sliderTrack = $('.t-carousel__zoomer__track'),
+        modal = $('.t-zoomer__wrapper');
 
-    if ($slideItems.length > 1) {
+    if (slideItems.length > 1) {
         var hammer = new Hammer($('.t-zoomer__wrapper')[0], {
             domEvents: true,
             inputClass: Hammer.TouchInput,
@@ -274,93 +289,113 @@ function t_zoom_initSwipe() {
             ],
         });
 
-        var sliderTrackPosition = $sliderTrack.position().left;
+        var sliderTrackPosition;
 
         hammer.on('panstart', function () {
-            if ($sliderTrack.attr('data-on-transition') === 'y') {
-                sliderTrackPosition = undefined;
+
+            if (sliderTrack.attr('data-on-transition') !== 'y') {
+
+                sliderTrackPosition = sliderTrack.position().left;
+                sliderTrack.css('transition', 'none');
+
             } else {
-                sliderTrackPosition = $sliderTrack.position().left;
-                $sliderTrack.css('transition', 'none');
+
+                sliderTrackPosition = null;
+
             }
         });
 
         hammer.on('panmove', function (event) {
-            var deltaX = Math.abs(event.deltaX),
-                deltaY = Math.abs(event.deltaY);
 
-            if (sliderTrackPosition && deltaX > deltaY) {
-                var newTrackPosition = sliderTrackPosition + event.deltaX;
+            if (sliderTrack.attr('data-on-transition') !== 'y' &&
+                modal.attr('data-on-drag') !== 'y' &&
+                window.visualViewport.scale === 1) {
 
-                $sliderTrack.css(
-                    'transform',
-                    'translateX(' + newTrackPosition + 'px)'
-                );
+                var deltaX = Math.abs(event.deltaX);
+
+                if (deltaX > 40) {
+                    sliderTrack.attr('data-on-drag', 'y');
+                }
+    
+                if (sliderTrackPosition) {
+                    var newTrackPosition = sliderTrackPosition + event.deltaX;
+
+                    sliderTrack.css(
+                        'transform',
+                        'translateX(' + newTrackPosition + 'px)'
+                    );
+                }
             }
         });
 
-        var t_zoom_trottledShowSlide = t_zoom_throttle(t_zoom_showSlide, 270);
-
         if (!window.tzoomopenonce) {
-            if (sliderTrackPosition) {
                 hammer.on('panend', function(event) {
-                    var $sliderTrack = $('.t-carousel__zoomer__track');
+                    var sliderTrack = $('.t-carousel__zoomer__track');
 
-                    $sliderTrack.css('transition', '');
-                
-                    var deltaX = Math.abs(event.deltaX),
-                        deltaY = Math.abs(event.deltaY);
-                
-                    if (deltaX > deltaY) {
-                
-                        if (event.velocityX < -0.4 || event.deltaX < -40) {
+                    sliderTrack.attr('data-on-drag', '');
+                    
+                    if (sliderTrack.attr('data-on-transition') !== 'y' &&
+                        modal.attr('data-on-drag') !== 'y' &&
+                        window.visualViewport.scale === 1) {
+
+                        sliderTrack.css('transition', '');
+
+                        var velocity = Math.abs(event.velocityX),
+                            sliderTrackOffset = sliderTrack.position().left,
+                            slideItem = $('.t-carousel__zoomer__item'),
+                            slideWidth = slideItem.width(),
+                            targetSlideOffset = sliderTrack.find('.t-carousel__zoomer__item.active').position().left,
+                            distance = slideWidth - Math.abs(sliderTrackOffset + targetSlideOffset),
+                            transitionTime = (distance / velocity) / 1000;
+
+                        transitionTime = transitionTime > 0.6 ? 0.6 : transitionTime < 0.2 ? 0.2 : transitionTime;
+
+                        sliderTrack.css('transition-duration', transitionTime + 's');
+                    
+                        if (event.velocityX < -0.5 || event.deltaX < -80) {
                             t_zoom_unscale();
                     
-                            t_zoom_trottledShowSlide('next');
+                            t_zoom_showSlide('next');
                     
                             t_zoom_checkForScale();
-                        } else if (event.velocityX > 0.4 || event.deltaX > 40) {
+                        } else if (event.velocityX > 0.5 || event.deltaX > 80) {
                             t_zoom_unscale();
                     
-                            t_zoom_trottledShowSlide('prev');
+                            t_zoom_showSlide('prev');
                     
                             t_zoom_checkForScale();
                         } else {
                             t_zoom_showSlide();
                         }
-                
-                    } else {
-                        t_zoom_showSlide();
                     }
                 });
-            }
         }
     }
 }
 
 // @param {string} [direction] - slider transition direction (return to current slide, if direction is not defined)
 function t_zoom_showSlide(direction) {
-    var $sliderTrack = $('.t-carousel__zoomer__track'),
-        $slideItems = $('.t-carousel__zoomer__item', $sliderTrack),
-        $targetItem = $('.t-carousel__zoomer__item.active', $sliderTrack),
-        currentSlideIndex = $targetItem.index();
+    var sliderTrack = $('.t-carousel__zoomer__track'),
+        slideItems = sliderTrack.find('.t-carousel__zoomer__item'),
+        targetItem = sliderTrack.find('.t-carousel__zoomer__item.active'),
+        currentSlideIndex = targetItem.index();
 
     if (direction === 'next') {
-        currentSlideIndex = (currentSlideIndex + 1) % $slideItems.length;
+        currentSlideIndex = (currentSlideIndex + 1) % slideItems.length;
+        sliderTrack.attr('data-on-transition', 'y');
     }
 
     if (direction === 'prev') {
-        currentSlideIndex =
-            ($slideItems.length + (currentSlideIndex - 1)) % $slideItems.length;
+        currentSlideIndex = (slideItems.length + (currentSlideIndex - 1)) % slideItems.length;
+        sliderTrack.attr('data-on-transition', 'y');
     }
 
-    var trackPosition = $slideItems.eq(currentSlideIndex).position().left;
+    var trackPosition = slideItems.eq(currentSlideIndex).position().left;
 
-    $slideItems.removeClass('active').eq(currentSlideIndex).addClass('active');
+    slideItems.removeClass('active').eq(currentSlideIndex).addClass('active');
 
-    $sliderTrack
-        .css('transform', 'translateX(' + -trackPosition + 'px)')
-        .attr('data-on-transition', 'y');
+    sliderTrack.css('transform', 'translateX(' + -trackPosition + 'px)');
+        
 }
 
 // @param {string} side - side of slider before loop ('start' or 'end')
@@ -397,19 +432,19 @@ function t_zoom_transitForLoop(side) {
 }
 
 function t_zoom_loopSlider() {
-    var $sliderTrack = $('.t-carousel__zoomer__track'),
-        $sliderItems = $('.t-carousel__zoomer__item', $sliderTrack),
-        $firstSlideCopy = $sliderItems.eq(0).clone(),
-        $lastSlideCopy = $sliderItems.eq($sliderItems.length - 1).clone();
+    var sliderTrack = $('.t-carousel__zoomer__track'),
+        sliderItems = sliderTrack.find('.t-carousel__zoomer__item'),
+        firstSlideCopy = sliderItems.eq(0).clone(),
+        lastSlideCopy = sliderItems.eq(sliderItems.length - 1).clone();
 
-    $sliderTrack.prepend($lastSlideCopy).append($firstSlideCopy);
+    sliderTrack.prepend(lastSlideCopy).append(firstSlideCopy);
 
-    var slidesCount = $('.t-carousel__zoomer__item', $sliderTrack).length;
+    var slidesCount = sliderTrack.find('.t-carousel__zoomer__item').length;
 
-    $sliderTrack.on(
+    sliderTrack.on(
         'transitionend webkitTransitionEnd oTransitionEnd',
         function () {
-            var currentSlideIndex = $sliderTrack.find('.active').index();
+            var currentSlideIndex = sliderTrack.find('.active').index();
 
             if (currentSlideIndex === 0) {
                 t_zoom_transitForLoop('start');
@@ -419,7 +454,7 @@ function t_zoom_loopSlider() {
                 t_zoom_transitForLoop('end');
             }
 
-            $sliderTrack.attr('data-on-transition', '');
+            sliderTrack.attr('data-on-transition', '');
         }
     );
 }
@@ -430,41 +465,77 @@ function t_zoom_initCloseSwipe() {
         inputClass: Hammer.TouchInput,
         recognizers: [
             [
-                Hammer.Swipe,
+                Hammer.Pan,
                 {
                     direction: Hammer.DIRECTION_VERTICAL,
                 },
             ],
         ],
     });
+    
+    var modal = $('.t-zoomer__wrapper'),
+        sliderTrack = $('.t-carousel__zoomer__track'),
+        modalPosition;
+  
+    hammer.on('panstart', function () {
+        modalPosition = modal.position().top;
+        modal.css('transition', 'none');
+    });
 
-    hammer.on('swipeup', t_zoom_closeSwipeHandler);
-    hammer.on('swipedown', t_zoom_closeSwipeHandler);
+    hammer.on('panmove', function (event) {
+        var deltaY = Math.abs(event.deltaY);
+  
+        if (((event.deltaY < 0 && sliderTrack.attr('data-on-drag') !== 'y') ||
+              modal.attr('data-on-drag') === 'y') &&
+            ((event.angle > -120 && event.angle < -60) || (event.angle < 120 && event.angle > 60)) &&
+              window.visualViewport.scale === 1) {
+            
+            if (deltaY > 40) {
+                
+                modal.attr('data-on-drag', 'y');
+
+            }
+            
+            var newTrackPosition = modalPosition + event.deltaY;
+  
+            modal.css(
+                'transform',
+                'translateY(' + newTrackPosition + 'px)'
+            );
+        }
+    });
+  
+    hammer.on('panend', t_zoom_closeSwipeHandler);
 }
 
 function t_zoom_closeSwipeHandler(event) {
-    var $modal = $('.t-zoomer__wrapper'),
-        closeAnimationTime = 250,
-        deltaX = Math.abs(event.deltaX),
-        deltaY = Math.abs(event.deltaY);
-
-    if (deltaY > deltaX) {
-        $modal.css('transition', 'transform ' + closeAnimationTime + 'ms ease-out');
-
-        if (event.direction === 16) {
-            $modal.css('transform', 'translateY(100vh)');
-        }
-    
-        if (event.direction === 8) {
-            $modal.css('transform', 'translateY(-100vh)');
-        }
-    
-        setTimeout(function () {
-            t_zoom_close();
-            $modal.css('transform', '');
-        }, closeAnimationTime);
+    var modal = $('.t-zoomer__wrapper'),
+        closeAnimationTime = 300;
+  
+    modal.css('transition', 'transform ' + closeAnimationTime + 'ms ease-out');
+  
+    if (event.deltaY > -40) {
+        modal.css('transform', '');
     }
-}
+  
+    if (modal.attr('data-on-drag') === 'y' &&
+        window.visualViewport.scale === 1) {
+  
+        if (event.deltaY < -200 || event.velocityY < -0.3) {
+
+            modal.css('transform', 'translateY(-100vh)');
+  
+            setTimeout(function () {
+                t_zoom_close();
+                modal.css('transform', '');
+            }, closeAnimationTime);
+        } else {
+            modal.css('transform', '');
+        }
+    }
+  
+    modal.attr('data-on-drag', '');
+  }
 
 function t_zoom_checkForScale() {
     var eventAdded = false;
@@ -521,9 +592,9 @@ function t_zoom_scale_init() {
             );
             var zoomedWrapper = $('.t-zoomer__wrapper');
             var zoomerInner = $('.t-carousel__zoomer__inner');
-            var $zoomerTrack = $('.t-carousel__zoomer__track');
+            var zoomerTrack = $('.t-carousel__zoomer__track');
 
-            $zoomerTrack.css({
+            zoomerTrack.css({
                 transition: 'none',
                 transform: 'none',
             });
@@ -617,18 +688,18 @@ function t_zoom_unscale() {
         '.t-zoomer__wrapper.scale-active, .t-carousel__zoomer__inner'
     ).removeClass('scale-active');
 
-    var $zoomedItem = $('.t-carousel__zoomer__item.active'),
-        $zoomedImage = $('.t-carousel__zoomer__img', $zoomedItem),
-        $zoomerTrack = $('.t-carousel__zoomer__track');
+    var zoomedItem = $('.t-carousel__zoomer__item.active'),
+        zoomedImage = zoomedItem.find('.t-carousel__zoomer__img'),
+        zoomerTrack = $('.t-carousel__zoomer__track');
 
-    $zoomedImage.off('mousemove touchmove').css('left', '').css('top', '');
+    zoomedImage.off('mousemove touchmove').css('left', '').css('top', '');
 
-    var trackPosition = $zoomedItem.position().left;
+    var trackPosition = zoomedItem.position().left;
 
-    $zoomerTrack.css('transform', 'translateX(' + -trackPosition + 'px)');
+    zoomerTrack.css('transform', 'translateX(' + -trackPosition + 'px)');
 
     setTimeout(function () {
-        $zoomerTrack.css('transition', '');
+        zoomerTrack.css('transition', '');
     });
 }
 
@@ -683,24 +754,8 @@ function t_zoom_initResizeListener() {
 }
 
 function t_zoom_resizeHandler() {
-    var $sliderTrack = $('.t-carousel__zoomer__track'),
-        activeSlidePosition = $(
-            '.t-carousel__zoomer__item.active',
-            $sliderTrack
-        ).position().left;
+    var sliderTrack = $('.t-carousel__zoomer__track'),
+        activeSlidePosition = sliderTrack.find('.t-carousel__zoomer__item.active').position().left;
 
-    $sliderTrack.css('transform', 'translateX(' + -activeSlidePosition + 'px)');
-}
-
-function t_zoom_throttle(fn, interval) {
-    var lastTime;
-
-    return function throttled() {
-        var timeSinceLastExecution = Date.now() - lastTime;
-
-        if (!lastTime || timeSinceLastExecution >= interval) {
-            fn.apply(this, arguments);
-            lastTime = Date.now();
-        }
-    };
+    sliderTrack.css('transform', 'translateX(' + -activeSlidePosition + 'px)');
 }
