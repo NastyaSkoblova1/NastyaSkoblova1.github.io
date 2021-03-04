@@ -193,7 +193,7 @@ var lzld='03022001';
             elsArray = array;
         }
         elsArray.forEach(function(element) {
-            element.isSkipByPosition = element.offsetParent === null && $(element).parents('.t396__carrier-wrapper').length === 0 && element.getAttribute('data-content-cover-parallax') !== 'fixed';
+            element.isSkipByPosition = element.offsetParent === null && $(element).parents('.t396__carrier-wrapper').length === 0 && element.getAttribute('data-content-cover-parallax') !== 'fixed' && $(element).parents('.t-rec[data-screen-max]').length === 0 && $(element).parents('.t-rec[data-screen-min]').length === 0;
         });
         return elsArray;
     }
@@ -777,11 +777,8 @@ function t_lazyload_getResizeUrl(tagName,comm,str,width,height,x,y,bgsize){
 	// console.log('y: ' + y);
     // console.log('bgsize: ' + bgsize);
 
-    console.log(2);
 	if(str=='undefined' || str==null)return str;
-	if(str.indexOf('.svg')>0 || str.indexOf('.gif')>0 || str.indexOf('.ico')>0 || str.indexOf('static.tildacdn.com') === -1 || str.indexOf('-/empty/') > 0 || str.indexOf('-/resizeb/') > 0 ) {
-        return str;
-    }
+	if(str.indexOf('.svg')>0 || str.indexOf('.gif')>0 || str.indexOf('.ico')>0 || str.indexOf('static.tildacdn.com') === -1 || str.indexOf('-/empty/') > 0 || str.indexOf('-/resizeb/') > 0 )return str;
 	if(str.indexOf('/-/')>-1)return str;
 	if(width==0 && height==0)return str;
 	if(window.lazy_err=='y')return str;
@@ -799,12 +796,10 @@ function t_lazyload_getResizeUrl(tagName,comm,str,width,height,x,y,bgsize){
 	}
 
 	if(comm=='resize'){
-        console.log('Resize y');
 		var arrr = str.split('/');
 		arrr.splice(str.split('/').length - 1, 0, '-/resize/' + width + 'x' + (tagName=='DIV'&&height>0?height:'') + '/' + (window.lazy_webp=='y'?'-/format/webp':''));
 		var newstr = arrr.join('/').replace('/static.tildacdn.com','/thumb.tildacdn.com');
 	}else{
-        console.log('Resize n');
 		if(width>0 && height>0){}else{return str;}
 		if(x=='left' || x=='right'){}else{x='center';}
 		if(y=='top' || y=='bottom'){}else{y='center';}
@@ -926,10 +921,7 @@ function t_lazyload_reloadonError(element, str, startTime){
 
 function t_lazyload_getWebPUrl(str){
 	if(str=='undefined' || str==null)return str;
-    console.log(3);
-	if(str.indexOf('.svg')>0 || str.indexOf('.gif')>0 || str.indexOf('.ico')>0 || str.indexOf('static.tildacdn.com') === -1 || str.indexOf('-/empty/') > 0 || str.indexOf('-/resizeb/') > 0 ){
-        return str;
-    }
+	if(str.indexOf('.svg')>0 || str.indexOf('.gif')>0 || str.indexOf('.ico')>0 || str.indexOf('static.tildacdn.com') === -1 || str.indexOf('-/empty/') > 0 || str.indexOf('-/resizeb/') > 0 )return str;
 	if(str.indexOf('/-/')>-1)return str;
 	if(str.indexOf('lib')>-1)return str;
 	if(!(window.lazy_webp=='y')){return str;}
@@ -945,7 +937,6 @@ function t_lazyload_getWebPUrl(str){
 function t_lazyload_onWindowResize() {
 	//console.log('lz onwinres');
     $('.t-cover__carrier, .t-bgimg, .t-img').each(function() {
-        console.log($(this));
 		window.t_lazyload_updateResize_elem($(this));
     });
 }
@@ -972,9 +963,6 @@ window.t_lazyload_updateResize_elem = function(el){
 		}
 	}
 
-    console.log(1);
-    src=t_lazyload_getResizeUrl(source.tagName,comm,src,width,height,x,y,bgsize);
-    
 	if(typeof str=='undefined' || str.indexOf(prefix)===-1 || str.indexOf('.svg')>0 || str.indexOf('.gif')>0 || str.indexOf('.ico')>0 || str.indexOf('thumb.tildacdn.com') === -1 || str.indexOf('-/empty/') > 0 && str.indexOf('-/resizeb/') > 0){
 		return;
 	}
