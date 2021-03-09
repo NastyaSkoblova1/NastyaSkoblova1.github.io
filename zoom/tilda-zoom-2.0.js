@@ -128,7 +128,9 @@ function t_zoomHandler() {
         );
     });
 
-    var image_descr = $('.t-carousel__zoomer__item');
+    var modal = $('.t-zoomer__wrapper'),
+        image_descr = $('.t-carousel__zoomer__item'),
+        imageBordersWidth = modal.height() - image_descr.height();
 
     image_descr.each(function (i, image) {
         var zoomerComments = $(image).find('.t-zoomer__comments');
@@ -140,7 +142,9 @@ function t_zoomHandler() {
         }
 
         var height = zoomerComments.innerHeight();
-        var image_active = $(image).find('.t-carousel__zoomer__wrapper');
+        var image_active = $(image).find('.t-carousel__zoomer__img');
+
+        image_active.css('max-height', 'calc(100vh - ' + (height + imageBordersWidth) + 'px');
         image_active.css('bottom', height);
     });
 
@@ -156,7 +160,7 @@ function t_zoomHandler() {
     if (slideItem.length > 1) {
         t_zoom_loopSlider();
     }
-
+    
     var targetPosition = targetItem.position().left;
 
     targetItem.addClass('active');
@@ -170,16 +174,16 @@ function t_zoomHandler() {
         sliderTrack.css('transition', '');
     });
 
-    var modal = $('.t-zoomer__wrapper');
-
     $('.t-carousel__zoomer__control_right').click(function () {
         if (sliderTrack.attr('data-on-transition') !== 'y' &&
             modal.attr('data-on-drag') !== 'y') {
                 t_zoom_unscale();
 
-                t_zoom_showSlide('next');
-
-                t_zoom_checkForScale();
+                setTimeout(function() {
+                    t_zoom_showSlide('next');
+    
+                    t_zoom_checkForScale();
+                });
         }
     });
 
@@ -188,9 +192,11 @@ function t_zoomHandler() {
             modal.attr('data-on-drag') !== 'y') {
                 t_zoom_unscale();
 
-                t_zoom_showSlide('prev');
-
-                t_zoom_checkForScale();
+                setTimeout(function() {
+                    t_zoom_showSlide('prev');
+    
+                    t_zoom_checkForScale();
+                });
         }
     });
 
@@ -201,9 +207,11 @@ function t_zoomHandler() {
             modal.attr('data-on-drag') !== 'y') {
                 t_zoom_unscale();
 
-                t_zoom_showSlide('prev');
-
-                t_zoom_checkForScale();
+                setTimeout(function() {
+                    t_zoom_showSlide('prev');
+    
+                    t_zoom_checkForScale();
+                });
             }
         }
 
@@ -212,9 +220,11 @@ function t_zoomHandler() {
             modal.attr('data-on-drag') !== 'y') {
                 t_zoom_unscale();
 
-                t_zoom_showSlide('next');
-
-                t_zoom_checkForScale();
+                setTimeout(function() {
+                    t_zoom_showSlide('next');
+    
+                    t_zoom_checkForScale();
+                });
             }
         }
 
@@ -299,6 +309,7 @@ function t_zoom_initSwipe() {
 
             if (sliderTrack.attr('data-on-transition') !== 'y' &&
                 modal.attr('data-on-drag') !== 'y' &&
+                event.maxPointers === 1 &&
                 window.visualViewport.scale === 1) {
 
                 var deltaX = Math.abs(event.deltaX);
@@ -306,7 +317,7 @@ function t_zoom_initSwipe() {
                 if (deltaX > 40) {
                     sliderTrack.attr('data-on-drag', 'y');
                 }
-
+    
                 if (sliderTrackPosition) {
                     var newTrackPosition = sliderTrackPosition + event.deltaX;
 
@@ -323,9 +334,10 @@ function t_zoom_initSwipe() {
                     var sliderTrack = $('.t-carousel__zoomer__track');
 
                     sliderTrack.attr('data-on-drag', '');
-
+                    
                     if (sliderTrack.attr('data-on-transition') !== 'y' &&
                         modal.attr('data-on-drag') !== 'y' &&
+                        event.maxPointers === 1 &&
                         window.visualViewport.scale === 1) {
 
                         sliderTrack.css('transition', '');
@@ -341,18 +353,18 @@ function t_zoom_initSwipe() {
                         transitionTime = transitionTime > 0.6 ? 0.6 : transitionTime < 0.2 ? 0.2 : transitionTime;
 
                         sliderTrack.css('transition-duration', transitionTime + 's');
-
+                    
                         if (event.velocityX < -0.5 || event.deltaX < -80) {
                             t_zoom_unscale();
-
+                    
                             t_zoom_showSlide('next');
-
+                    
                             t_zoom_checkForScale();
                         } else if (event.velocityX > 0.5 || event.deltaX > 80) {
                             t_zoom_unscale();
-
+                    
                             t_zoom_showSlide('prev');
-
+                    
                             t_zoom_checkForScale();
                         } else {
                             t_zoom_showSlide();
@@ -385,7 +397,7 @@ function t_zoom_showSlide(direction) {
     slideItems.removeClass('active').eq(currentSlideIndex).addClass('active');
 
     sliderTrack.css('transform', 'translateX(' + -trackPosition + 'px)');
-
+        
 }
 
 // @param {string} side - side of slider before loop ('start' or 'end')
@@ -462,11 +474,11 @@ function t_zoom_initCloseSwipe() {
             ],
         ],
     });
-
+    
     var modal = $('.t-zoomer__wrapper'),
         sliderTrack = $('.t-carousel__zoomer__track'),
         modalPosition;
-
+  
     hammer.on('panstart', function () {
         modalPosition = modal.position().top;
         modal.css('transition', 'none');
@@ -474,47 +486,49 @@ function t_zoom_initCloseSwipe() {
 
     hammer.on('panmove', function (event) {
         var deltaY = Math.abs(event.deltaY);
-
+  
         if (((event.deltaY < 0 && sliderTrack.attr('data-on-drag') !== 'y') ||
               modal.attr('data-on-drag') === 'y') &&
             ((event.angle > -120 && event.angle < -60) || (event.angle < 120 && event.angle > 60)) &&
+              event.maxPointers === 1 &&
               window.visualViewport.scale === 1) {
-
+            
             if (deltaY > 40) {
-
+                
                 modal.attr('data-on-drag', 'y');
 
             }
-
+            
             var newTrackPosition = modalPosition + event.deltaY;
-
+  
             modal.css(
                 'transform',
                 'translateY(' + newTrackPosition + 'px)'
             );
         }
     });
-
+  
     hammer.on('panend', t_zoom_closeSwipeHandler);
 }
 
 function t_zoom_closeSwipeHandler(event) {
     var modal = $('.t-zoomer__wrapper'),
         closeAnimationTime = 300;
-
+  
     modal.css('transition', 'transform ' + closeAnimationTime + 'ms ease-out');
-
+  
     if (event.deltaY > -40) {
         modal.css('transform', '');
     }
-
+  
     if (modal.attr('data-on-drag') === 'y' &&
+        event.maxPointers === 1 &&
         window.visualViewport.scale === 1) {
-
+  
         if (event.deltaY < -200 || event.velocityY < -0.3) {
 
             modal.css('transform', 'translateY(-100vh)');
-
+  
             setTimeout(function () {
                 t_zoom_close();
                 modal.css('transform', '');
@@ -523,7 +537,7 @@ function t_zoom_closeSwipeHandler(event) {
             modal.css('transform', '');
         }
     }
-
+  
     modal.attr('data-on-drag', '');
 }
 
@@ -577,6 +591,8 @@ function t_zoom_scale_init() {
             var zoomerInner = $('.t-carousel__zoomer__inner');
             var zoomerTrack = $('.t-carousel__zoomer__track');
 
+            zoomedImage.css('max-height', '');
+            
             zoomerTrack.css({
                 transition: 'none',
                 transform: 'none',
@@ -637,9 +653,13 @@ function t_zoom_unscale() {
 
     var zoomedItem = $('.t-carousel__zoomer__item.active'),
         zoomedImage = zoomedItem.find('.t-carousel__zoomer__img'),
-        zoomerTrack = $('.t-carousel__zoomer__track');
+        zoomerTrack = $('.t-carousel__zoomer__track'),
+        modal = $('.t-zoomer__wrapper'),
+        imageBordersWidth = modal.height() - zoomedItem.height(),
+        zoomerComments = $(zoomedItem).find('.t-zoomer__comments'),
+        height = zoomerComments.innerHeight();
 
-    zoomedImage.off('mousemove touchmove').css('left', '').css('top', '');
+    zoomedImage.off('mousemove touchmove').css('left', '').css('top', '').css('max-height', 'calc(100vh - ' + (imageBordersWidth + height) + 'px');
 
     var trackPosition = zoomedItem.position().left;
 
@@ -649,7 +669,7 @@ function t_zoom_unscale() {
         zoomerTrack.css('transition', '');
     });
 }
-
+  
 function t_zoom_lockScroll() {
     var isAndroid = /(android)/i.test(navigator.userAgent);
 
