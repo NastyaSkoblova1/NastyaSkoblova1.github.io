@@ -130,23 +130,28 @@ function t_zoomHandler() {
 
     var modal = $('.t-zoomer__wrapper'),
         image_descr = $('.t-carousel__zoomer__item'),
-        imageBordersWidth = modal.height() - image_descr.height();
+        imageBordersWidth = modal.height() - image_descr.height(),
+        maxCommentsHeight = 0,
+        zoomerComments = image_descr.find('.t-zoomer__comments');
 
-    image_descr.each(function (i, image) {
-        var zoomerComments = $(image).find('.t-zoomer__comments');
-        var zoomerTitle = zoomerComments.find('.t-zoomer__title');
-        var zoomerDescr = zoomerComments.find('.t-zoomer__descr');
+    zoomerComments.each(function (i, comment) {
+        var zoomerTitle = $(comment).find('.t-zoomer__title');
+        var zoomerDescr = $(comment).find('.t-zoomer__descr');
 
         if (zoomerTitle === '' && zoomerDescr === '') {
-            zoomerComments.css('padding', '0');
+            $(comment).css('padding', '0');
         }
 
-        var height = zoomerComments.innerHeight();
-        var image_active = $(image).find('.t-carousel__zoomer__img');
+        var commentHeight = $(comment).innerHeight();
 
-        image_active.css('max-height', 'calc(100vh - ' + (height + imageBordersWidth) + 'px');
-        image_active.css('bottom', height);
+        maxCommentsHeight = maxCommentsHeight > commentHeight ? maxCommentsHeight : commentHeight;
     });
+
+    zoomerComments.css('height', maxCommentsHeight);
+    
+    var zoomedImages = image_descr.find('.t-carousel__zoomer__img');
+
+    zoomedImages.css('max-height', 'calc(100vh - ' + (maxCommentsHeight + imageBordersWidth) + 'px');
 
     var target_url = $(this).attr('data-img-zoom-url'),
         target_img = $('.t-carousel__zoomer__img[src="' + target_url + '"]'),
