@@ -51,7 +51,7 @@
     box-sizing: border-box;
     display: block;
     height: auto;
-    padding: 14px;
+    padding: 14px 0 0;
     text-align: center;
     max-width: 700px;
     box-sizing: border-box;
@@ -82,10 +82,10 @@
 }
 .t-carousel__zoomer__inner {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
     overflow: hidden;
 }
 .t-carousel__zoomer__track {
@@ -99,17 +99,12 @@
     transition-timing-function: cubic-bezier(.29,.39,.2,.96);
 }
 .t-carousel__zoomer__item {
-    width: 100vw;
+    width: calc(100vw - 30px);
     height: 100%;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
-.t-carousel__zoomer__wrapper {
-    flex-grow: 1;
-    display: flex;
     align-items: center;
 }
 .t-carousel__zoomer__img {
@@ -121,14 +116,6 @@
     overflow: auto;
 }
 .t-zoomer__close {
-    width: auto;
-    height: auto;
-    right: 10px;
-    top: 10px;
-    padding: 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     position: fixed;
     cursor: pointer;
     -webkit-transition: opacity ease-in-out 0.3s;
@@ -182,8 +169,8 @@
     opacity: 0.6;
 }
 .t-carousel__zoomer__arrow {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     background: 0 0;
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -196,7 +183,7 @@
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     -o-transform: translateY(-50%);
-    transform: translateY(-50%) scale(0.8);
+    transform: translateY(-50%);
     position: absolute;
     top: 50%;
 }
@@ -211,28 +198,34 @@
 img.t-carousel__zoomer__img.ui-draggable.ui-draggable-handle {
     cursor: grab;
 }
-.t-carousel__zoomer__arrow__wrapper:before {
+.t-zoomer__close {
+    width: auto;
+    height: auto;
+    right: 10px;
+    top: 10px;
+    padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.scale-active .t-carousel__zoomer__arrow__wrapper:before {
     content: '';
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
     position: absolute;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     padding: 10px;
-    top: calc(50% - 23px);
+    top: calc(50% - 26px);
+    left: calc(50% - 22px);
 }
-.t-carousel__zoomer__arrow__wrapper_dark:before {
-    background: rgba(1, 1, 1, 0.3);
-}
-.t-carousel__zoomer__arrow__wrapper.t-carousel__zoomer__arrow__wrapper_left:before {
-    left: calc(50% - 26px);
-}
-.t-carousel__zoomer__arrow__wrapper.t-carousel__zoomer__arrow__wrapper_right:before {
-    right: calc(50% - 26px);
+.scale-active
+    .t-carousel__zoomer__arrow__wrapper.t-carousel__zoomer__arrow__wrapper_left:before {
+    left: calc(50% - 30px);
 }
 .scale-active .t-carousel__zoomer__img {
-    max-height: inherit;
-    max-width: inherit;
+    max-height: unset;
+    max-width: unset;
     top: unset;
     right: unset;
     bottom: unset;
@@ -281,30 +274,24 @@ img.t-carousel__zoomer__img.ui-draggable.ui-draggable-handle {
 .scale-active .t-zoomer__scale.showed .icon-decrease {
     display: block;
 }
-.t-zoomer__close,
-.t-zoomer__scale.showed {
+.scale-active .t-zoomer__close,
+.scale-active .t-zoomer__scale.showed {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
 }
 .t-carousel__zoomer__arrow__wrapper_right {
-    right: 20px;
+    right: 30px;
 }
 .t-carousel__zoomer__arrow__wrapper_left {
-    left: 20px;
+    left: 30px;
 }
 .t-zoomer__scale:hover {
     opacity: 0.7;
 }
-.t-zoomer__hide-animation {
-    animation-name: hide;
-    animation-duration: 0.3s;
-    animation-delay: 3s;
-    animation-fill-mode: forwards;
-}
 @media screen and (max-width: 768px) {
     .t-carousel__zoomer__control .t-carousel__zoomer__arrow {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
     }
     .t-carousel__zoomer-control {
         width: 10%;
@@ -315,25 +302,10 @@ img.t-carousel__zoomer__img.ui-draggable.ui-draggable-handle {
     .t-carousel__zoomer__arrow__right {
         right: 15px;
     }
-    .t-carousel__zoomer__arrow__wrapper:before,
-    .t-carousel__zoomer__arrow__wrapper_dark:before {
-        width: 18px;
-        height: 18px;
-        top: calc(50% - 19px);
-    }
-    .t-carousel__zoomer__arrow__wrapper.t-carousel__zoomer__arrow__wrapper_left:before {
-        left: calc(50% - 21px);
-    }
-    .t-carousel__zoomer__arrow__wrapper.t-carousel__zoomer__arrow__wrapper_right:before {
-        right: calc(50% - 21px);
-    }
 }
 @supports (-webkit-overflow-scrolling: touch) {
     .t-carousel__zoomer__img {
+        /* height: 100%; */
         object-fit: contain;
     }
-}
-@keyframes hide {
-    0% {opacity: 1;}
-    100% {opacity: 0;}
 }
