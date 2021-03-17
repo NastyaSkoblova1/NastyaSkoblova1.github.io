@@ -313,7 +313,7 @@ function t_zoom_initSwipe() {
 
         setTimeout(function() {
             var style = $('.t-zoomer__wrapper').attr('style');
-            $('.t-zoomer__wrapper').attr('style', style.replace(' -webkit-user-drag: none;', ''));
+            $('.t-zoomer__wrapper').attr('style', style.replace('touch-action: manipulation; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);', ''));
         }, 500)
 
         var sliderTrackPosition,
