@@ -311,10 +311,10 @@ function t_zoom_initSwipe() {
             ],
         });
 
-        setTimeout(function() {
-            var style = 'touch-action: manipulation;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);'
-            $('.t-zoomer__wrapper').attr('style', style);
-        }, 500)
+        // setTimeout(function() {
+        //     var style = 'touch-action: manipulation;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);'
+        //     $('.t-zoomer__wrapper').attr('style', style);
+        // }, 500)
 
         var sliderTrackPosition,
             isScaled = false;
