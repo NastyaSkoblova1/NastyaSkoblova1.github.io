@@ -354,7 +354,6 @@ function t_zoom_initSwipe() {
             }
         });
 
-        $('.t-zoomer__wrapper').css('-webkit-user-drag', 'none');
 
         if (!window.tzoomopenonce) {
                 hammer.on('panend', function(event) {
