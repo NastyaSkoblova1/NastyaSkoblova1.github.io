@@ -201,7 +201,7 @@ function t_zoom_initSwipe() {
     var pos = parseInt($('.t-carousel__zoomer__item:visible').attr('data-zoomer-slide-number'), 10);
 
     if (slideItem.length > 1) {
-        hammer = new Hammer($('.t-zoomer__wrapper')[0], {
+        // hammer = new Hammer($('.t-zoomer__wrapper')[0], {
             // domEvents: true,
             // inputClass: Hammer.TouchInput,
             // recognizers: [
@@ -209,9 +209,9 @@ function t_zoom_initSwipe() {
             //         direction: Hammer.DIRECTION_HORIZONTAL
             //     }]
             // ]
-        });
+        // });
 
-        
+
         // hammer.on('panend', function(event) {
         //     if (event.velocityX < -0.4) {
                 // t_zoom_unscale()
