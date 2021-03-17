@@ -213,13 +213,13 @@ function t_zoom_initSwipe() {
 
         hammer.on('panend', function(event) {
             if (event.velocityX < -0.4) {
-                t_zoom_unscale()
+                // t_zoom_unscale()
         
                 pos = (pos + 1) % slideItem.length;
                 slideItem.removeClass('active').eq(pos).addClass('active');
                 t_zoom_checkForScale();
             } else if (event.velocityX > 0.4) {
-                t_zoom_unscale()
+                // t_zoom_unscale()
         
                 pos = (pos - 1) % slideItem.length;
                 slideItem.removeClass('active').eq(pos).addClass('active');
