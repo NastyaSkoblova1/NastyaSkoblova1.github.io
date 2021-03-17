@@ -211,6 +211,7 @@ function t_zoom_initSwipe() {
             // ]
         });
 
+        
         // hammer.on('panend', function(event) {
         //     if (event.velocityX < -0.4) {
                 // t_zoom_unscale()
