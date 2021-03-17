@@ -193,6 +193,40 @@ function t_zoomHandler() {
     t_zoom_checkForScale();
 
     t_zoom_lockScroll();
+    t_zoom_initSwipe();
+}
+
+function t_zoom_initSwipe() {
+    var slideItem = $('.t-carousel__zoomer__item');
+    var pos = parseInt($('.t-carousel__zoomer__item:visible').attr('data-zoomer-slide-number'), 10);
+
+    if (slideItem.length > 1) {
+        hammer = new Hammer($('.t-zoomer__wrapper')[0], {
+            domEvents: true,
+            inputClass: Hammer.TouchInput,
+            recognizers: [
+                [Hammer.Pan, {
+                    direction: Hammer.DIRECTION_HORIZONTAL
+                }]
+            ]
+        });
+
+        hammer.on('panend', function(event) {
+            if (event.velocityX < -0.4) {
+                t_zoom_unscale()
+        
+                pos = (pos + 1) % slideItem.length;
+                slideItem.removeClass('active').eq(pos).addClass('active');
+                t_zoom_checkForScale();
+            } else if (event.velocityX > 0.4) {
+                t_zoom_unscale()
+        
+                pos = (pos - 1) % slideItem.length;
+                slideItem.removeClass('active').eq(pos).addClass('active');
+                t_zoom_checkForScale();
+            }
+        });
+    }
 }
 
 function t_zoom_checkForScale() {
@@ -277,6 +311,7 @@ function t_zoom_scale_init() {
                     imageYpx = -(clientYpercent * (zoomedImage.height() - $(window).height())) / 100;
                     zoomedImage.css('top', imageYpx + 'px');
                     zoomedImage.on(window.isMobile ? 'touchmove' : 'mousemove', function (e) {
+                        console.log(e);
                         clientYpercent = (e.originalEvent.touches !== undefined ? e.originalEvent.touches[0].clientY : e.clientY) * 100 / $(window).height();
                         imageYpx = -(clientYpercent * (zoomedImage.height() - $(window).height())) / 100;
                         zoomedImage.css('top', imageYpx + 'px');
