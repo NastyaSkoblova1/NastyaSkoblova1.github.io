@@ -25,7 +25,7 @@
     transform: translate3d(0, 0, 0);
     user-select: none;
     transition: transform 0.3s ease-out;
-    -webkit-user-drag: unset !important;
+    -webkit-user-drag: element !important;
 }
 .t-zoomer__show .t-zoomer__wrapper {
     z-index: 9999999;
