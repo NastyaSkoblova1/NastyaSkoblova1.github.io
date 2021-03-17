@@ -229,7 +229,7 @@ function t_zoom_initSwipe() {
             }
         });
 
-        $('.t-zoomer__wrapper').css('-webkit-user-drag', 'auto')
+        $('.t-zoomer__wrapper').attr('style', '')
     }
 }
 
