@@ -211,17 +211,16 @@ function t_zoom_initSwipe() {
             ]
         });
 
-
         hammer.on('panend', function(event) {
-            if (event.velocityX < -0.4 || event.deltaX < -50) {
+            if (event.velocityX < -0.4) {
                 t_zoom_unscale()
-
+        
                 pos = (pos + 1) % slideItem.length;
                 slideItem.removeClass('active').eq(pos).addClass('active');
                 t_zoom_checkForScale();
-            } else if (event.velocityX > 0.4  || event.deltaX > 50) {
+            } else if (event.velocityX > 0.4) {
                 t_zoom_unscale()
-
+        
                 pos = (pos - 1) % slideItem.length;
                 slideItem.removeClass('active').eq(pos).addClass('active');
                 t_zoom_checkForScale();
@@ -312,6 +311,7 @@ function t_zoom_scale_init() {
                     imageYpx = -(clientYpercent * (zoomedImage.height() - $(window).height())) / 100;
                     zoomedImage.css('top', imageYpx + 'px');
                     zoomedImage.on(window.isMobile ? 'touchmove' : 'mousemove', function (e) {
+                        console.log(e);
                         clientYpercent = (e.originalEvent.touches !== undefined ? e.originalEvent.touches[0].clientY : e.clientY) * 100 / $(window).height();
                         imageYpx = -(clientYpercent * (zoomedImage.height() - $(window).height())) / 100;
                         zoomedImage.css('top', imageYpx + 'px');
@@ -336,11 +336,7 @@ function t_zoom_unscale() {
 }
 
 $(document).ready(function () {
-    if (!window.tzoominited) {
-        t_zoom_onFuncLoad('t_initZoom', function() {
-            t_initZoom();
-        });
-    }
+    t_initZoom();
 });
 
 function t_zoom_lockScroll() {
@@ -376,22 +372,5 @@ function t_zoom_unlockScroll() {
                 }
             }
         }
-    }
-}
-
-function t_zoom_onFuncLoad(funcName, okFunc, time) {
-    if (typeof window[funcName] === 'function') {
-        okFunc();
-    } else {
-        setTimeout(function checkFuncExist() {
-            if (typeof window[funcName] === 'function') {
-                okFunc();
-                return;
-            }
-            if (document.readyState === 'complete' && typeof window[funcName] !== 'function') {
-                throw new Error(funcName + ' is undefined');
-            }
-            setTimeout(checkFuncExist, time || 100);
-        });
     }
 }
