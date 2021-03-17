@@ -311,6 +311,10 @@ function t_zoom_initSwipe() {
             ],
         });
 
+        setTimeout(function() {
+            $('.t-zoomer__wrapper').attr('style', '');
+        }, 500)
+
         var sliderTrackPosition,
             isScaled = false;
 
@@ -397,12 +401,6 @@ function t_zoom_initSwipe() {
                     }
                 });
         }
-
-
-        setTimeout(function() {
-            var style = $('.t-zoomer__wrapper').attr('style');
-            $('.t-zoomer__wrapper').attr('style', style.replace(' -webkit-user-drag: none;', ''));
-        }, 500);
     }
 }
 
