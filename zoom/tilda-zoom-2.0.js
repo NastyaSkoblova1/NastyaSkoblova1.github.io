@@ -229,7 +229,8 @@ function t_zoom_initSwipe() {
             }
         });
 
-        $('.t-zoomer__wrapper').attr('style', '')
+        var style = $('.t-zoomer__wrapper').attr('style');
+        $('.t-zoomer__wrapper').attr('style', style.replace(' -webkit-user-drag: none;', ''))
     }
 }
 
