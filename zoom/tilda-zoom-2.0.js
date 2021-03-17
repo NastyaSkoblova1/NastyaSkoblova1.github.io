@@ -202,13 +202,13 @@ function t_zoom_initSwipe() {
 
     if (slideItem.length > 1) {
         hammer = new Hammer($('.t-zoomer__wrapper')[0], {
-            domEvents: true,
-            inputClass: Hammer.TouchInput,
-            recognizers: [
-                [Hammer.Pan, {
-                    direction: Hammer.DIRECTION_HORIZONTAL
-                }]
-            ]
+            // domEvents: true,
+            // inputClass: Hammer.TouchInput,
+            // recognizers: [
+            //     [Hammer.Pan, {
+            //         direction: Hammer.DIRECTION_HORIZONTAL
+            //     }]
+            // ]
         });
 
         hammer.on('panend', function(event) {
