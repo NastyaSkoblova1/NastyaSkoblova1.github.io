@@ -2242,7 +2242,12 @@
            */
           contentZooming: 'none',
   
-         
+          /**
+           * Specifies that an entire element should be draggable instead of its contents. Mainly for desktop browsers.
+           * @type {String}
+           * @default 'none'
+           */
+          userDrag: 'none',
   
           /**
            * Overrides the highlight color shown when the user taps a link or a JavaScript
