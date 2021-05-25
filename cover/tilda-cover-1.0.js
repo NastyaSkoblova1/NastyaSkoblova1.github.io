@@ -158,9 +158,18 @@
 
             if (window.isMobile) {
                 $(window).on('orientationchange', function () {
-                    console.log(1);
+
+                    var el = $('#rec' + id);
+                    var hcover = el.find('.t-cover').height();
+                    var hcontent = el.find('div[data-hook-content]').outerHeight();
+                    console.log(1, hcover, hcontent);
+
                     $(window).one('resize', function () {
-                        console.log(2);
+                        var el = $('#rec' + id);
+                        var hcover = el.find('.t-cover').height();
+                        var hcontent = el.find('div[data-hook-content]').outerHeight();
+                        console.log(2, hcover, hcontent);
+
                         cover_fixcontentheight(id);
                         cover_fixBackgroundFixedStyles(id);
                     });
@@ -373,8 +382,8 @@ function cover_fixcontentheight(id) {
     var el = $('#rec' + id);
     var hcover = el.find('.t-cover').height();
     var hcontent = el.find('div[data-hook-content]').outerHeight();
-    console.log(hcontent, hcover);
     if (hcontent > 300 && hcover < hcontent + 40) {
+        console.log('Hello!');
         var hcontent = hcontent + 120;
         if (hcontent > 1000) {
             hcontent += 100;
