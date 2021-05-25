@@ -158,7 +158,7 @@
 
             if (window.isMobile) {
                 $(window).on('orientationchange', function () {
-                    $(window).one('resize', function() {
+                    $(window).one('resize', function () {
                         cover_fixcontentheight(id);
                         cover_fixBackgroundFixedStyles(id);
                     });
@@ -372,7 +372,6 @@ function cover_fixcontentheight(id) {
     var hcover = el.find('.t-cover').height();
     var hcontent = el.find('div[data-hook-content]').outerHeight();
     console.log(hcontent, hcover);
-    console.log(hcontent > 300 && hcover < hcontent + 40);
     if (hcontent > 300 && hcover < hcontent + 40) {
         var hcontent = hcontent + 120;
         if (hcontent > 1000) {
