@@ -158,9 +158,10 @@
 
             if (window.isMobile) {
                 $(window).on('orientationchange', function () {
-                    console.log(2);
-                    // cover_fixcontentheight(id);
-                    cover_fixBackgroundFixedStyles(id);
+                    $(window).one('resize', function() {
+                        cover_fixcontentheight(id);
+                        cover_fixBackgroundFixedStyles(id);
+                    });
                 });
             }
 
