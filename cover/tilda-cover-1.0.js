@@ -158,7 +158,9 @@
 
             if (window.isMobile) {
                 $(window).on('orientationchange', function () {
+                    console.log(1);
                     $(window).one('resize', function () {
+                        console.log(2);
                         cover_fixcontentheight(id);
                         cover_fixBackgroundFixedStyles(id);
                     });
