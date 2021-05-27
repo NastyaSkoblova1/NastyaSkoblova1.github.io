@@ -157,8 +157,8 @@
             }
 
             if (window.isMobile) {
-                $(window).on('orientationchange', function () {
-                    $(window).one('resize', function() {
+                $(window).bind('orientationchange', function () {
+                    $(window).resize(function() {
                         cover_fixcontentheight(id);
                         cover_fixBackgroundFixedStyles(id);
                     });
@@ -371,7 +371,7 @@ function cover_fixcontentheight(id) {
     var el = $('#rec' + id);
     var hcover = el.find('.t-cover').height();
     var hcontent = el.find('div[data-hook-content]').outerHeight();
-    console.log('Hcover ' + hcover, 'Hcontent ' + hcontent);
+    console.log('Hcover ' + hcover + '/' + 'Hcontent ' + hcontent);
     console.log(screen.orientation.type);
     if (hcontent > 300 && hcover < hcontent + 40) {
         var hcontent = hcontent + 120;
