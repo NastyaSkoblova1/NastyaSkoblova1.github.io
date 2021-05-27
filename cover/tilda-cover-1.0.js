@@ -159,8 +159,10 @@
             if (window.isMobile) {
                 $(window).on('orientationchange', function () {
                     // $(window).one('resize', function() {
+                    setTimeout(function () {
                         cover_fixcontentheight(id);
                         cover_fixBackgroundFixedStyles(id);
+                    }, 200);
                     // });
                 });
             }
