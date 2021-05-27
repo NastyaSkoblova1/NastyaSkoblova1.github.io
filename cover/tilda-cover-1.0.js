@@ -158,13 +158,10 @@
 
             if (window.isMobile) {
                 $(window).on('orientationchange', function () {
-
-                    var orientationChange = function() {
+                    // $(window).one('resize', function() {
                         cover_fixcontentheight(id);
                         cover_fixBackgroundFixedStyles(id);
-                        $(window).off('resize', orientationChange);
-                    }
-                    $(window).on('resize', orientationChange);
+                    // });
                 });
             }
 
@@ -374,6 +371,8 @@ function cover_fixcontentheight(id) {
     var el = $('#rec' + id);
     var hcover = el.find('.t-cover').height();
     var hcontent = el.find('div[data-hook-content]').outerHeight();
+    console.log(hcover, hcontent);
+    console.log(hcontent > 300 && hcover < hcontent + 40);
     if (hcontent > 300 && hcover < hcontent + 40) {
         var hcontent = hcontent + 120;
         if (hcontent > 1000) {
@@ -401,6 +400,25 @@ function cover_fixcontentheight(id) {
                 }
             }, 2000);
         }
+        if (typeof window.t_lazyload_updateResize_elem === 'function') {
+            try {
+                window.t_lazyload_updateResize_elem(el.find('.t-cover__carrier'));
+            } catch (e) {
+                // eslint-disable-next-line no-console
+                console.log('error:' + e);
+            }
+        }
+    } else {
+        var hcontent = hcontent + 120;
+        if (hcontent > 1000) {
+            hcontent += 100;
+        }
+        // eslint-disable-next-line no-console
+        console.log('auto correct cover height: ' + hcontent);
+        el.find('.t-cover').height(hcontent);
+        el.find('.t-cover__filter').height(hcontent);
+        el.find('.t-cover__carrier').height(hcontent);
+        el.find('.t-cover__wrapper').height(hcontent);
         if (typeof window.t_lazyload_updateResize_elem === 'function') {
             try {
                 window.t_lazyload_updateResize_elem(el.find('.t-cover__carrier'));
