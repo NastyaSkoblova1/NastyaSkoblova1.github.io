@@ -370,8 +370,7 @@ function cover_fixcontentheight(id) {
     /* correct cover height if content more when cover height */
     var el = $('#rec' + id);
     var hcover = el.find('.t-cover').height();
-    // var hcontent = el.find('div[data-hook-content]').outerHeight();
-    var hcontent = el.find('div[data-hook-content]').height();
+    var hcontent = el.find('div[data-hook-content]').outerHeight();
     console.log('Hcover ' + hcover, 'Hcontent ' + hcontent);
     console.log(screen.orientation.type);
     if (hcontent > 300 && hcover < hcontent + 40) {
