@@ -157,10 +157,11 @@
             }
 
             if (window.isMobile) {
-                $(window).on('resize orientationchange', function(){
-                    console.log('Hello!');
-                    cover_fixcontentheight(id);
-                    cover_fixBackgroundFixedStyles(id);
+                $(window).bind('orientationchange', function () {
+                    $(window).resize(function() {
+                        cover_fixcontentheight(id);
+                        cover_fixBackgroundFixedStyles(id);
+                    });
                 });
             }
 
@@ -388,11 +389,11 @@ function cover_fixcontentheight(id) {
                 }
             }, 2000);
         }
-        cover_updateResizeElem();
+        cover_updateResizeElem(el);
     } 
     else {
         cover_setRecalculatedCoverHeight(el, hcontent);
-        cover_updateResizeElem();
+        cover_updateResizeElem(el);
     }
 }
 
@@ -411,7 +412,7 @@ function cover_setRecalculatedCoverHeight(el, hcontent) {
 }
 
 
-function cover_updateResizeElem() {
+function cover_updateResizeElem(el) {
     if (typeof window.t_lazyload_updateResize_elem === 'function') {
         try {
             window.t_lazyload_updateResize_elem(el.find('.t-cover__carrier'));
