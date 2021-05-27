@@ -391,10 +391,10 @@ function cover_fixcontentheight(id) {
         }
         cover_updateResizeElem(el);
     } 
-    else {
-        cover_setRecalculatedCoverHeight(el, hcontent);
-        cover_updateResizeElem(el);
-    }
+    // else {
+    //     cover_setRecalculatedCoverHeight(el, hcontent);
+    //     cover_updateResizeElem(el);
+    // }
 }
 
 
