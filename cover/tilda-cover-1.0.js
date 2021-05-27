@@ -371,11 +371,10 @@ function cover_fixcontentheight(id) {
     var el = $('#rec' + id);
     var hcover = el.find('.t-cover').height();
     var hcontent = el.find('div[data-hook-content]').outerHeight();
-    console.log('Hcover ' + hcover + '/' + 'Hcontent ' + hcontent);
     if (hcontent > 300 && hcover < hcontent + 40) {
         cover_setRecalculatedCoverHeight(el, hcontent);
         if (!window.isMobile) {
-            setTimeout(function () {
+            setTimeout(function () { 
                 var divvideo = el.find('.t-cover__carrier');
                 if (divvideo.find('iframe').length > 0) {
                     // eslint-disable-next-line no-console
