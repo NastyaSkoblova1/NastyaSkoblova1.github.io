@@ -140,7 +140,7 @@
 
             /*fix content height*/
             setTimeout(function () {
-                cover_fixcontentheight(id);
+                cover_fixcontentheight(id, false);
                 cover_fixBackgroundFixedStyles(id);
             }, 500);
             cover_fixBackgroundFixedNode(id);
@@ -150,7 +150,7 @@
             if (clogo.length) {
                 clogo.load(function () {
                     setTimeout(function () {
-                        cover_fixcontentheight(id);
+                        cover_fixcontentheight(id, false);
                         cover_fixBackgroundFixedStyles(id);
                     }, 500);
                 });
@@ -159,7 +159,7 @@
             if (window.isMobile) {
                 $(window).bind('orientationchange', function () {
                     $(window).resize(function() {
-                        cover_fixcontentheight(id);
+                        cover_fixcontentheight(id, true);
                         cover_fixBackgroundFixedStyles(id);
                     });
                 });
@@ -366,15 +366,13 @@
 })(jQuery);
 
 
-function cover_fixcontentheight(id) {
+function cover_fixcontentheight(id, isOrientationChange) {
     /* correct cover height if content more when cover height */
     var el = $('#rec' + id);
     var hcover = el.find('.t-cover').height();
     var hcontent = el.find('div[data-hook-content]').outerHeight();
     console.log(hcover, hcontent);
-    console.log(hcontent > 300 && hcover < hcontent + 40);
     if (hcontent > 300 && hcover < hcontent + 40) {
-        console.log(1);
         cover_setRecalculatedCoverHeight(el, hcontent);
         if (!window.isMobile) {
             setTimeout(function () { 
@@ -394,10 +392,12 @@ function cover_fixcontentheight(id) {
         }
         cover_updateResizeElem(el);
     }
-    //  else {
-    //     console.log(2);
-    //     cover_setRecalculatedCoverHeight(el, hcontent);
-    //     cover_updateResizeElem(el);
+    // else {
+    //     if (window.isMobile && isOrientationChange) {
+    //         console.log(2);
+    //         cover_setRecalculatedCoverHeight(el, hcontent);
+    //         cover_updateResizeElem(el);
+    //     }
     // }
 }
 
