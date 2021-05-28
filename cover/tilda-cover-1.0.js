@@ -158,7 +158,7 @@
 
             if (window.isMobile) {
                 $(window).on('orientationchange', function () {
-                    $(window).on('resize', function() {
+                    $(window).one('resize', function() {
                         cover_fixcontentheight(id, true);
                         cover_fixBackgroundFixedStyles(id);
                     });
@@ -371,7 +371,6 @@ function cover_fixcontentheight(id, isOrientationChange) {
     var el = $('#rec' + id);
     var hcover = el.find('.t-cover').height();
     var hcontent = el.find('div[data-hook-content]').outerHeight();
-    console.log(el[0], hcover, hcontent);
     if (hcontent > 300 && hcover < hcontent + 40) {
         cover_setRecalculatedCoverHeight(el, hcontent);
         if (!window.isMobile) {
@@ -394,7 +393,6 @@ function cover_fixcontentheight(id, isOrientationChange) {
     }
     else {
         if (window.isMobile && isOrientationChange) {
-            console.log(2);
             cover_setRecalculatedCoverHeight(el, hcontent);
             cover_updateResizeElem(el);
         }
