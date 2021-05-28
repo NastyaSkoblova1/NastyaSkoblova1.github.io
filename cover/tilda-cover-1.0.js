@@ -157,11 +157,11 @@
             }
 
             if (window.isMobile) {
-                $(window).bind('orientationchange', function () {
-                    $(window).resize(function() {
+                $(window).on('orientationchange', function () {
+                    // $(window).on('resize', function() {
                         cover_fixcontentheight(id, true);
                         cover_fixBackgroundFixedStyles(id);
-                    });
+                    // });
                 });
             }
 
