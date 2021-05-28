@@ -371,7 +371,10 @@ function cover_fixcontentheight(id) {
     var el = $('#rec' + id);
     var hcover = el.find('.t-cover').height();
     var hcontent = el.find('div[data-hook-content]').outerHeight();
+    console.log(hcover, hcontent);
+    console.log(hcontent > 300 && hcover < hcontent + 40);
     if (hcontent > 300 && hcover < hcontent + 40) {
+        console.log(1);
         cover_setRecalculatedCoverHeight(el, hcontent);
         if (!window.isMobile) {
             setTimeout(function () { 
@@ -390,10 +393,12 @@ function cover_fixcontentheight(id) {
             }, 2000);
         }
         cover_updateResizeElem(el);
-    } else {
-        cover_setRecalculatedCoverHeight(el, hcontent);
-        cover_updateResizeElem(el);
     }
+    //  else {
+    //     console.log(2);
+    //     cover_setRecalculatedCoverHeight(el, hcontent);
+    //     cover_updateResizeElem(el);
+    // }
 }
 
 
