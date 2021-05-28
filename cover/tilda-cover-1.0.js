@@ -392,13 +392,13 @@ function cover_fixcontentheight(id, isOrientationChange) {
         }
         cover_updateResizeElem(el);
     }
-    // else {
-    //     if (window.isMobile && isOrientationChange) {
-    //         console.log(2);
-    //         cover_setRecalculatedCoverHeight(el, hcontent);
-    //         cover_updateResizeElem(el);
-    //     }
-    // }
+    else {
+        if (window.isMobile && isOrientationChange) {
+            console.log(2);
+            cover_setRecalculatedCoverHeight(el, hcontent);
+            cover_updateResizeElem(el);
+        }
+    }
 }
 
 
