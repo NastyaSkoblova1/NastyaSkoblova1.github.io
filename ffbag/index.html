@@ -15,7 +15,7 @@
         function onLoad() {
             loadOnlyFirst();
             onPageShow();
-            console.log('Hello!');
+            console.log(1);
         }
 
         function onPageShow() {
@@ -40,13 +40,15 @@
         }
 
 
-        window.onload = function() {
-            onLoad();
-        };
-
-        window.onpageshow = function() {
-            if (event.persisted) onPageShow();
-        }
+        $(document).ready(function() {
+            window.onload = function() {
+                onLoad();
+            };
+    
+            window.onpageshow = function() {
+                if (event.persisted) onPageShow();
+            }
+        });
     </script>
 </head>
 
