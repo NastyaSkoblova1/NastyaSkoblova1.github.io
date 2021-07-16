@@ -60,7 +60,7 @@
                 console.log(2);
             };
     
-            window.onpageshow = function() {
+            window.onpageshow = function(event) {
                 if (event.persisted) {
                     //calculate current time
                     var currentTime = new Date();
