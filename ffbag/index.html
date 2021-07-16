@@ -42,11 +42,40 @@
 
         $(document).ready(function() {
             window.onload = function() {
-                onLoad();
+                document.zipForm.name.focus();
+                console.log(3);
+
+                //calculate current time
+                var currentTime = new Date();
+                var year = currentTime.getFullYear();
+                var month = currentTime.getMonth() + 1;
+                var day = currentTime.getDate();
+                var hour = currentTime.getHours();
+                var min = currentTime.getMinutes();
+                var sec = currentTime.getSeconds();
+                var mil = currentTime.getMilliseconds();
+                var displayTime = (month + "/" + day + "/" + year + " " +
+                    hour + ":" + min + ":" + sec + ":" + mil);
+                document.getElementById("timefield").value = displayTime;
+                console.log(2);
             };
     
             window.onpageshow = function() {
-                if (event.persisted) onPageShow();
+                if (event.persisted) {
+                    //calculate current time
+                    var currentTime = new Date();
+                    var year = currentTime.getFullYear();
+                    var month = currentTime.getMonth() + 1;
+                    var day = currentTime.getDate();
+                    var hour = currentTime.getHours();
+                    var min = currentTime.getMinutes();
+                    var sec = currentTime.getSeconds();
+                    var mil = currentTime.getMilliseconds();
+                    var displayTime = (month + "/" + day + "/" + year + " " +
+                        hour + ":" + min + ":" + sec + ":" + mil);
+                    document.getElementById("timefield").value = displayTime;
+                    console.log(5);
+                }
             }
         });
     </script>
