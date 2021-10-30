@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.mus__container {
+    background-color: #ffffff;
+}
+
+.mus__wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 205px;
+    box-sizing: border-box;
+}
+
+.mus__events,
+.mus__museum {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.mus__event,
+.mus__museum-item {
+    flex: 0 0 calc((100% - 90px) / 3);
+}
+
+.mus__event img,
+.mus__museum-item img {
+    max-width: 100%;
+}
+
+.mus__footer {
+    background-color: #f1f1f1;
+}
