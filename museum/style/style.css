@@ -1,36 +1,162 @@
 body {
     margin: 0;
     padding: 0;
-}
-
-.mus__container {
+    font-family: 'Roboto', 'Arial', sans-serif;
     background-color: #ffffff;
 }
 
-.mus__wrapper {
-    max-width: 1440px;
+h1, h2, h3, h4, p {
+    margin: 0;
+    font-weight: normal;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1180px;
+    min-width: 320px;
     margin: 0 auto;
-    padding: 0 205px;
+    padding: 0 75px;
     box-sizing: border-box;
 }
 
-.mus__events,
-.mus__museum {
+.header {
+    padding: 35px 0;
+}
+
+.section {
+    margin-bottom: 120px;
+}
+
+.section__title {
+    margin-bottom: 50px;
+    font-size: 50px;
+    line-height: 1.18;
+}
+
+.row {
+    display: flex;
+}
+
+.inner {
+    font-size: 0;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.menu__list {
+    margin-bottom: 35px;
+    font-size: 0;
+}
+
+.menu__item {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 1.16;
+}
+
+.menu__item + .menu__item {
+    margin-left: 40px;
+}
+
+.menu__item a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.btn {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+.slider__btn {
+    padding: 8px 40px;
+    font-size: 22px;
+    line-height: 1.18;
+    color: #ffffff;
+    background-color: #5d16d5;
+    border-radius: 8px;
+}
+
+.slider__btn + .slider__btn {
+    margin-left: 35px;
+}
+
+.grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.mus__event,
-.mus__museum-item {
-    flex: 0 0 calc((100% - 90px) / 3);
+.grid__item {
+    width: calc((100% - 90px) / 3);
+    margin-bottom: 70px;
 }
 
-.mus__event img,
-.mus__museum-item img {
+.grid__item:nth-last-child(-n+3) {
+    margin-bottom: 0;
+}
+
+.tabs__list {
+    margin-bottom: 45px;
+    font-size: 0;
+}
+
+.tab {
+    padding: 15px 35px;
+    font-size: 22px;
+    line-height: 1.18;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tab.tab_active {
+    background-color: #c7d2e9;
+}
+
+.tab + .tab {
+    margin-left: 40px;
+}
+
+.card__img {
     max-width: 100%;
+    margin-bottom: 25px;
 }
 
-.mus__footer {
+.card__title {
+    margin-bottom: 10px;
+    font-size: 26px;
+    line-height: 1.15;
+}
+
+.card__title.card__title_uppercase {
+    text-transform: uppercase;
+}
+
+.card__text {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.18;
+}
+
+.card__link {
+    font-size: 16px;
+    line-height: 1.18;
+    color: #000000;
+}
+
+.footer {
     background-color: #f1f1f1;
 }

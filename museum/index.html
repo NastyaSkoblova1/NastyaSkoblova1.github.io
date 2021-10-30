@@ -6,16 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/style.css">
     <script src="script.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
 </head>
 
 <body>
-    <div class="mus__container">
-        <header class="mus__header">
-            <div class="mus__wrapper">
-                <h1>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <h1 class="logo">
                     <a href="">
                         <img src="assets/logotype.png" alt="Логотип Пушкинского Музея">
                     </a>
@@ -31,119 +33,117 @@
                     </svg>
                 </button>
             </div>
-        </header>
-        <div class="mus__wrapper">
-            <nav>
-                <ul>
-                    <li><a href="">Музей</a></li>
-                    <li><a href="">Посетителям</a></li>
-                    <li><a href="">Выставки и события</a></li>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__item"><a href="">Музей</a></li>
+                    <li class="menu__item"><a href="">Посетителям</a></li>
+                    <li class="menu__item"><a href="">Выставки и события</a></li>
                 </ul>
             </nav>
         </div>
-        <main>
-            <div>
-                <div class="mus__gallery">
-                    <div class="mus__gallery-item"></div>
-                    <div class="mus__gallery-item"></div>
-                    <div class="mus__gallery-item"></div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <section class="section">
+                <div class="slider">
+                    <div class="slide"></div>
+                    <div class="slide"></div>
+                    <div class="slide"></div>
                 </div>
-            </div>
-            <div class="mus__wrapper">
-                <button>Купить билет</button>
-                <button>Стать другом</button>
-                <button>Онлайн-магазин</button>
-            </div>
-            <section class="mus__wrapper">
-                <h2>Выставки и события</h2>
-                <nav>
-                    <ul>
-                        <li><a href="">Все</a></li>
-                        <li><a href="">Сегодня</a></li>
-                        <li><a href="">Завтра</a></li>
-                    </ul>
-                </nav>
-                <div class="mus__events">
-                    <article class="mus__event">
-                        <img src="assets/richter.jpg" alt="">
-                        <h3>Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
-                        <h4>Выставка до 20 ноября</h4>
-                        <p>Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</p>
-                        <a href="">Купить билет</a>
+                <div class="inner">
+                    <!-- Это кнопки или ссылки? Это же переход на другие страницы -->
+                    <!-- Или это навигация -->
+                    <button class="btn slider__btn">Купить билет</button>
+                    <button class="btn slider__btn">Стать другом</button>
+                    <button class="btn slider__btn">Онлайн-магазин</button>
+                </div>
+            </section>
+            <section class="section">
+                <h2 class="section__title">Выставки и события</h2>
+                <div class="tabs__list" role="tablist">
+                    <button class="tab tab_active" role="tab">Все</button>
+                    <button class="tab" role="tab">Сегодня</button>
+                    <button class="tab" role="tab">Завтра</button>
+                </div>
+                <div class="grid">
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/richter.jpg" alt="">
+                        <h3 class="card__title">Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
+                        <h4 class="card__date">Выставка до 20 ноября</h4>
+                        <p class="card__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</p>
+                        <a class="card__link" href="">Купить билет</a>
                     </article>
-                    <article class="mus__event">
-                        <img src="assets/tattoo.jpg" alt="">
-                        <h3>Тату</h3>
-                        <h4>Выставка до 27 сентября</h4>
-                        <p>Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</p>
-                        <a href="">Купить билет</a>
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/tattoo.jpg" alt="">
+                        <h3 class="card__title">Тату</h3>
+                        <h4 class="card__date">Выставка до 27 сентября</h4>
+                        <p class="card__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</p>
+                        <a class="card__link" href="">Купить билет</a>
                     </article>
-                    <article class="mus__event">
-                        <img src="assets/durer.jpg" alt="">
-                        <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
-                        <h4>Выставка до 1 ноября</h4>
-                        <p>Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</p>
-                        <a href="">Купить билет</a>
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/durer.jpg" alt="">
+                        <h3 class="card__title">От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+                        <h4 class="card__date">Выставка до 1 ноября</h4>
+                        <p class="card__text">Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст</p>
+                        <a class="card__link" href="">Купить билет</a>
                     </article>
                 </div>
             </section>
 
+            <section class="section">
+                <h2 class="section__title">Музей</h2>
+                <div class="tabs__list" role="tablist">
+                    <button class="tab tab_active" role="tab">Здания</button>
+                    <button class="tab" role="tab">История</button>
+                </div>
 
-            <section class="mus__wrapper">
-                <h2>Музей</h2>
-                <nav>
-                    <ul>
-                        <li><a href="">Здания</a></li>
-                        <li><a href="">История</a></li>
-                    </ul>
-                </nav>
-                <div class="mus__museum">
-                    <article class="mus__museum-item">
-                        <img src="assets/m-flat.jpg" alt="">
-                        <h3>Мемориальная квартира С.Т. Рихтера</h3>
-                        <p>ул. Большая Бронная, 2/6, 16 этаж, кв. 58</p>
-                        <a href="">Подробнее</a>
+                <div class="grid">
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/m-flat.jpg" alt="">
+                        <h3 class="card__title card__title_uppercase">Мемориальная квартира С.Т. Рихтера</h3>
+                        <p class="card__text">ул. Большая Бронная, 2/6, 16 этаж, кв. 58</p>
+                        <a class="card__link" href="">Подробнее</a>
                     </article>
-                    <article class="mus__museum-item">
-                        <img src="assets/m-museon.jpg" alt="">
-                        <h3>ЦЭВ «Мусейон»</h3>
-                        <p>Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</p>
-                        <a href="">Подробнее</a>
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/m-museon.jpg" alt="">
+                        <h3 class="card__title card__title_uppercase">ЦЭВ «Мусейон»</h3>
+                        <p class="card__text">Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</p>
+                        <a class="card__link" href="">Подробнее</a>
                     </article>
-                    <article class="mus__museum-item">
-                        <img src="assets/m-manor.jpg" alt="">
-                        <h3>Усадьба Лопухиных</h3>
-                        <p>Малый Знаменский пер., 3/5с4</p>
-                        <a href="">Подробнее</a>
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/m-manor.jpg" alt="">
+                        <h3 class="card__title card__title_uppercase">Усадьба Лопухиных</h3>
+                        <p class="card__text">Малый Знаменский пер., 3/5с4</p>
+                        <a class="card__link" href="">Подробнее</a>
                     </article>
-                    <article class="mus__museum-item">
-                        <img src="assets/m-museum.jpg" alt="">
-                        <h3>Учебный музей</h3>
-                        <p>ул. Чаянова, 15</p>
-                        <a href="">Подробнее</a>
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/m-museum.jpg" alt="">
+                        <h3 class="card__title card__title_uppercase">Учебный музей</h3>
+                        <p class="card__text">ул. Чаянова, 15</p>
+                        <a class="card__link" href="">Подробнее</a>
                     </article>
-                    <article class="mus__museum-item">
-                        <img src="assets/m-collection.jpg" alt="">
-                        <h3>Отдел личных коллекций</h3>
-                        <p>ул. Волхонка, 10</p>
-                        <a href="">Подробнее</a>
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/m-collection.jpg" alt="">
+                        <h3 class="card__title card__title_uppercase">Отдел личных коллекций</h3>
+                        <p class="card__text">ул. Волхонка, 10</p>
+                        <a class="card__link" href="">Подробнее</a>
                     </article>
-                    <article class="mus__museum-item">
-                        <img src="assets/m-gallery.jpg" alt="">
-                        <h3>Галерея</h3>
-                        <p>ул. Волхонка, 14</p>
-                        <a href="">Подробнее</a>
+                    <article class="grid__item card">
+                        <img class="card__img" src="assets/m-gallery.jpg" alt="">
+                        <h3 class="card__title card__title_uppercase">Галерея</h3>
+                        <p class="card__text">ул. Волхонка, 14</p>
+                        <a class="card__link" href="">Подробнее</a>
                     </article>
                 </div>
             </section>
 
-            <section class="mus__wrapper">
-                <h2>Онлайн-трансляции</h2>
+            <section class="section">
+                <h2 class="section__title">Онлайн-трансляции</h2>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/5qRR-5H1XgU"></iframe>
             </section>
 
-            <section class="mus__wrapper">
-                <h2>Экскурсии и лекции в прямом эфире</h2>
+            <section class="section">
+                <h2 class="section__title">Экскурсии и лекции в прямом эфире</h2>
                 <p>
                     С 1 июля вы можете присоединиться к нашим виртуальным мероприятиям — экскурсиям и лекциям для взрослых и детей, оплатив
                     участие на сайте. Встречи будут проходить в прямом эфире на платформе Zoom; предусмотрен формат живого общения с
@@ -156,41 +156,41 @@
                     наших посетителей.
                 </p>
             </section>
-        </main>
-        <footer class="mus__footer">
-            <div class="mus__wrapper">
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <ul>
+                    <li><a href="">Посетителям с ограниченными возможностями</a></li>
+                    <li><a href="">Билеты и льготы</a></li>
+                    <li><a href="">Противодействие коррупции</a></li>
+                </ul>
                 <div>
-                    <ul>
-                        <li><a href="">Посетителям с ограниченными возможностями</a></li>
-                        <li><a href="">Билеты и льготы</a></li>
-                        <li><a href="">Противодействие коррупции</a></li>
-                    </ul>
+                    <div>Соц. сети</div>
                     <div>
-                        <div>Соц. сети</div>
-                        <div>
-                            <a href=""><img src="" alt=""></a>
-                            <a href=""><img src="" alt=""></a>
-                            <a href=""><img src="" alt=""></a>
-                        </div>
-                    </div>   
-                </div>
-                <div>
-                    <div></div>
-                    <form action="">
-                        <div>
-                            <label for=""></label>
-                            <input type="email" name="" id="">
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="">
-                            <label for="">Согласен на обработку персональх данных</label>
-                        </div>
-                        <input type="submit" value="Подписаться">
-                    </form>
-                </div>
+                        <a href=""><img src="" alt=""></a>
+                        <a href=""><img src="" alt=""></a>
+                        <a href=""><img src="" alt=""></a>
+                    </div>
+                </div>   
             </div>
-        </footer>
-    </div>
+            <div>
+                <div></div>
+                <form action="">
+                    <div>
+                        <label for=""></label>
+                        <input type="email" name="" id="">
+                    </div>
+                    <div>
+                        <input type="checkbox" name="" id="">
+                        <label for="">Согласен на обработку персональх данных</label>
+                    </div>
+                    <input type="submit" value="Подписаться">
+                </form>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
