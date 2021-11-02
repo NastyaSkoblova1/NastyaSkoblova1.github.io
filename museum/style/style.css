@@ -20,6 +20,7 @@ li {
 }
 
 .container {
+    position: relative;
     max-width: 1180px;
     min-width: 320px;
     margin: 0 auto;
@@ -143,6 +144,35 @@ li {
 
 .grid__item:nth-last-child(-n+3) {
     margin-bottom: 0;
+}
+
+.slider {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.slider__arrow {
+    position: absolute;
+    top: 50%;
+    background-color: transparent;
+    border: none;
+    transform: translateY(-50%);
+}
+
+.slider__arrow_prev {
+    left: -80px;
+}
+
+.slider__arrow_next {
+    right: -80px;
+}
+
+.slide {
+    display: none;
+}
+
+.slide_active {
+    display: block;
 }
 
 .tabs__list {
