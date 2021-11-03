@@ -5,7 +5,7 @@ body {
     background-color: #ffffff;
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0;
     font-weight: normal;
 }
@@ -90,6 +90,72 @@ li {
 
 .lang + .lang {
     margin-left: 8px;
+}
+
+.modal__layer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 70px 150px 85px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+}
+
+.modal__title {
+    margin-bottom: 55px;
+    font-size: 50px;
+    line-height: 1.18;
+}
+
+.modal__input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.modal__input-wrapper + .modal__input-wrapper {
+    margin-top: 45px;
+}
+
+.modal__input-wrapper input {
+    padding: 15px 20px;
+    font-size: 30px;
+    line-height: 1.16;
+    border: 1px solid #2561e2;
+}
+
+.modal__input-wrapper label {
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+}
+
+.modal__input-wrapper input:focus ~ label,
+.modal__input-wrapper input:valid ~ label {
+  transform: translate(0, -100%);
+}
+
+.modal__submit {
+    width: 100%;
+    margin-top: 50px;
+    padding: 15px 20px;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 30px;
+    line-height: 1.16;
+    background-color:#c7d2e9;
+    border: 1px solid #2561e2;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .menu {

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -42,7 +42,20 @@
                 <a class="menu__item" href="#live">Экскурсии и лекции в прямом эфире</a>
             </nav>
         </div>
+
+        <!-- Добавить закрытие, кнопку снизу, закрытие по Esc -->
+        <div class="modal__layer">
+            <div class="modal" role="dialog" aria-modal="true">
+                <h6 class="modal__title">Вход</h6>
+                <div class="modal__form">
+                    <div class="modal__input-wrapper"><input type="text" required><label for="">Логин</label></div>
+                    <div class="modal__input-wrapper"><input type="text" required><label for="">Пароль</label></div>
+                    <input class="modal__submit" type="submit" value="Вход">
+                </div>
+            </div>
+        </div>
     </header>
+
     <main class="main">
         <div class="container">
             <section class="section">
@@ -167,6 +180,7 @@
             </section>
         </div>
     </main>
+
     <footer class="footer">
         <div class="container footer__container">
             <div class="footer__col">
