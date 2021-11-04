@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="App">
+    <h1>Trap Focus Function Example</h1>
+    <button onclick="toggleModal()">Open modal</button>
+    <div tabIndex="0"></div>
+    <div id="modalContainer" style="display:none;">
+    <div class="overlay"></div>
+      <div
+         id="modal"
+         role="dialog"
+         aria-labelledby="modalTitle"
+         aria-modal="true"
+         class="modal"
+         >
+        <h2 id="modalTitle">Free Gift Form</h2>
+        <form>
+          <div class="inputItem">
+            <label for="name" class="label">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Name"
+              class="input"
+             />
+          </div>
+          <div class="input-item">
+            <label htmlFor="surname" class="label">
+              Surname
+            </label>
+            <input
+               id="surname"
+               type="text"
+               placeholder="Surname"
+               class="input"
+             />
+          </div>
+        </form>
+        <button onClick="toggleModal()">Close Modal</button>
+      </div>
+     </div>
+    <div tabIndex="0"></div>
+  </div>
+</body>
+</html>
