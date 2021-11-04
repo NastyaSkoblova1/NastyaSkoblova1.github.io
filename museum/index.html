@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
         <div class="modal__wrapper" style="display:none;">
             <div id="modal" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
                 <button class="modal__close" aria-label="Закрыть диалог">
-                    <img src="assets/i-close.svg" alt="" role="presentation">
+                    <img src="assets/i-close.svg" role="presentation">
                 </button>
                 <h6 id="modalTitle" class="modal__title">Вход</h6>
                 <form>
@@ -95,10 +95,10 @@
             <section class="section">
                 <div class="slider">
                     <button class="slider__arrow slider__arrow_prev" role="button">
-                        <img src="assets/arrow-prev.svg" width="60" height="80" alt="" role="presentation">
+                        <img src="assets/arrow-prev.svg" width="60" height="80" role="presentation">
                     </button>
                     <button class="slider__arrow slider__arrow_next" role="button">
-                        <img src="assets/arrow-next.svg" width="60" height="80" alt="" role="presentation">
+                        <img src="assets/arrow-next.svg" width="60" height="80" role="presentation">
                     </button>
                     <ul>
                         <li class="slide slide_active"><img src="assets/g-slide1.jpg" alt="Картина Танцующие и музицирующие путти с античным трофеем Альбрехт Дюрер"></li>
@@ -239,15 +239,15 @@
             </div>
             <div class="footer__col">
                 <h5 class="footer__title">Подписка на новости</h5>
-                <form class="footer__form" method="POST" action="">
+                <form class="footer__form">
                     <div class="form__row form__row_flex">
-                        <input class="input" type="email" name="" id="email" placeholder="E-mail" autocomplete="off">
+                        <input class="input" type="text" id="email" required>
                         <label class="label" for="email">E-mail</label>
                         <input class="submit" type="submit" value="Подписаться">
                     </div>
                     <div class="form__row">
-                        <input type="checkbox" name="" id="">
-                        <label for="">Согласен на обработку персональх данных</label>
+                        <input type="checkbox" id="agreement" required>
+                        <label for="agreement">Согласен на обработку персональх данных</label>
                     </div>
                 </form>
             </div>

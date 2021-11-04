@@ -395,11 +395,15 @@ li {
 
 .footer__form .label {
     position: absolute;
-    top: 50%;
+    top: 10px;
     left: 0;
-    opacity: 0;
-    transform: translateY(-50%);
-    transition: opacity .3s ease, transform .3s ease;
+    transition: transform .3s ease;
+}
+
+.footer__form input:focus ~ label,
+.footer__form input:valid ~ label {
+    transform-origin: left bottom;
+    transform: translate(0, -115%) scale(0.8);
 }
 
 .footer__form .input {
@@ -409,27 +413,6 @@ li {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #000000;
-}
-
-.footer__form .input:focus + .label {
-    opacity: 1;
-    transform: translateY(-200%);
-}
-
-.footer__form .input:focus::-webkit-input-placeholder {
-    color:transparent;
-}
-
-.footer__form .input:focus:-moz-placeholder {
-    color:transparent;
-}
-
-.footer__form .input:focus::-moz-placeholder {
-    color:transparent;
-}
-
-.footer__form .input:focus:-ms-input-placeholder {
-    color:transparent;
 }
 
 .footer__form .submit {
