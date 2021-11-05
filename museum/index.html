@@ -15,50 +15,30 @@
 
 <body>
 
-
-        <!-- Добавить валидацию, подумать над кнопкой закрытия снизу -->
-        <div class="modal__wrapper" style="display:none;">
-            <div id="modal" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-                <button class="modal__close" aria-label="Закрыть диалог">
-                    <img src="assets/i-close.svg" role="presentation">
-                </button>
-                <div id="modalTitle" class="modal__title">Вход</div>
-                <form>
-                    <div class="modal__input-wrapper">
-                        <input id="login" type="text" required>
-                        <label for="login" class="label">
-                            Логин
-                        </label>
-                    </div>
-                    <div class="modal__input-wrapper">
-                        <input id="password" type="password" required>
-                        <label for="password" class="label">
-                            Пароль
-                        </label>
-                    </div>
-                    <input class="modal__submit" type="submit" value="Вход">
-                </form>
-            </div>
-        </div>
-
-
-
-
-    <!-- Добавить закрытие, кнопку снизу, закрытие по Esc -->
-    <!-- <div class="modal__layer">
-        <div id="modal" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modal__title">
+    <!-- Добавить валидацию, подумать над кнопкой закрытия снизу -->
+    <div class="modal__wrapper" style="display:none;">
+        <div id="modal" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <button class="modal__close" aria-label="Закрыть диалог">
-                <img src="assets/i-close.svg" alt="">
+                <img src="assets/i-close.svg" role="presentation">
             </button>
-            <h6 id="modal__title" class="modal__title">Вход</h6>
-            <div class="modal__form">
-                <div class="modal__input-wrapper"><input type="text" required><label for="">Логин</label></div>
-                <div class="modal__input-wrapper"><input type="text" required><label for="">Пароль</label></div>
+            <div id="modalTitle" class="modal__title">Вход</div>
+            <form>
+                <div class="modal__input-wrapper">
+                    <input id="login" type="text" required aria-required="true">>
+                    <label for="login" class="label">
+                        Логин
+                    </label>
+                </div>
+                <div class="modal__input-wrapper">
+                    <input id="password" type="password" required aria-required="true">>
+                    <label for="password" class="label">
+                        Пароль
+                    </label>
+                </div>
                 <input class="modal__submit" type="submit" value="Вход">
-            </div>
+            </form>
         </div>
-    </div> -->
-
+    </div>
 
     <header class="header">
         <div class="container">
@@ -114,29 +94,39 @@
                     <button class="btn slider__btn">Онлайн-магазин</button>
                 </div>
             </section>
-            <section class="section" id="events">
-                <h2 class="section__title">Выставки и события</h2>
-                <div class="tabs__list" role="tablist">
-                    <button class="tab tab_active" role="tab">Все</button>
+
+            <section class="section" id="events" aria-labelledby="eventsTitle">
+                <h2 id="eventsTitle" class="section__title">Выставки и события</h2>
+
+                <div class="filter__list" role="radiogroup" aria-controls="eventsResult">
+                    <div class="filter filter_active" role="radio" aria-checked="true" tabindex="0" data-event-date="all">Все</div>
+                    <div class="filter" role="radio" aria-checked="false" data-event-date="today">Сегодня</div>
+                    <div class="filter" role="radio" aria-checked="false" data-event-date="tomorrow">Завтра</div>
+                </div>
+
+                <!-- <div class="tabs__list" role="tablist">
+                    <button class="tab tab_active" role="tab" aria-selected="true">Все</button>
                     <button class="tab" role="tab">Сегодня</button>
                     <button class="tab" role="tab">Завтра</button>
-                </div>
-                <div class="grid">
-                    <article class="grid__item card">
+                </div> -->
+                <div id="eventsResult" class="events__grid grid">
+                    <article class="grid__item card event" data-event-date="tomorrow">
                         <img class="card__img" src="assets/richter.jpg" alt="Портрет художницы Анны Ивановны Трояновской">
                         <h3 class="card__title">Святослав Рихтер в кругу друзей. Москва — Коктебель</h3>
                         <h4 class="card__date">Выставка до 20 ноября</h4>
                         <p class="card__text">Накануне дня рождения великого пианиста в Мемориальной квартире Святослава Рихтера откроется камерная, но весьма содержательная выставка, посвященная «коктебельскому братству» — содружеству художников, поэтов, музыкантов, ученых, объединенных духом свободы и творчества.</p>
                         <a class="card__link" href="">Купить билет</a>
                     </article>
-                    <article class="grid__item card">
+                
+                    <article class="grid__item card event" data-event-date="today">
                         <img class="card__img" src="assets/tattoo.jpg" alt="Деревянная маска коруру">
                         <h3 class="card__title">Тату</h3>
                         <h4 class="card__date">Выставка до 27 сентября</h4>
                         <p class="card__text">Государственный музей изобразительных искусств имени А.С. Пушкина совместно с парижским Музеем на набережной Бранли имени Жака Ширака представляет выставочный проект «Tату», посвященный искусству татуировки.</p>
                         <a class="card__link" href="">Купить билет</a>
                     </article>
-                    <article class="grid__item card">
+                
+                    <article class="grid__item card event" data-event-date="tomorrow">
                         <img class="card__img" src="assets/durer.jpg" alt="Винсент ван Гог Портрет молодой девушки">
                         <h3 class="card__title">От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
                         <h4 class="card__date">Выставка до 1 ноября</h4>
@@ -146,60 +136,104 @@
                 </div>
             </section>
 
-            <section class="section" id="museum">
-                <h2 class="section__title">Музей</h2>
-                <div class="tabs__list" role="tablist">
-                    <button class="tab tab_active" role="tab">Здания</button>
-                    <button class="tab" role="tab">История</button>
+
+            <section class="section tabs" id="museum" aria-labelledby="museumTitle">
+                <h2 id="museumTitle" class="section__title">Музей</h2>
+                <div role="tablist" class="tabs__list">
+                    <button role="tab" aria-selected="true" aria-controls="buildingsTab" id="buildingsBtn" class="tab tab_active">
+                        Здания
+                    </button>
+                    <button role="tab" aria-selected="false" aria-controls="historyTab" id="historyBtn" tabindex="-1" class="tab">
+                        История
+                    </button>
+                    <!-- <button role="tab" aria-selected="false" aria-controls="eventsTab" id="eventsBtn" tabindex="-1" class="tab">
+                        События
+                    </button> -->
                 </div>
 
-                <div class="grid">
-                    <article class="grid__item card">
-                        <img class="card__img" src="assets/m-flat.jpg" alt="">
-                        <h3 class="card__title card__title_uppercase">Мемориальная квартира С.Т. Рихтера</h3>
-                        <p class="card__text">ул. Большая Бронная, 2/6, 16 этаж, кв. 58</p>
-                        <a class="card__link" href="">Подробнее</a>
-                    </article>
-                    <article class="grid__item card">
-                        <img class="card__img" src="assets/m-museon.jpg" alt="">
-                        <h3 class="card__title card__title_uppercase">ЦЭВ «Мусейон»</h3>
-                        <p class="card__text">Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</p>
-                        <a class="card__link" href="">Подробнее</a>
-                    </article>
-                    <article class="grid__item card">
-                        <img class="card__img" src="assets/m-manor.jpg" alt="">
-                        <h3 class="card__title card__title_uppercase">Усадьба Лопухиных</h3>
-                        <p class="card__text">Малый Знаменский пер., 3/5с4</p>
-                        <a class="card__link" href="">Подробнее</a>
-                    </article>
-                    <article class="grid__item card">
-                        <img class="card__img" src="assets/m-museum.jpg" alt="">
-                        <h3 class="card__title card__title_uppercase">Учебный музей</h3>
-                        <p class="card__text">ул. Чаянова, 15</p>
-                        <a class="card__link" href="">Подробнее</a>
-                    </article>
-                    <article class="grid__item card">
-                        <img class="card__img" src="assets/m-collection.jpg" alt="">
-                        <h3 class="card__title card__title_uppercase">Отдел личных коллекций</h3>
-                        <p class="card__text">ул. Волхонка, 10</p>
-                        <a class="card__link" href="">Подробнее</a>
-                    </article>
-                    <article class="grid__item card">
-                        <img class="card__img" src="assets/m-gallery.jpg" alt="">
-                        <h3 class="card__title card__title_uppercase">Галерея</h3>
-                        <p class="card__text">ул. Волхонка, 14</p>
-                        <a class="card__link" href="">Подробнее</a>
-                    </article>
+                <div tabindex="0" role="tabpanel" id="buildingsTab" aria-labelledby="buildingsBtn">
+                    <div class="grid">
+                        <article class="grid__item card">
+                            <img class="card__img" src="assets/m-flat.jpg" alt="">
+                            <h3 class="card__title card__title_uppercase">Мемориальная квартира С.Т. Рихтера</h3>
+                            <p class="card__text">ул. Большая Бронная, 2/6, 16 этаж, кв. 58</p>
+                            <a class="card__link" href="">Подробнее</a>
+                        </article>
+                        <article class="grid__item card">
+                            <img class="card__img" src="assets/m-museon.jpg" alt="">
+                            <h3 class="card__title card__title_uppercase">ЦЭВ «Мусейон»</h3>
+                            <p class="card__text">Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</p>
+                            <a class="card__link" href="">Подробнее</a>
+                        </article>
+                        <article class="grid__item card">
+                            <img class="card__img" src="assets/m-manor.jpg" alt="">
+                            <h3 class="card__title card__title_uppercase">Усадьба Лопухиных</h3>
+                            <p class="card__text">Малый Знаменский пер., 3/5с4</p>
+                            <a class="card__link" href="">Подробнее</a>
+                        </article>
+                        <article class="grid__item card">
+                            <img class="card__img" src="assets/m-museum.jpg" alt="">
+                            <h3 class="card__title card__title_uppercase">Учебный музей</h3>
+                            <p class="card__text">ул. Чаянова, 15</p>
+                            <a class="card__link" href="">Подробнее</a>
+                        </article>
+                        <article class="grid__item card">
+                            <img class="card__img" src="assets/m-collection.jpg" alt="">
+                            <h3 class="card__title card__title_uppercase">Отдел личных коллекций</h3>
+                            <p class="card__text">ул. Волхонка, 10</p>
+                            <a class="card__link" href="">Подробнее</a>
+                        </article>
+                        <article class="grid__item card">
+                            <img class="card__img" src="assets/m-gallery.jpg" alt="">
+                            <h3 class="card__title card__title_uppercase">Галерея</h3>
+                            <p class="card__text">ул. Волхонка, 14</p>
+                            <a class="card__link" href="">Подробнее</a>
+                        </article>
+                    </div>
                 </div>
+                <div tabindex="0" role="tabpanel" id="historyTab" aria-labelledby="historyBtn" hidden="">
+                    <div class="museum__history">
+                        <p>
+                            Государственный музей изобразительных искусств имени А.С. Пушкина – одно из крупнейших в России художественных
+                            собраний зарубежного искусства с древнейших времен до наших дней.
+                        </p>
+                        <p>
+                            В современной экспозиции представлены обширная учебная коллекция тонированных гипсовых слепков с произведений
+                            Античности, Средних веков и эпохи Возрождения, а также собрание подлинных произведений живописи, скульптуры, графики
+                            и
+                            декоративно-прикладного искусства.
+                        </p>
+                        <p>
+                            В залах первого этажа Главного здания представлены: произведения искусства Древнего Египта, Античности, собрание
+                            европейской живописи VIII–XVIII веков; два зала – Итальянский и Греческий дворики – занимают слепки. На втором этаже
+                            Главного здания в залах размещены слепки произведений искусства Древней Греции, Рима, Средних веков и Возрождения.
+                        </p>
+                        <p>
+                            В начале 2017 года музей определил новое направление своей деятельности – Пушкинский XXI, – ориентированное на
+                            современное российское и западное искусство во всех аспектах – выставочном, образовательном и исследовательском.
+                            Таким
+                            образом, ГМИИ им. А.С. Пушкина представляет собой открытую, интерактивную сцену, демонстрирующую развитие мировой
+                            культуры с древности до наших дней, живое, знакомое с детства пространство для получения знаний и общения.
+                        </p>
+                        <div><a href="">Читать далее</a></div>
+                    </div>
+                </div>
+                <!-- <div tabindex="0" role="tabpanel" id="eventsTab" aria-labelledby="eventsBtn" hidden="">
+                    <p>
+                        Государственный музей изобразительных искусств имени А.С. Пушкина – одно из крупнейших в России художественных
+                        собраний
+                        зарубежного искусства с древнейших времен до наших дней.
+                    </p>
+                </div> -->
             </section>
 
-            <section class="section" id="online">
-                <h2 class="section__title">Онлайн-трансляции</h2>
+            <section class="section" id="online" aria-labelledby="onlineTitle">
+                <h2 id="onlineTitle" class="section__title">Онлайн-трансляции</h2>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/5qRR-5H1XgU"></iframe>
             </section>
 
-            <section class="section" id="live">
-                <h2 class="section__title">Экскурсии и лекции в прямом эфире</h2>
+            <section class="section" id="live" aria-labelledby="liveTitle">
+                <h2 id="liveTitle" class="section__title">Экскурсии и лекции в прямом эфире</h2>
                 <p class="text">
                     С 1 июля вы можете присоединиться к нашим виртуальным мероприятиям — экскурсиям и лекциям для взрослых и детей, оплатив
                     участие на сайте. Встречи будут проходить в прямом эфире на платформе Zoom; предусмотрен формат живого общения с
@@ -241,12 +275,12 @@
                 <h5 class="footer__title">Подписка на новости</h5>
                 <form class="footer__form">
                     <div class="form__row form__row_flex">
-                        <input class="input" type="text" id="email" required>
+                        <input class="input" type="text" id="email" required aria-required="true">
                         <label class="label" for="email">E-mail</label>
                         <input class="submit" type="submit" value="Подписаться">
                     </div>
                     <div class="form__row">
-                        <input type="checkbox" id="agreement" required>
+                        <input type="checkbox" id="agreement" required aria-required="true">
                         <label for="agreement">Согласен на обработку персональх данных</label>
                     </div>
                 </form>
