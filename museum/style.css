@@ -35,6 +35,7 @@ li {
 }
 
 .header {
+    position: relative;
     padding: 35px 0;
 }
 
@@ -325,7 +326,7 @@ li {
     color: #000000;
 }
 
-.museum__history p + p {
+.museum__history p+p {
     margin-top: 20px;
 }
 
@@ -341,7 +342,7 @@ li {
     max-width: 60%;
 }
 
-.text + .text {
+.text+.text {
     margin-top: 20px;
 }
 
@@ -496,8 +497,16 @@ li {
 
 
 
+.skiplink {
+    position: absolute;
+    top: -200px;
+    left: 2px;
+    transition: top 0.2s;
+}
 
-
+.skiplink:focus {
+    top: 20px;
+}
 
 .filter__list,
 .tabs__list {
@@ -505,8 +514,8 @@ li {
     font-size: 0;
 }
 
-.filter + .filter,
-.tab + .tab {
+.filter+.filter,
+.tab+.tab {
     margin-left: 40px;
 }
 
