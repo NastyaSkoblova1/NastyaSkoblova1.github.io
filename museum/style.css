@@ -35,8 +35,16 @@ li {
 }
 
 .header {
+    padding-bottom: 35px;
+}
+
+
+.header__row {
     position: relative;
-    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+    padding-top: 35px;
 }
 
 .section {
@@ -49,18 +57,16 @@ li {
     line-height: 1.18;
 }
 
-.header__row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 80px;
-}
-
 .inner {
     font-size: 0;
 }
 
 .logo {
     margin-right: auto;
+}
+
+.logo img {
+    width: 230px;
 }
 
 .search {
@@ -84,44 +90,50 @@ li {
 }
 
 .langs {
-    font-size: 0;
+    display: flex;
 }
 
 .lang {
     padding: 13px 18px;
     font-size: 22px;
+    text-decoration: none;
     color: #000000;
-    background-color: #c7d2e9;
+    background-color: transparent;
+    border: 1px solid #c7d2e9;
     border-radius: 4px;
+}
+
+.lang.lang_active{
+    background-color: #c7d2e9;
 }
 
 .lang+.lang {
     margin-left: 8px;
 }
 
-.modal__wrapper {
+.modal__backdrop {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 1;
-    display: none;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal__wrapper.open {
-    display: block;
-}
-
-.modal {
+.modal__wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 2;
     padding: 70px 150px 85px;
     background-color: #ffffff;
     border-radius: 8px;
     transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none;
 }
 
 .modal__close {
@@ -500,12 +512,17 @@ li {
 .skiplink {
     position: absolute;
     top: -200px;
-    left: 2px;
-    transition: top 0.2s;
+    left: 0;
+    padding: 5px 15px;
+    font-size: 10px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #c7d2e9;
+    border-radius: 1px;
 }
 
 .skiplink:focus {
-    top: 20px;
+    top: 5px;
 }
 
 .filter__list,
@@ -539,7 +556,7 @@ li {
 }
 
 
-/* 
+
 .filter,
 .tab {
     display: inline-block;
@@ -550,14 +567,45 @@ li {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-} */
+}
 
 /* .filter.filter_active,
 .tab.tab_active {
     background-color: #c7d2e9;
+} */
+
+.filter+.filter,
+.tab+.tab {
+    margin-left: 40px;
 }
 
-.filter + .filter,
-.tab + .tab {
-    margin-left: 40px;
-} */
+
+[role="radio"] {
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 22px;
+    line-height: 1.18;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+[role="radio"][aria-checked="true"] {
+    background-color: #c7d2e9;
+}
+
+[role="radio"]:checked {
+    background-color: #c7d2e9;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
