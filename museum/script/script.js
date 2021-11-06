@@ -94,6 +94,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     workWithTabs();
+    workWithSlider()
 
     var rg1 = new RadioGroup(document.getElementById('filter__list'));
     rg1.init();
@@ -101,5 +102,5 @@ document.addEventListener('DOMContentLoaded', function () {
     const user = document.querySelector('.user');
     user.addEventListener('click', function() {
         openDialog('dialog', this)
-    });
+    });  
 });

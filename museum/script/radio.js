@@ -1,9 +1,6 @@
 var RadioGroup = function (domNode) {
-
     this.domNode = domNode;
-
     this.radioButtons = [];
-
     this.firstRadioButton = null;
     this.lastRadioButton = null;
 

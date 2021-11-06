@@ -58,6 +58,7 @@ li {
 }
 
 .inner {
+    margin-top: 45px;
     font-size: 0;
 }
 
@@ -103,7 +104,7 @@ li {
     border-radius: 4px;
 }
 
-.lang.lang_active{
+.lang.lang_active {
     background-color: #c7d2e9;
 }
 
@@ -240,11 +241,16 @@ li {
     line-height: 1.18;
     color: #ffffff;
     background-color: #5d16d5;
+    border: 1px solid #5d16d5;
     border-radius: 8px;
 }
 
 .slider__btn+.slider__btn {
     margin-left: 35px;
+}
+
+.slider__btn:focus {
+    border: 3px solid #ffffff;
 }
 
 .grid {
@@ -267,7 +273,7 @@ li {
     margin-right: 0;
 }
 
-.slider {
+/* .slider {
     position: relative;
     margin-bottom: 50px;
 }
@@ -300,7 +306,7 @@ li {
 
 .slide img {
     max-width: 100%;
-}
+} */
 
 .event {
     display: block;
@@ -449,7 +455,7 @@ li {
 }
 
 
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
     .container {
         padding: 0 45px;
     }
@@ -461,7 +467,7 @@ li {
     .slider__arrow_next {
         right: -10px;
     }
-}
+} */
 
 
 @media screen and (max-width: 980px) {
@@ -473,13 +479,13 @@ li {
         margin-left: 30px;
     }
 
-    .slider {
+    /* .slider {
         margin-bottom: 30px;
     }
 
     .slider__btn+.slider__btn {
         margin-left: 25px;
-    }
+    } */
 
     .tab+.tab {
         margin-left: 20px;
@@ -600,12 +606,79 @@ li {
 }
 
 .visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+
+
+
+
+/* .carousel */
+
+.carousel {
+    margin-bottom: 50px;
+}
+
+.carousel .carousel-inner {
+    position: relative;
+}
+
+.carousel .carousel-item {
+    display: none;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel .carousel-item img {
+    max-width: 100%;
+}
+
+.carousel .carousel-item.active {
+    display: block;
+}
+
+.carousel-caption {
+    position: absolute;
+    left: 45px;
+    bottom: 85px;
+}
+
+.carousel-caption a {
+    padding: 18px 40px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #5d16d5;
+    border: 1px solid #5d16d5;
+    border-radius: 8px;
+}
+
+.carousel-caption a:focus {
+    border: 3px solid #ffffff;
+}
+
+.slider__arrow {
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.slider__arrow_prev {
+    left: -95px;
+}
+
+.slider__arrow_next {
+    right: -95px;
 }
