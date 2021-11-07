@@ -68,9 +68,9 @@
         </div>
 
 
-        <div role="dialog" id="dialog" aria-labelledby="modal-title modal-subtitle" aria-modal="true"
+        <div role="dialog" id="dialog" aria-labelledby="modal-subtitle" aria-modal="true"
             class="modal hidden">
-            <span id="modal-subtitle" class="visually-hidden">в личный кабинет</span>
+            <span id="modal-subtitle" class="visually-hidden">Заполните данные для входа в кабинет</span>
             <div class="modal__backdrop"></div>
             <div class="modal__wrapper">
                 <div id="modal-title" class="modal__title">
@@ -78,14 +78,16 @@
                 </div>
                 <form class="modal__form">
                     <div class="modal__input-wrapper">
-                        <input id="login" type="text" required aria-required="true">
-                        <label for="login" class="label">
+                        <span id="login-label" class="visually-hidden">Введите логин</span>
+                        <input id="login" type="text" required aria-required="true" aria-labelledby="login-label">
+                        <label for="login" class="label" aria-hidden="true">
                             Логин
                         </label>
                     </div>
                     <div class="modal__input-wrapper">
-                        <input id="password" type="password" required aria-required="true">
-                        <label for="password" class="label">
+                        <span id="password-label" class="visually-hidden">Введите пароль</span>
+                        <input id="password" type="password" required aria-required="true" aria-labelledby="password-label">
+                        <label for="password" class="label" aria-hidden="true">
                             Пароль
                         </label>
                     </div>
