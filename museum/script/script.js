@@ -102,5 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const user = document.querySelector('.user');
     user.addEventListener('click', function() {
         openDialog('dialog', this)
-    });  
+    }); 
+
+    document.querySelector('.search').addEventListener('submit', function(e) {
+        e.preventDefault();
+    });
 });

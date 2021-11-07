@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Домашняя работа Скобловой Насти</title>
     <link rel="stylesheet" href="style.css">
     <script src="script/slider.js"></script>
     <script src="script/tabs.js"></script>
@@ -22,12 +22,9 @@
     <div role="dialog" id="dialog" aria-labelledby="modalTitle" aria-modal="true" class="modal hidden">
         <div class="modal__backdrop"></div>
         <div class="modal__wrapper">
-            <button class="modal__close" aria-label="Закрыть диалог" onclick="closeDialog(this)">
-                <img src="assets/i-close.svg" alt="" role="presentation">
-            </button>
-            <h2 id="modalTitle" class="modal__title">
+            <h6 id="modalTitle" class="modal__title">
                 Вход
-            </h2>
+            </h6>
             <form>
                 <div class="modal__input-wrapper">
                     <input id="login" type="text" required aria-required="true">
@@ -41,23 +38,28 @@
                         Пароль
                     </label>
                 </div>
-                <input class="modal__submit" type="submit" value="Вход">
+                <input class="modal__submit" type="submit" value="Продолжить">
             </form>
+            <button class="modal__close" aria-label="Закрыть диалог" onclick="closeDialog(this)">
+                <img src="assets/i-close.svg" alt="" role="presentation">
+            </button>
         </div>
     </div>
-
 
     <header class="header">
         <div class="container">
             <div class="header__row">
-                <a href="#main-content" class="skiplink">Skip to main</a>
+                <a href="#main-content" aria-label="Перейти к основному контенту" class="skiplink">Основной контент</a>
                 <h1 class="logo">
-                    <a href="">
-                        <img role="img" src="assets/logotype.svg" alt="Логотип Пушкинского Музея">
-                    </a>
+                        <img src="assets/logotype.svg" alt="Пушкинский музей">
                 </h1>
                 <div class="search__wrapper">
-                    <input class="search" type="search" placeholder="Что вы ищете?">
+                    <form role="search" class="search">
+                        <input type="search" aria-label="Введите запрос" placeholder="Введите запрос" class="search__input">
+                        <button type="submit" aria-label=" Найти" class="search__button">
+                            <img src="assets/i-search.svg" alt="" role="presentation">
+                        </button>
+                    </form>
                 </div>
 
 
@@ -66,21 +68,18 @@
                         <span aria-hidden="true">RU</span>
                         <span class="visually-hidden">Русский</span>
                     </div>
-                    <a href="/en" hreflang="en" aria-label="English" class="lang">
+                    <a href="#" hreflang="en" aria-label="English" class="lang">
                         <span>EN</span>
                     </a>
                 </nav>
 
-                <button class="user" aria-haspopup="dialog">
-                    <svg alt="" role="presentation" width="46" height="46" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M22.672 22.158c3.044 0 5.68-1.091 7.834-3.246 2.154-2.153 3.246-4.789 3.246-7.833 0-3.044-1.092-5.68-3.246-7.834C28.352 1.092 25.716 0 22.672 0c-3.044 0-5.68 1.092-7.833 3.246-2.154 2.153-3.246 4.789-3.246 7.833 0 3.044 1.092 5.68 3.246 7.834 2.154 2.153 4.79 3.245 7.833 3.245ZM16.745 5.152c1.653-1.653 3.591-2.456 5.927-2.456 2.336 0 4.275.803 5.928 2.456 1.652 1.653 2.456 3.592 2.456 5.927 0 2.336-.803 4.274-2.456 5.927-1.653 1.653-3.592 2.457-5.928 2.457-2.335 0-4.274-.804-5.927-2.457-1.653-1.652-2.457-3.591-2.457-5.927 0-2.335.804-4.274 2.457-5.927ZM42.059 35.372a27.374 27.374 0 0 0-.373-2.907 22.915 22.915 0 0 0-.715-2.922 14.44 14.44 0 0 0-1.202-2.726 10.273 10.273 0 0 0-1.811-2.36c-.715-.684-1.59-1.235-2.602-1.636-1.009-.399-2.127-.6-3.323-.6-.47 0-.923.192-1.8.763-.54.352-1.171.759-1.876 1.21-.603.383-1.419.743-2.427 1.069a9.639 9.639 0 0 1-2.969.48 9.646 9.646 0 0 1-2.969-.48c-1.007-.326-1.824-.686-2.425-1.07a261.59 261.59 0 0 1-1.878-1.21c-.876-.57-1.33-.763-1.8-.763-1.196 0-2.313.202-3.321.602-1.012.4-1.888.95-2.603 1.635a10.277 10.277 0 0 0-1.811 2.36c-.5.88-.904 1.796-1.201 2.726a22.95 22.95 0 0 0-.715 2.922 27.18 27.18 0 0 0-.373 2.908 39.362 39.362 0 0 0-.092 2.716c0 2.401.764 4.345 2.269 5.779C7.529 45.283 9.495 46 11.888 46h22.15c2.39 0 4.358-.717 5.845-2.132 1.505-1.433 2.268-3.377 2.268-5.78 0-.926-.031-1.84-.093-2.716Zm-4.035 6.543c-.982.935-2.287 1.39-3.987 1.39h-22.15c-1.7 0-3.004-.455-3.986-1.39-.964-.917-1.432-2.169-1.432-3.826 0-.862.029-1.713.085-2.53.056-.801.17-1.682.337-2.618.166-.924.378-1.79.629-2.576.241-.753.57-1.498.978-2.216a7.619 7.619 0 0 1 1.33-1.745c.463-.442 1.046-.805 1.732-1.076a6.203 6.203 0 0 1 2.123-.41c.094.05.262.146.535.324.554.361 1.193.773 1.899 1.224.796.508 1.821.966 3.046 1.361 1.253.405 2.53.611 3.798.611a12.34 12.34 0 0 0 3.798-.61c1.226-.396 2.251-.854 3.048-1.363.723-.462 1.344-.862 1.898-1.223.272-.177.44-.274.535-.324.775.021 1.488.159 2.123.41.687.271 1.27.634 1.731 1.076.495.473.942 1.06 1.331 1.745.409.718.738 1.464.979 2.216.251.786.463 1.653.628 2.576.168.938.282 1.818.338 2.618v.001c.057.814.085 1.665.086 2.53 0 1.657-.469 2.908-1.432 3.825Z"
-                            fill="#000" />
+                <button class="user" aria-haspopup="dialog" aria-label="Войти в личный кабинет">
+                    <svg alt="" role="presentation" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.672 22.158c3.044 0 5.68-1.091 7.834-3.246 2.154-2.153 3.246-4.789 3.246-7.833 0-3.044-1.092-5.68-3.246-7.834C28.352 1.092 25.716 0 22.672 0c-3.044 0-5.68 1.092-7.833 3.246-2.154 2.153-3.246 4.789-3.246 7.833 0 3.044 1.092 5.68 3.246 7.834 2.154 2.153 4.79 3.245 7.833 3.245ZM16.745 5.152c1.653-1.653 3.591-2.456 5.927-2.456 2.336 0 4.275.803 5.928 2.456 1.652 1.653 2.456 3.592 2.456 5.927 0 2.336-.803 4.274-2.456 5.927-1.653 1.653-3.592 2.457-5.928 2.457-2.335 0-4.274-.804-5.927-2.457-1.653-1.652-2.457-3.591-2.457-5.927 0-2.335.804-4.274 2.457-5.927ZM42.059 35.372a27.374 27.374 0 0 0-.373-2.907 22.915 22.915 0 0 0-.715-2.922 14.44 14.44 0 0 0-1.202-2.726 10.273 10.273 0 0 0-1.811-2.36c-.715-.684-1.59-1.235-2.602-1.636-1.009-.399-2.127-.6-3.323-.6-.47 0-.923.192-1.8.763-.54.352-1.171.759-1.876 1.21-.603.383-1.419.743-2.427 1.069a9.639 9.639 0 0 1-2.969.48 9.646 9.646 0 0 1-2.969-.48c-1.007-.326-1.824-.686-2.425-1.07a261.59 261.59 0 0 1-1.878-1.21c-.876-.57-1.33-.763-1.8-.763-1.196 0-2.313.202-3.321.602-1.012.4-1.888.95-2.603 1.635a10.277 10.277 0 0 0-1.811 2.36c-.5.88-.904 1.796-1.201 2.726a22.95 22.95 0 0 0-.715 2.922 27.18 27.18 0 0 0-.373 2.908 39.362 39.362 0 0 0-.092 2.716c0 2.401.764 4.345 2.269 5.779C7.529 45.283 9.495 46 11.888 46h22.15c2.39 0 4.358-.717 5.845-2.132 1.505-1.433 2.268-3.377 2.268-5.78 0-.926-.031-1.84-.093-2.716Zm-4.035 6.543c-.982.935-2.287 1.39-3.987 1.39h-22.15c-1.7 0-3.004-.455-3.986-1.39-.964-.917-1.432-2.169-1.432-3.826 0-.862.029-1.713.085-2.53.056-.801.17-1.682.337-2.618.166-.924.378-1.79.629-2.576.241-.753.57-1.498.978-2.216a7.619 7.619 0 0 1 1.33-1.745c.463-.442 1.046-.805 1.732-1.076a6.203 6.203 0 0 1 2.123-.41c.094.05.262.146.535.324.554.361 1.193.773 1.899 1.224.796.508 1.821.966 3.046 1.361 1.253.405 2.53.611 3.798.611a12.34 12.34 0 0 0 3.798-.61c1.226-.396 2.251-.854 3.048-1.363.723-.462 1.344-.862 1.898-1.223.272-.177.44-.274.535-.324.775.021 1.488.159 2.123.41.687.271 1.27.634 1.731 1.076.495.473.942 1.06 1.331 1.745.409.718.738 1.464.979 2.216.251.786.463 1.653.628 2.576.168.938.282 1.818.338 2.618v.001c.057.814.085 1.665.086 2.53 0 1.657-.469 2.908-1.432 3.825Z" fill="#000" />
                     </svg>
                 </button>
             </div>
-            <nav class="menu">
+            <nav aria-label="" class="menu">
                 <a class="menu__item" href="#events">Выставки и события</a>
                 <a class="menu__item" href="#museum">Музей</a>
                 <a class="menu__item" href="#online">Онлайн-трансляции</a>
@@ -89,11 +88,8 @@
         </div>
     </header>
 
-    <a href="#main-content" id="main-content" style="font-size: 0;">Начало основного контента</a>
-    <main class="main" aria-label="Основной контент">
+    <main id="main-content" class="main">
         <div class="container">
-
-
             <section id="myCarousel" class="carousel" aria-roledescription="carousel" aria-label="Ближайшие события">
                 <div class="carousel-inner">
                     <div class="controls">
@@ -116,10 +112,7 @@
                                 <span class="visually-hidden" id="slideFirstLabel">
                                     Выставка от Дюрера до Матисса
                                 </span>
-                                <a href="https://tickets.pushkinmuseum.art/ru/#id=3&sid=645" id="slideFirstLink"
-                                    aria-label="Купить билеты онлайн">
-                                    Билеты онлайн
-                                </a>
+                                <a href="https://tickets.pushkinmuseum.art/ru/#id=3&sid=645" id="slideFirstLink" aria-label="Купить билеты онлайн">Билеты онлайн</a>
                             </div>
                         </div>
                         <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="2 из 3">
@@ -130,10 +123,7 @@
                                 <span class="visually-hidden" id="slideSecondLabel">
                                     Выставка Вариации в свободном стиле
                                 </span>
-                                <a href="https://tickets.pushkinmuseum.art/ru/#id=3&sid=548" id="slideSecondLink"
-                                    aria-label="Купить билеты онлайн">
-                                    Билеты онлайн
-                                </a>
+                                <a href="https://tickets.pushkinmuseum.art/ru/#id=3&sid=548" id="slideSecondLink" aria-label="Купить билеты онлайн">Билеты онлайн</a>
                             </div>
                         </div>
                         <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="3 из 3">
@@ -144,19 +134,16 @@
                                 <span class="visually-hidden" id="slideThirdLabel">
                                     Лекция как читать средневековые изображения
                                 </span>
-                                <a href="https://tickets.pushkinmuseum.art/ru/#id=3&sid=555" id="slideThirdLink"
-                                    aria-label="Купить билеты онлайн">
-                                    Билеты онлайн
-                                </a>
+                                <a href="https://tickets.pushkinmuseum.art/ru/#id=3&sid=555" id="slideThirdLink" aria-label="Купить билеты онлайн">Билеты онлайн</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="inner">
-                    <button class="btn slider__btn">Купить билет</button>
-                    <button class="btn slider__btn">Стать другом</button>
-                    <button class="btn slider__btn">Онлайн-магазин</button>
+                    <a href="https://pushkinmuseum.art/tickets/index.php?lang=ru" class="btn slider__btn">Купить билет</a>
+                    <a href="https://pushkinmuseum.art/museum/support_us/friends/index.php?lang=ru" class="btn slider__btn">Стать другом</a>
+                    <a href="https://pushkinmuseum.art/media/shopping/index.php?lang=ru" class="btn slider__btn">Онлайн-магазин</a>
                 </div>
             </section>
 
@@ -230,37 +217,37 @@
                             <img class="card__img" src="assets/m-flat.jpg" alt="">
                             <h3 class="card__title card__title_uppercase">Мемориальная квартира С.Т. Рихтера</h3>
                             <p class="card__text">ул. Большая Бронная, 2/6, 16 этаж, кв. 58</p>
-                            <a class="card__link" href="">Подробнее</a>
+                            <a class="card__link" href="https://pushkinmuseum.art/museum/buildings/richter/index.php?lang=ru">Подробнее</a>
                         </article>
                         <article class="grid__item card">
                             <img class="card__img" src="assets/m-museon.jpg" alt="">
                             <h3 class="card__title card__title_uppercase">ЦЭВ «Мусейон»</h3>
                             <p class="card__text">Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</p>
-                            <a class="card__link" href="">Подробнее</a>
+                            <a class="card__link" href="https://pushkinmuseum.art/museum/buildings/museyon/index.php?lang=ru">Подробнее</a>
                         </article>
                         <article class="grid__item card">
                             <img class="card__img" src="assets/m-manor.jpg" alt="">
                             <h3 class="card__title card__title_uppercase">Усадьба Лопухиных</h3>
                             <p class="card__text">Малый Знаменский пер., 3/5с4</p>
-                            <a class="card__link" href="">Подробнее</a>
+                            <a class="card__link" href="https://pushkinmuseum.art/museum/buildings/lopuhini/index.php?lang=ru">Подробнее</a>
                         </article>
                         <article class="grid__item card">
                             <img class="card__img" src="assets/m-museum.jpg" alt="">
                             <h3 class="card__title card__title_uppercase">Учебный музей</h3>
                             <p class="card__text">ул. Чаянова, 15</p>
-                            <a class="card__link" href="">Подробнее</a>
+                            <a class="card__link" href="https://pushkinmuseum.art/museum/buildings/cvetaev/index.php?lang=ru">Подробнее</a>
                         </article>
                         <article class="grid__item card">
                             <img class="card__img" src="assets/m-collection.jpg" alt="">
                             <h3 class="card__title card__title_uppercase">Отдел личных коллекций</h3>
                             <p class="card__text">ул. Волхонка, 10</p>
-                            <a class="card__link" href="">Подробнее</a>
+                            <a class="card__link" href="https://pushkinmuseum.art/museum/buildings/olk/index.php?lang=ru">Подробнее</a>
                         </article>
                         <article class="grid__item card">
                             <img class="card__img" src="assets/m-gallery.jpg" alt="">
                             <h3 class="card__title card__title_uppercase">Галерея</h3>
                             <p class="card__text">ул. Волхонка, 14</p>
-                            <a class="card__link" href="">Подробнее</a>
+                            <a class="card__link" href="https://pushkinmuseum.art/museum/buildings/gallery/index.php?lang=ru">Подробнее</a>
                         </article>
                     </div>
                 </div>
@@ -298,14 +285,14 @@
                             культуры с древности до наших дней, живое, знакомое с детства пространство для получения
                             знаний и общения.
                         </p>
-                        <div><a href="">Читать далее</a></div>
+                        <div><a href="https://pushkinmuseum.art/museum/history/index.php?lang=ru">Читать далее</a></div>
                     </div>
                 </div>
             </section>
 
             <section class="section" id="online">
                 <h2 id="onlineTitle" class="section__title">Онлайн-трансляции</h2>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/5qRR-5H1XgU"></iframe>
+                <iframe title="YouTube" width="560" height="315" src="https://www.youtube.com/embed/5qRR-5H1XgU"></iframe>
             </section>
 
             <section class="section" id="live">
@@ -340,13 +327,19 @@
                 <h5 class="footer__title">Соц. сети</h5>
                 <ul class="social__list">
                     <li class="social__item">
-                        <a href="mailto:tickets@arts-museum.ru"><img src="assets/i-email.svg" alt=""></a>
+                        <a href="mailto:tickets@arts-museum.ru" aria-label="Email">
+                            <img src="assets/i-email.svg" alt="" aria-role="presentation">
+                        </a>
                     </li>
                     <li class="social__item">
-                        <a href="https://t.me/theartsmuseum"><img src="assets/i-telegram.svg" alt=""></a>
+                        <a href="https://t.me/theartsmuseum" aria-label="Telegram">
+                            <img src="assets/i-telegram.svg" alt="" aria-role="presentation">
+                        </a>
                     </li>
                     <li class="social__item">
-                        <a href="https://www.facebook.com/theartsmuseum/"><img src="assets/i-facebook.svg" alt=""></a>
+                        <a href="https://www.facebook.com/theartsmuseum/" aria-label="Facebook">
+                            <img src="assets/i-facebook.svg" alt="" aria-role="presentation">
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -360,7 +353,7 @@
                     </div>
                     <div class="form__row">
                         <input type="checkbox" id="agreement" required aria-required="true">
-                        <label for="agreement">Согласен на обработку персональх данных</label>
+                        <label for="agreement">Согласен на обработку персональных данных</label>
                     </div>
                 </form>
             </div>
