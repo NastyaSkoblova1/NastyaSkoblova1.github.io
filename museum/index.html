@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="stylesheet" href="style/style.min.css">
+    <link rel="stylesheet" href="style/style.css">
     <script src="script/script.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -30,8 +30,12 @@
                     <form role="search" class="search">
                         <input type="search" aria-label="Введите запрос" placeholder="Введите запрос"
                             class="search__input">
-                        <button type="submit" aria-label=" Найти" class="search__button">
-                            <img src="assets/i-search.svg" alt="" role="presentation">
+                        <button type="submit" aria-label="Найти" class="search__button">
+                            <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M7.815.282C3.505.282 0 3.647 0 7.784s3.506 7.502 7.816 7.502a7.99 7.99 0 0 0 4.577-1.428l5.107 4.903a.877.877 0 0 0 1.204 0l.547-.525a.794.794 0 0 0 0-1.156l-5.107-4.902a7.259 7.259 0 0 0 1.487-4.394c0-4.137-3.506-7.502-7.816-7.502ZM2.476 7.784c0-2.825 2.396-5.125 5.34-5.125 2.943 0 5.339 2.3 5.339 5.125 0 2.826-2.396 5.125-5.34 5.125-2.943 0-5.339-2.299-5.339-5.125Z"
+                                    fill="#000" />
+                            </svg>
                         </button>
                     </form>
                 </div>
@@ -47,7 +51,7 @@
                 </nav>
 
                 <button class="user" aria-haspopup="dialog" aria-label="Войти в личный кабинет">
-                    <svg alt="" role="presentation" width="46" height="46" viewBox="0 0 46 46" fill="none"
+                    <svg role="presentation" width="46" height="46" viewBox="0 0 46 46" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M22.672 22.158c3.044 0 5.68-1.091 7.834-3.246 2.154-2.153 3.246-4.789 3.246-7.833 0-3.044-1.092-5.68-3.246-7.834C28.352 1.092 25.716 0 22.672 0c-3.044 0-5.68 1.092-7.833 3.246-2.154 2.153-3.246 4.789-3.246 7.833 0 3.044 1.092 5.68 3.246 7.834 2.154 2.153 4.79 3.245 7.833 3.245ZM16.745 5.152c1.653-1.653 3.591-2.456 5.927-2.456 2.336 0 4.275.803 5.928 2.456 1.652 1.653 2.456 3.592 2.456 5.927 0 2.336-.803 4.274-2.456 5.927-1.653 1.653-3.592 2.457-5.928 2.457-2.335 0-4.274-.804-5.927-2.457-1.653-1.652-2.457-3.591-2.457-5.927 0-2.335.804-4.274 2.457-5.927ZM42.059 35.372a27.374 27.374 0 0 0-.373-2.907 22.915 22.915 0 0 0-.715-2.922 14.44 14.44 0 0 0-1.202-2.726 10.273 10.273 0 0 0-1.811-2.36c-.715-.684-1.59-1.235-2.602-1.636-1.009-.399-2.127-.6-3.323-.6-.47 0-.923.192-1.8.763-.54.352-1.171.759-1.876 1.21-.603.383-1.419.743-2.427 1.069a9.639 9.639 0 0 1-2.969.48 9.646 9.646 0 0 1-2.969-.48c-1.007-.326-1.824-.686-2.425-1.07a261.59 261.59 0 0 1-1.878-1.21c-.876-.57-1.33-.763-1.8-.763-1.196 0-2.313.202-3.321.602-1.012.4-1.888.95-2.603 1.635a10.277 10.277 0 0 0-1.811 2.36c-.5.88-.904 1.796-1.201 2.726a22.95 22.95 0 0 0-.715 2.922 27.18 27.18 0 0 0-.373 2.908 39.362 39.362 0 0 0-.092 2.716c0 2.401.764 4.345 2.269 5.779C7.529 45.283 9.495 46 11.888 46h22.15c2.39 0 4.358-.717 5.845-2.132 1.505-1.433 2.268-3.377 2.268-5.78 0-.926-.031-1.84-.093-2.716Zm-4.035 6.543c-.982.935-2.287 1.39-3.987 1.39h-22.15c-1.7 0-3.004-.455-3.986-1.39-.964-.917-1.432-2.169-1.432-3.826 0-.862.029-1.713.085-2.53.056-.801.17-1.682.337-2.618.166-.924.378-1.79.629-2.576.241-.753.57-1.498.978-2.216a7.619 7.619 0 0 1 1.33-1.745c.463-.442 1.046-.805 1.732-1.076a6.203 6.203 0 0 1 2.123-.41c.094.05.262.146.535.324.554.361 1.193.773 1.899 1.224.796.508 1.821.966 3.046 1.361 1.253.405 2.53.611 3.798.611a12.34 12.34 0 0 0 3.798-.61c1.226-.396 2.251-.854 3.048-1.363.723-.462 1.344-.862 1.898-1.223.272-.177.44-.274.535-.324.775.021 1.488.159 2.123.41.687.271 1.27.634 1.731 1.076.495.473.942 1.06 1.331 1.745.409.718.738 1.464.979 2.216.251.786.463 1.653.628 2.576.168.938.282 1.818.338 2.618v.001c.057.814.085 1.665.086 2.53 0 1.657-.469 2.908-1.432 3.825Z"
@@ -88,7 +92,11 @@
                     <input class="modal__submit" type="submit" aria-label="Продолжить" value="Продолжить">
                 </form>
                 <button class="modal__close" aria-label="Закрыть диалог">
-                    <img src="assets/i-close.svg" alt="" role="presentation">
+                    <svg width="118" height="118" viewBox="0 0 118 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M112.6 5.4 5.4 112.6M112.6 112.6 5.4 5.4" stroke="#000" stroke-width="10" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
                 </button>
             </div>
         </div>
@@ -102,18 +110,26 @@
                     <div class="controls">
                         <button type="button" class="previous carousel__arrow carousel__arrow_prev"
                             aria-controls="carousel-items" aria-label="Предыдущее событие">
-                            <img src="assets/arrow-prev.svg" width="60" height="80" alt="" role="presentation">
+                            <svg width="42" height="76" viewBox="0 0 42 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1.385 35.915 36.48.82a2.924 2.924 0 0 1 4.135 4.135L7.588 37.982l33.026 33.026a2.924 2.924 0 0 1-4.135 4.136L1.385 40.05a2.924 2.924 0 0 1 0-4.135Z"
+                                    fill="#000" />
+                            </svg>
                         </button>
                         <button type="button" class="next carousel__arrow carousel__arrow_next"
                             aria-controls="carousel-items" aria-label="Следующее событие">
-                            <img src="assets/arrow-next.svg" width="60" height="80" alt="" role="presentation">
+                            <svg width="42" height="76" viewBox="0 0 42 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M40.615 40.085 5.52 75.18a2.924 2.924 0 0 1-4.135-4.135l33.026-33.026L1.386 4.992A2.924 2.924 0 0 1 5.52.856L40.615 35.95a2.924 2.924 0 0 1 0 4.135Z"
+                                    fill="#000" />
+                            </svg>
                         </button>
                     </div>
                     <div id="carousel-items" class="carousel-items" aria-live="off">
 
                         <div class="carousel-item active" role="group" aria-roledescription="slide" aria-label="1 из 3">
                             <div class="carousel-image">
-                                <img src="assets/g-slide1.jpg" alt="" role="presentation">
+                                <img alt="Танцующие и музицирующие путти с античным «трофеем» Альбрехт Дюрер" src="assets/g-slide1.jpg">
                             </div>
                             <div class="carousel-caption">
                                 <span class="visually-hidden" id="slideFirstLabel">
@@ -125,7 +141,7 @@
                         </div>
                         <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="2 из 3">
                             <div class="carousel-image">
-                                <img src="assets/g-slide2.jpg" alt="" role="presentation">
+                                <img alt="Абстрактная графика" src="assets/g-slide2.jpg">
                             </div>
                             <div class="carousel-caption">
                                 <span class="visually-hidden" id="slideSecondLabel">
@@ -137,7 +153,7 @@
                         </div>
                         <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="3 из 3">
                             <div class="carousel-image">
-                                <img src="assets/g-slide3.jpg" alt="" role="presentation">
+                                <img alt="Портал собора («Златые врата») в Пушкинском музее" src="assets/g-slide3.jpg">
                             </div>
                             <div class="carousel-caption">
                                 <span class="visually-hidden" id="slideThirdLabel">

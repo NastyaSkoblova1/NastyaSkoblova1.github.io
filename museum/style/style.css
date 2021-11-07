@@ -197,7 +197,7 @@ input[type="search"]::-webkit-search-results-decoration {
     cursor: pointer;
 }
 
-.modal__close img {
+.modal__close svg {
     width: 35px;
     height: 35px;
 }
@@ -777,7 +777,7 @@ input[type="search"]::-webkit-search-results-decoration {
         font-size: 26px;
     }
 
-    .modal__close img {
+    .modal__close svg {
         width: 30px;
         height: 30px;
     }
@@ -872,7 +872,7 @@ input[type="search"]::-webkit-search-results-decoration {
         right: -15px;
     }
 
-    .carousel__arrow img {
+    .carousel__arrow svg {
         height: 60px;
     }
 
