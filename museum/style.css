@@ -460,7 +460,7 @@ input[type="search"]::-webkit-search-results-decoration {
     display: inline-block;
 }
 
-.social__item img {
+.social__item svg {
     width: 40px;
     height: 40px;
 }
