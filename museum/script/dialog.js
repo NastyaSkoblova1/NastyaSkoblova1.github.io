@@ -14,35 +14,23 @@ aria.Utils = aria.Utils || {};
       }
     }
     return false;
-  }; // end focusFirstDescendant
-
-  aria.Utils.focusLastDescendant = function (element) {
-    for (var i = element.childNodes.length - 1; i >= 0; i--) {
-      var child = element.childNodes[i];
-      if (aria.Utils.attemptFocus(child) ||
-        aria.Utils.focusLastDescendant(child)) {
-        return true;
-      }
-    }
-    return false;
-  }; // end focusLastDescendant
+  };
 
   aria.Utils.attemptFocus = function (element) {
     if (!aria.Utils.isFocusable(element)) {
       return false;
     }
-
     aria.Utils.IgnoreUtilFocusChanges = true;
     try {
       element.focus();
     } catch (e) {}
     aria.Utils.IgnoreUtilFocusChanges = false;
     return (document.activeElement === element);
-  }; // end attemptFocus
+  };
 
   /* Modals can open modals. Keep track of them with this array. */
   aria.OpenDialogList = aria.OpenDialogList || new Array(0);
-  
+
   aria.getCurrentDialog = function () {
     if (aria.OpenDialogList && aria.OpenDialogList.length) {
       return aria.OpenDialogList[aria.OpenDialogList.length - 1];
@@ -55,7 +43,6 @@ aria.Utils = aria.Utils || {};
       currentDialog.close();
       return true;
     }
-
     return false;
   };
 
@@ -93,12 +80,10 @@ aria.Utils = aria.Utils || {};
     // While this dialog is open, we use these to make sure that focus never
     // leaves the document even if dialogNode is the first or last node.
     var preDiv = document.createElement('div');
-    this.preNode = this.dialogNode.parentNode.insertBefore(preDiv,
-      this.dialogNode);
+    this.preNode = this.dialogNode.parentNode.insertBefore(preDiv, this.dialogNode);
     this.preNode.tabIndex = 0;
     var postDiv = document.createElement('div');
-    this.postNode = this.dialogNode.parentNode.insertBefore(postDiv,
-      this.dialogNode.nextSibling);
+    this.postNode = this.dialogNode.parentNode.insertBefore(postDiv, this.dialogNode.nextSibling);
     this.postNode.tabIndex = 0;
 
     // If this modal is opening on top of one that is already open,
@@ -118,8 +103,8 @@ aria.Utils = aria.Utils || {};
     }
 
     this.lastFocus = document.activeElement;
-  }; // end Dialog constructor
-  
+  };
+
   aria.Dialog.prototype.close = function () {
     aria.OpenDialogList.pop();
     this.removeListeners();
@@ -127,15 +112,15 @@ aria.Utils = aria.Utils || {};
     aria.Utils.remove(this.postNode);
     this.dialogNode.className = 'hidden';
     this.focusAfterClosed.focus();
-  }; // end close
+  };
 
   aria.Dialog.prototype.addListeners = function () {
     document.addEventListener('focus', this.trapFocus, true);
-  }; // end addListeners
+  };
 
   aria.Dialog.prototype.removeListeners = function () {
     document.removeEventListener('focus', this.trapFocus, true);
-  }; // end removeListeners
+  };
 
   aria.Dialog.prototype.trapFocus = function (event) {
     if (aria.Utils.IgnoreUtilFocusChanges) {
@@ -146,23 +131,17 @@ aria.Utils = aria.Utils || {};
       currentDialog.lastFocus = event.target;
     } else {
       aria.Utils.focusFirstDescendant(currentDialog.dialogNode);
-      if (currentDialog.lastFocus == document.activeElement) {
-        aria.Utils.focusLastDescendant(currentDialog.dialogNode);
-      }
       currentDialog.lastFocus = document.activeElement;
     }
-  }; // end trapFocus
+  };
 
   window.openDialog = function (dialogId, focusAfterClosed, focusFirst) {
-    var dialog = new aria.Dialog(dialogId, focusAfterClosed, focusFirst);
+    new aria.Dialog(dialogId, focusAfterClosed, focusFirst);
   };
 
   window.closeDialog = function (closeButton) {
-    var topDialog = aria.getCurrentDialog();
-    if (topDialog.dialogNode.contains(closeButton)) {
-      topDialog.close();
-    }
-  }; // end closeDialog
+    aria.getCurrentDialog().close();
+  };
 }());
 
 

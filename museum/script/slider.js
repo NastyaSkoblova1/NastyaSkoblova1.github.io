@@ -134,12 +134,8 @@ function workWithSlider() {
     /* Initialize Carousel Tablists */
 
     window.addEventListener('load', function () {
-        var carousels = document.querySelectorAll('.carousel');
-
-        for (var i = 0; i < carousels.length; i++) {
-            var carousel = new Carousel(carousels[i]);
+            var carousel = new Carousel(document.querySelector('.carousel'));
             carousel.init();
-        }
     }, false);
 
     var CarouselItem = function (domNode, carouselObj) {
