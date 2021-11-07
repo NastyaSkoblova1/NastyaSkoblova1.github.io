@@ -1,4 +1,4 @@
-function workWithSlider() {
+function addCarousel() {
     var Carousel = function (domNode) {
         this.domNode = domNode;
 
@@ -134,8 +134,8 @@ function workWithSlider() {
     /* Initialize Carousel Tablists */
 
     window.addEventListener('load', function () {
-            var carousel = new Carousel(document.querySelector('.carousel'));
-            carousel.init();
+        var carousel = new Carousel(document.querySelector('.carousel'));
+        carousel.init();
     }, false);
 
     var CarouselItem = function (domNode, carouselObj) {

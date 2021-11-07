@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     workWithTabs();
-    workWithSlider()
+    addCarousel()
 
     var filter = new RadioGroup(document.getElementById('filter__list'));
     filter.init();
@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function () {
         openDialog('dialog', this)
     });
 
-    document.querySelector('.modal__close').addEventListener('click', function() {
+    document.querySelector('.modal__close').addEventListener('click', function () {
         closeDialog(this);
     });
 
-    document.querySelector('.modal__submit').addEventListener('click', function() {
+    document.querySelector('.modal__form').addEventListener('submit', function () {
         closeDialog(this);
     });
 
