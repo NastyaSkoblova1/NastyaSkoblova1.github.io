@@ -615,10 +615,10 @@ function t_slideMove(rec, withoutNewInterval, sliderOptions) {
 
 			if (safariMajorVersion >= 13 && isiOSChrome && !sliderNotAnimated) {
 				t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, 0);
-			} else {
+			} else if (isiOSChrome) {
+                t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, sliderTransition);
+            } else {
 				sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
-                sliderWrapper.style.webkitTransform = 'translateX(-' + sliderWidth * position + 'px)';
-                // sliderWrapper.style.transition = 'transform ease-in-out 3s';
 			}
 			if (sliderNotAnimated !== true) {
 				t_slds_ActiveSlide(rec, position, totalSlides, sliderOptions);
