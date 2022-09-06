@@ -595,7 +595,6 @@ function t_slideMove(rec, withoutNewInterval, sliderOptions) {
 	if (safariMajorVersion >= 13 && isiOSChrome && !sliderNotAnimated) {
 		t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, sliderTransition);
     } else if (isiOSChrome) {
-        alert(1);
         t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, sliderTransition);
 	} else {
 		sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
