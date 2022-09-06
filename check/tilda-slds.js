@@ -417,7 +417,6 @@ function t_slideMoveWithoutAnimation(rec, withoutNewInterval, sliderOptions) {
 	if (position > totalSlides + 1) {
 		position = 1;
 	}
-
 	if (sliderNotAnimated) {
 		var activeSlide = sliderRec.querySelector('.t-slds__item_active');
 		var items = sliderRec.querySelectorAll('.t-slds__item');
@@ -597,7 +596,6 @@ function t_slideMove(rec, withoutNewInterval, sliderOptions) {
 		t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, sliderTransition);
 	} else {
 		sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
-        sliderWrapper.style.webkitTransform = 'translateX(-' + sliderWidth * position + 'px)';
         // sliderWrapper.style.transition = 'transform ease-in-out 3s';
 	}
 
@@ -1195,6 +1193,7 @@ function t_slds_initSliderSwipe(rec, totalSlides, windowWidth, sliderOptions) {
 				}
 				sliderWrapper.setAttribute('data-slider-cycle', cycle);
 				t_slideMove(rec, false, sliderOptions);
+                // alert(1);
 			} else if (event.velocityX < -0.4) {
 				if (
 					sliderWrapper.getAttribute('data-slider-with-cycle') == 'false' &&
@@ -1210,21 +1209,23 @@ function t_slds_initSliderSwipe(rec, totalSlides, windowWidth, sliderOptions) {
 				}
 				sliderWrapper.setAttribute('data-slider-cycle', cycle);
 				t_slideMove(rec, false, sliderOptions);
-			} else if (percentage <= -(sensitivity / totalSlides)) {
-				if (
-					sliderWrapper.getAttribute('data-slider-with-cycle') == 'false' &&
-					(position == totalSlides || (withSingleMove && position == totalSlides - itemsInRow + 1))
-				) {
-					position = withSingleMove ? totalSlides - itemsInRow : totalSlides;
-				} else {
-					position++;
-				}
-				sliderWrapper.setAttribute('data-slider-pos', position);
-				if (position == totalSlides + 1) {
-					cycle = 'yes';
-				}
-				sliderWrapper.setAttribute('data-slider-cycle', cycle);
-				t_slideMove(rec, false, sliderOptions);
+                // alert(2);
+			// } else if (percentage <= -(sensitivity / totalSlides)) {
+			// 	if (
+			// 		sliderWrapper.getAttribute('data-slider-with-cycle') == 'false' &&
+			// 		(position == totalSlides || (withSingleMove && position == totalSlides - itemsInRow + 1))
+			// 	) {
+			// 		position = withSingleMove ? totalSlides - itemsInRow : totalSlides;
+			// 	} else {
+			// 		position++;
+			// 	}
+			// 	sliderWrapper.setAttribute('data-slider-pos', position);
+			// 	if (position == totalSlides + 1) {
+			// 		cycle = 'yes';
+			// 	}
+			// 	sliderWrapper.setAttribute('data-slider-cycle', cycle);
+			// 	t_slideMove(rec, false, sliderOptions);
+            //     alert(3);
 			} else if (percentage >= sensitivity / totalSlides) {
 				if (sliderWrapper.getAttribute('data-slider-with-cycle') == 'false' && position == 1) {
 					position = 1;
@@ -1237,8 +1238,10 @@ function t_slds_initSliderSwipe(rec, totalSlides, windowWidth, sliderOptions) {
 				}
 				sliderWrapper.setAttribute('data-slider-cycle', cycle);
 				t_slideMove(rec, false, sliderOptions);
+                // alert(4);
 			} else {
 				t_slideMove(rec, false, sliderOptions);
+                // alert(5);
 			}
 			sliderWrapper.setAttribute('data-slider-touch', '');
 			isSwiping = false;
