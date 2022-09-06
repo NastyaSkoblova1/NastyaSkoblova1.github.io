@@ -594,6 +594,9 @@ function t_slideMove(rec, withoutNewInterval, sliderOptions) {
 
 	if (safariMajorVersion >= 13 && isiOSChrome && !sliderNotAnimated) {
 		t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, sliderTransition);
+    } else if (isiOSChrome) {
+        alert(1);
+        t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, sliderTransition);
 	} else {
 		sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
         // sliderWrapper.style.transition = 'transform ease-in-out 3s';
@@ -1225,7 +1228,7 @@ function t_slds_initSliderSwipe(rec, totalSlides, windowWidth, sliderOptions) {
 				}
 				sliderWrapper.setAttribute('data-slider-cycle', cycle);
 				t_slideMove(rec, false, sliderOptions);
-                alert(3);
+                // alert(3);
 			} else if (percentage >= sensitivity / totalSlides) {
 				if (sliderWrapper.getAttribute('data-slider-with-cycle') == 'false' && position == 1) {
 					position = 1;
