@@ -390,7 +390,6 @@ function t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, animateDura
 		},
 		function (progress) {
 			sliderWrapper.style.transform = 'translateX(' + (currentTranslate - nextTransformValue * progress) + 'px)';
-            console.log(5);
 		},
 		animateDuration
 	);
@@ -598,7 +597,7 @@ function t_slideMove(rec, withoutNewInterval, sliderOptions) {
 		t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, sliderTransition);
 	} else {
 		sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
-        console.log(3);
+        sliderWrapper.style.transition = 'transform ease-in-out 0s';
 	}
 
 	setTimeout(function () {
@@ -616,8 +615,9 @@ function t_slideMove(rec, withoutNewInterval, sliderOptions) {
 			if (safariMajorVersion >= 13 && isiOSChrome && !sliderNotAnimated) {
 				t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, 0);
 			} else {
-                t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, 0);
-				// sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
+				sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
+                sliderWrapper.style.transition = 'transform ease-in-out 0s';
+
 			}
 			if (sliderNotAnimated !== true) {
 				t_slds_ActiveSlide(rec, position, totalSlides, sliderOptions);
