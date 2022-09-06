@@ -616,7 +616,8 @@ function t_slideMove(rec, withoutNewInterval, sliderOptions) {
 			if (safariMajorVersion >= 13 && isiOSChrome && !sliderNotAnimated) {
 				t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, 0);
 			} else {
-				sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
+                t_slide_MoveAnimation(sliderWrapper, position, sliderWidth, 0);
+				// sliderWrapper.style.transform = 'translateX(-' + sliderWidth * position + 'px)';
 			}
 			if (sliderNotAnimated !== true) {
 				t_slds_ActiveSlide(rec, position, totalSlides, sliderOptions);
